@@ -2,7 +2,7 @@
 ---
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/adf3e49f-3630-42a2-a54a-aa80734b5466" style="width:60%" alt="washington map">
+  <img src="https://github.com/user-attachments/assets/1423a53e-14c0-427f-8dd1-b3ad207607e7" style="width:60%" alt="washington map">
 </p>
 
 Welcome to the **Washington State Electric Vehicle (EV) Adoption Analysis** project! This dashboard provides a detailed analysis of EV adoption in Washington State, examining trends in relation to political factors, economic indicators, and infrastructure development.
