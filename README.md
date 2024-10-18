@@ -25,9 +25,17 @@ This project is built with **Streamlit**, a tool that allows you to easily creat
 
 ### Prerequisites
 
-Before you start, make sure you have the following installed:
-- **Python 3.7 or higher**
-- Required Python packages listed in `requirements.txt`.
+Python installed:
+
+- Python 3.12.6
+
+Packages installed:
+
+- pandas 2.2.3
+- numpy 1.26.4
+- statsmodels 0.14.2
+- plotly 5.24.1
+- streamlit 1.38.0
 
 ### Step-by-Step Instructions
 
@@ -38,22 +46,30 @@ Before you start, make sure you have the following installed:
    cd ev-adoption-washington
    ```
 
-2. **Install dependencies**:  
-   Next, install the required Python packages. You can use the `requirements.txt` file to do this easily:
+2. **Install dependencies**:
+
+   You can manually install the packages using `pip` commands. For example:
+
+   ```bash
+   pip install pandas==2.2.3 numpy==1.26.4 statsmodels==0.14.2 plotly==5.24.1 streamlit==1.38.0
+   ```
+   
+   Or, install the required Python packages. You can use the `requirements.txt` file to do this easily:
+   
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Download the data**:  
+4. **Download the data**:  
    Make sure the data files (`ev.pickle`, `ev_merged.pickle`, `ev_state.pickle`) are available in the `data/` folder. If not included in the repo due to size limits, you'll need to provide these files.
 
-4. **Run the Streamlit app**:  
+5. **Run the Streamlit app**:  
    Once everything is set up, you can launch the Streamlit app by running the following command:
    ```bash
    streamlit run (filepath)/ev_analysis.py
    ```
 
-5. **Access the dashboard**:
+6. **Access the dashboard**:
    After running the command, a local URL will be provided in the terminal, something like `http://localhost:8501`. Open that link in your browser to view and interact with the dashboard.
 
 ### Project Structure
