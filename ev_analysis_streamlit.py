@@ -505,7 +505,7 @@ if scaling_option == "Scaled":
 # Raw data
 else: 
     if viz_type == "EV Count vs. Charger by Legislative District":
-        x_data = 'charger_count오류 생성'
+        x_data = 'charger_count'
         y_data = 'ev_count'
         chart4_title = 'EV Count vs. Charger by Legislative District'
     elif viz_type == "EV Count vs. Charger-to-EV Ratio by Legislative District":
@@ -556,6 +556,7 @@ def viz_4(chart_title):
             hover_data=['legislative_district'],#, x_data, y_data],
             hover_name='legislative_district',
         )
+    
     else:
         fig_charger = px.scatter(
             ev_merged.assign(group='Legislative District'), # Assign the same group 'Legislative District' to all data
@@ -619,12 +620,12 @@ viz_type = st.selectbox(
     ]
 )
 
-# def viz_5():
-
 party_colors = {'Democratic': '#0068C9', 'Republican': '#D32F2F'} # Material design red; modern UI
 # unhighlight_color = 'lightgray' # Color for unselected districts
 
-if viz_type == "EV Count by Legislative District":
+# 5.1) EV Count by Legislative District and Political Party
+def viz_5_1(chart_title='EV Count by Legislative District and Political Party'):
+    
     # Sort the dataframe by ev_count in descending order
     # ev_merged_sorted = ev_merged_filtered.sort_values('ev_count', ascending=False)
     ev_merged_sorted = ev_merged.sort_values('ev_count', ascending=False)
@@ -647,7 +648,7 @@ if viz_type == "EV Count by Legislative District":
         x='legislative_district', 
         y='ev_count', 
         color='selected_highlight', 
-        title='EV Count by Legislative District and Political Party',
+        title=chart_title,
         color_discrete_map=color_discrete_map,
         # reorder x axis legislative_district by ev_count (descending)
         # category_orders={'legislative_district': ev_merged_sorted['legislative_district'].tolist()}
@@ -664,9 +665,14 @@ if viz_type == "EV Count by Legislative District":
     fig_pp.update_layout(
         xaxis_title='Legislative District',
         yaxis_title='EV Count'
+        legend_title_text=''
     )
 
-elif viz_type == "Registered Voters by Legislative District":
+    st.plotly_chart(fig_pp)
+
+# 5.2) Registered Voters by Legislative District and Political Party
+def viz_5_2(chart_title='Registered Voters by Legislative District and Political Party'):
+    
     # Sort the dataframe by ev_count in descending order
     ev_merged_sorted = ev_merged.sort_values('ev_count', ascending=False)
     # Use the same order for 'legislative_district' from the first chart
@@ -688,7 +694,7 @@ elif viz_type == "Registered Voters by Legislative District":
         x='legislative_district',
         y='registered_voters',
         color='selected_highlight',
-        title='Registered Voters by Legislative District and Political Party',
+        title=chart_title,
         color_discrete_map=color_discrete_map,
         category_orders={'legislative_district': ld_order}
     ).update_xaxes(type='category')
@@ -699,11 +705,15 @@ elif viz_type == "Registered Voters by Legislative District":
     
     fig_pp.update_layout(
         xaxis_title='Legislative District',
-        yaxis_title='Registered Voters'
+        yaxis_title='Registered Voters',
+        legend_title_text=''
     )
 
-elif viz_type == "EV Count vs. Median Household Income":
+    st.plotly_chart(fig_pp)
 
+# 5.3) EV Count vs. Median Household Income by Legislative District
+def viz_5_3(chart_title='EV Count vs. Median Household Income by Legislative District and Political Party'):
+    
     if selected_districts:
         ev_merged['selected_highlight'] = np.where(
             ev_merged['legislative_district'].isin(selected_districts),
@@ -716,7 +726,7 @@ elif viz_type == "EV Count vs. Median Household Income":
             x='median_household_income',
             y='ev_count',
             color='selected_highlight',
-            title='EV Count vs. Median Household Income by Legislative District',
+            title=chart_title,
             color_discrete_map=color_discrete_map,
             hover_data=['legislative_district','selected_highlight'],
             hover_name='legislative_district'
@@ -753,7 +763,7 @@ elif viz_type == "EV Count vs. Median Household Income":
             x='median_household_income',
             y='ev_count',
             color='selected_highlight',
-            title='EV Count vs. Median Household Income by Legislative District',
+            title=chart_title,
             color_discrete_map=color_discrete_map,
             hover_data=['legislative_district','party_won'],
             hover_name='legislative_district',
@@ -782,11 +792,16 @@ elif viz_type == "EV Count vs. Median Household Income":
                     'EV Count: %{y}<br>'
                     f'{ols_equation}<extra></extra>'
                 )
-    
+
+    fig_pp.update_layout(legend_title_text='')
     fig_pp.update_xaxes(title='Median Household Income')
     fig_pp.update_yaxes(title='EV Count')
 
-else:
+    st.plotly_chart(fig_pp)
+
+# 5.4) EV Count vs. Charging Infrastructure by Legislative District
+def viz_5_4(chart_title='EV Count vs. Charging Infrastructure by Legislative District and Political Party'):
+    
     if selected_districts:
         ev_merged['selected_highlight'] = np.where(
             ev_merged['legislative_district'].isin(selected_districts),
@@ -800,7 +815,7 @@ else:
             x='charger_count',
             y='ev_count',
             color='selected_highlight',
-            title='EV Count vs. Charging Infrastructure by Legislative District',
+            title=chart_title,
             color_discrete_map=color_discrete_map,
             hover_data=['legislative_district','selected_highlight'],
             hover_name='legislative_district'
@@ -837,7 +852,7 @@ else:
             x='charger_count',
             y='ev_count',
             color='selected_highlight',
-            title='EV Count vs. Charging Infrastructure by Legislative District',
+            title=chart_title,
             color_discrete_map=color_discrete_map,
             hover_data=['legislative_district','party_won'],
             hover_name='legislative_district',
@@ -867,12 +882,24 @@ else:
                     f'{ols_equation}<extra></extra>'
                 )
 
+    fig_pp.update_layout(legend_title_text='')
     fig_pp.update_xaxes(title='Number of Charging Stations')
     fig_pp.update_yaxes(title='EV Count')
 
-fig_pp.update_layout(legend_title_text='') # Hide the legend title
-st.plotly_chart(fig_pp)
+    st.plotly_chart(fig_pp)
 
+# fig_pp.update_layout(legend_title_text='') # Hide the legend title
+# st.plotly_chart(fig_pp)
+
+if viz_type == "EV Count by Legislative District":
+    render_chart(viz_5_1, 'EV Count by Legislative District and Political Party')
+elif viz_type == "Registered Voters by Legislative District":
+    render_chart(viz_5_2, 'Registered Voters by Legislative District and Political Party')
+elif viz_type == "EV Count vs. Median Household Income":
+    render_chart(viz_5_3, 'EV Count vs. Median Household Income by Legislative District and Political Party')
+else:
+    render_chart(viz_5_4, 'EV Count vs. Charging Infrastructure by Legislative District and Political Party')
+    
 st.markdown("""
 Observations:
 - Democratic-leaning districts tend to have higher EV adoption rates, likely driven by supportive environmental policies.
