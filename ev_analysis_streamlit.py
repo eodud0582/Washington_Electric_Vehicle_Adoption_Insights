@@ -505,7 +505,7 @@ if scaling_option == "Scaled":
 # Raw data
 else: 
     if viz_type == "EV Count vs. Charger by Legislative District":
-        x_data = 'charger_count'
+        x_data = 'charger_count오류 생성'
         y_data = 'ev_count'
         chart4_title = 'EV Count vs. Charger by Legislative District'
     elif viz_type == "EV Count vs. Charger-to-EV Ratio by Legislative District":
@@ -618,6 +618,8 @@ viz_type = st.selectbox(
      "EV Count vs. Charging Infrastructure"
     ]
 )
+
+# def viz_5():
 
 party_colors = {'Democratic': '#0068C9', 'Republican': '#D32F2F'} # Material design red; modern UI
 # unhighlight_color = 'lightgray' # Color for unselected districts
