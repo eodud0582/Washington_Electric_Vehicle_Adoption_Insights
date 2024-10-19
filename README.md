@@ -22,6 +22,7 @@ This analysis is designed for:
 - **Infrastructure Analysis**: Explore the relationship between EV adoption and the availability of charging infrastructure.
 - **Political Landscape**: See how EV adoption correlates with political trends and legislative districts.
 - **Customizable Filters**: Users can select different legislative districts for a more tailored analysis.
+- **Chart Options**: Within some major topics, users can choose from various chart types to gain deeper insights.
 
 ## How to Access the Dashboard
 
