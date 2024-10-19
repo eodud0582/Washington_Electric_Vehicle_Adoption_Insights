@@ -138,8 +138,8 @@ Washington State is a major player in the U.S. electric vehicle (EV) market, con
 def render_chart(chart_function, chart_title):
     """Exceute visualization function and handle any error"""
     try:
-        st.subheader(chart_title)
-        chart_function() # visualizatino function
+        # st.subheader(chart_title)
+        chart_function(chart_title) # visualizatino function
     except Exception as e:
         st.error(f"Error in Chart '{chart_title}': {e}")
 
