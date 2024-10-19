@@ -47,7 +47,7 @@ st.markdown("""
     <style>
     /* Adjust the body font size */
     html, body, [data-testid="stAppViewContainer"] {
-        font-size: 70%;  /* Reduces font size to 80% of default */
+        font-size: 80%;  /* Reduces font size to 80% of default */
     }
 
     /* Optionally reduce the size of headings */
