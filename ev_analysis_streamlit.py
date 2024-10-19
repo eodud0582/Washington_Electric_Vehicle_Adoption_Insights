@@ -829,7 +829,7 @@ By addressing these factors, Washington State can continue to lead in EV adoptio
 # Add a sidebar for additional information or controls
 
 st.sidebar.header("Usage Guide")
-st.sidebar.info("""
+st.sidebar.markdown("""
 - Select legislative district(s) to filter the charts and highlight data specific to the district(s).
 - Choose from various analysis topics and available chart types with scaling options.
 - Hover over the charts to display additional information related to the data points.
