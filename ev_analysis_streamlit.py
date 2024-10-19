@@ -150,37 +150,6 @@ st.header("1. Overview of EV Adoption in Washington")
 
 ## 1.1) Electric Vehicle Population by State
 
-def viz_1_1():
-    title = 'Electric Vehicle Registrations by State'
-    try:
-        # Set colors, highlighting Washington state
-        ev_state['state_category'] = np.where(
-            ev_state['state'] == 'Washington',
-            'Washington', 
-            'Other'
-        )
-        
-        fig_state = px.bar(
-            ev_state, 
-            x='state',
-            y='registration_count', 
-            title=title, 
-            color='state_category', # Use the color column to set the bar colors
-            color_discrete_map={'Other': unhighlight_color, 'Washington': highlight_color}, 
-            category_orders={'state': ev_state['state']} # Maintain the original order of 'state'
-        ) 
-        fig_state.update_xaxes(title='State')
-        fig_state.update_yaxes(title='Number of EVs')
-        fig_state.update_layout(showlegend=False)
-        fig_state.update_traces(hovertemplate='State: %{x}<br>EV Count: %{y}')
-        
-        st.plotly_chart(fig_state)
-
-    except Exception as e:
-        st.error(f"Error in Chart '{title}': {e}")
-    
-viz_1_1()
-
 def viz_1_1(chart_title):
     # Set colors, highlighting Washington state
     ev_state['state_category'] = np.where(
@@ -191,7 +160,7 @@ def viz_1_1(chart_title):
     
     fig_state = px.bar(
         ev_state, 
-        x='state',
+        x='statedfd',
         y='registration_count', 
         title=chart_title, 
         color='state_category', # Use the color column to set the bar colors
