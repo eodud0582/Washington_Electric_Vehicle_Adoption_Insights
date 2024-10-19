@@ -160,7 +160,7 @@ def viz_1_1(chart_title):
     
     fig_state = px.bar(
         ev_state, 
-        x='statedfd',
+        x='stated',
         y='registration_count', 
         title=chart_title, 
         color='state_category', # Use the color column to set the bar colors
