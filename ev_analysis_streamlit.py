@@ -664,7 +664,7 @@ def viz_5_1(chart_title='EV Count by Legislative District and Political Party'):
     # fig.update_xaxes(tickangle=45)
     fig_pp.update_layout(
         xaxis_title='Legislative District',
-        yaxis_title='EV Count'
+        yaxis_title='EV Count',
         legend_title_text=''
     )
 
