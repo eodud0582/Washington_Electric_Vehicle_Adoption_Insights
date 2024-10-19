@@ -19,6 +19,11 @@ This analysis is designed for:
 - **Political Landscape**: See how EV adoption correlates with political trends and legislative districts.
 - **Customizable Filters**: Users can select different legislative districts for a more tailored analysis.
 
+## How to Access the Dashboard
+
+This dashboard is deployed and can be accessed at:
+- https://waevanalysis.streamlit.app/
+
 ## How to Run the Dashboard Locally
 
 This project is built with **Streamlit**, a tool that allows you to easily create interactive dashboards and web apps in Python. Follow these steps to run the dashboard locally on your machine.
@@ -26,11 +31,9 @@ This project is built with **Streamlit**, a tool that allows you to easily creat
 ### Prerequisites
 
 Python installed:
-
 - Python 3.12.6
 
 Packages installed:
-
 - pandas 2.2.3
 - numpy 1.26.4
 - statsmodels 0.14.2
@@ -42,7 +45,7 @@ Packages installed:
 1. **Clone the repository**:  
    First, clone this repository to your local machine:
    
-   ```bash
+   ```
    git clone https://github.com/eodud0582/Washington_State_Electric_Vehicle_Adoption_Analysis.git
    cd Washington_State_Electric_Vehicle_Adoption_Analysis
    ```
@@ -62,13 +65,13 @@ Packages installed:
    ```
 
 4. **Download the data**:  
-   Ensure the data files (`ev.pickle`, `ev_merged.pickle`, `ev_state.pickle`) are available in the `data/` folder. If these files are not included in the repository due to size limits, you will need to manually download or provide these files.
+   Ensure the data files (`ev.pickle`, `ev_merged.pickle`, `ev_state.pickle`) are available in the `data_processed/` folder. If these files are not included in the repository due to size limits, you will need to manually download or provide these files.
 
 5. **Run the Streamlit app**:  
    Once everything is set up, you can launch the Streamlit app by running the following command:
 
    ```
-   streamlit run ev_analysis.py
+   streamlit run ev_analysis_streamlit.py
    ```
 
 7. **Access the dashboard**:
@@ -81,10 +84,10 @@ Packages installed:
 ```
 Washington_State_Electric_Vehicle_Adoption_Analysis/
 │
-├── data/                   # Folder containing the data files in pickle format
-├── ev_analysis.py          # Main Python file for Streamlit app
-├── requirements.txt        # Python dependencies
-└── README.md               # Project overview and instructions (this file)
+├── data_processed/           # Folder containing the processed data files in pickle format
+├── ev_analysis_streamlit.py  # Main Python file for Streamlit app
+├── requirements.txt          # Python dependencies
+└── README.md                 # Project overview and instructions (this file)
 ```
 
 ## Data Sources
