@@ -380,6 +380,7 @@ st.header("3. Economic Indicator")
 
 # OLS regression for trendline
 def calculate_ols(df, x_col, y_col):
+    """OLS regression and get parameters"""
     # Data preparation
     X = sm.add_constant(df[x_col]) # Add constant term for intercept
     y = df[y_col]
