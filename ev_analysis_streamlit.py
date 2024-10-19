@@ -32,18 +32,6 @@ import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
 
-# OLS regression for trendline
-def calculate_ols(df, x_col, y_col):
-    # Data preparation
-    X = sm.add_constant(df[x_col]) # Add constant term for intercept
-    y = df[y_col]
-    # Get OLS parameters
-    model = sm.OLS(y, X).fit()
-    slope = model.params[1]
-    intercept = model.params[0]
-    r_squared = model.rsquared
-    return slope, intercept, r_squared
-
 # ================================== #
 # Global setting
 
@@ -322,76 +310,84 @@ st.divider()
 st.header("2. EV Adoption Trends")
 
 ## 2.1) EV Adoption by Model Year
-# ev_by_year = ev_filtered['model_year'].value_counts().sort_index()
-ev_by_year = ev_filtered['model_year'].value_counts().sort_index().reset_index()
-ev_by_year.columns = ['model_year', 'ev_count']
 
-fig_adoption = px.line(
-    ev_by_year,
-    x='model_year', # ev_by_year.index,
-    y='ev_count', # ev_by_year.values,
-    title='EV Distribution by Model Year',
-    labels={'model_year': 'Model Year', 'ev_count': 'EV Count'}, # Labels for axes
-    hover_data={'model_year', 'ev_count'}, # Enable hover for both
-)
-fig_adoption.update_xaxes(title='Model Year')
-fig_adoption.update_yaxes(title='EV Count')
-fig_adoption.update_traces(
-    hovertemplate='Model Year: %{x}<br>EV Count: %{y}',
-    line=dict(color=highlight_color)
-)
+def viz_2_1(chart_title='EV Distribution by Model Year'):
+    # ev_by_year = ev_filtered['model_year'].value_counts().sort_index()
+    ev_by_year = ev_filtered['model_year'].value_counts().sort_index().reset_index()
+    ev_by_year.columns = ['model_year', 'ev_count']
+    
+    fig_adoption = px.line(
+        ev_by_year,
+        x='model_year', # ev_by_year.index,
+        y='ev_count', # ev_by_year.values,
+        title=chart_title,
+        labels={'model_year': 'Model Year', 'ev_count': 'EV Count'}, # Labels for axes
+        hover_data={'model_year', 'ev_count'}, # Enable hover for both
+    )
+    fig_adoption.update_xaxes(title='Model Year')
+    fig_adoption.update_yaxes(title='EV Count')
+    fig_adoption.update_traces(
+        hovertemplate='Model Year: %{x}<br>EV Count: %{y}',
+        line=dict(color=highlight_color)
+    )
+
+    st.plotly_chart(fig_adoption)
 
 ## 2.2) EV Type by Model Year
 
-# Count EV by each model year and ev type
-model_counts = ev_filtered.groupby(['model_year', 'ev_type']).size().reset_index(name='count')
+def viz_2_2(chart_title='EV Type by Model Year (BEV vs. PHEV)'): 
 
-# Sum total counts for each EV type
-total_counts = model_counts.groupby('ev_type')['count'].sum().reset_index()
-
-# Get the EV type with the largest count
-largest_ev_type = total_counts.loc[total_counts['count'].idxmax(), 'ev_type'] # EV type name
-
-# Set colors based on the larger count EV type
-color_map = {largest_ev_type: highlight_color} # Default color for the largest EV type
-for ev_type in total_counts['ev_type']:
-    if ev_type != largest_ev_type:
-        color_map[ev_type] = unhighlight_color # Assign lightgray to the other EV type
-
-# Create the line plot with fixed colors
-fig_type = px.line(
-    model_counts,
-    x='model_year',
-    y='count',
-    color='ev_type',
-    title='EV Type by Model Year (BEV vs. PHEV)',
-    color_discrete_map=color_map # Apply the color map
-)
-
-# Legend setting (top center)
-fig_type.update_layout(
-    showlegend=True,
-    legend=dict(
-        orientation='h', # Horizontal orientation
-        yanchor='bottom', # Anchor the legend to the bottom
-        y=1.00, # Position it above the chart
-        xanchor='center', # Anchor the legend to the center
-        x=0.5, # Center the legend horizontally
-        title=None # Hide the legend title
+    # Count EV by each model year and ev type
+    model_counts = ev_filtered.groupby(['model_year', 'ev_type']).size().reset_index(name='count')
+    
+    # Sum total counts for each EV type
+    total_counts = model_counts.groupby('ev_type')['count'].sum().reset_index()
+    
+    # Get the EV type with the largest count
+    largest_ev_type = total_counts.loc[total_counts['count'].idxmax(), 'ev_type'] # EV type name
+    
+    # Set colors based on the larger count EV type
+    color_map = {largest_ev_type: highlight_color} # Default color for the largest EV type
+    for ev_type in total_counts['ev_type']:
+        if ev_type != largest_ev_type:
+            color_map[ev_type] = unhighlight_color # Assign lightgray to the other EV type
+    
+    # Create the line plot with fixed colors
+    fig_type = px.line(
+        model_counts,
+        x='model_year',
+        y='count',
+        color='ev_type',
+        title=chart_title,
+        color_discrete_map=color_map # Apply the color map
     )
-)
+    
+    # Legend setting (top center)
+    fig_type.update_layout(
+        showlegend=True,
+        legend=dict(
+            orientation='h', # Horizontal orientation
+            yanchor='bottom', # Anchor the legend to the bottom
+            y=1.00, # Position it above the chart
+            xanchor='center', # Anchor the legend to the center
+            x=0.5, # Center the legend horizontally
+            title=None # Hide the legend title
+        )
+    )
+    
+    # fig_type.update_traces(hovertemplate='Model Year: %{x}<br>EV Count: %{y}')
+    fig_type.for_each_trace(lambda t: t.update(hovertemplate='EV Type: ' + str(t.name) + '<br>Model Year: %{x}<br>Count: %{y}')) # Update hovertemplate for each trace
+    
+    # fig_type.update_layout(showlegend=False)
+    fig_type.update_xaxes(title='Model Year')
+    fig_type.update_yaxes(title='EV Count')
 
-# fig_type.update_traces(hovertemplate='Model Year: %{x}<br>EV Count: %{y}')
-fig_type.for_each_trace(lambda t: t.update(hovertemplate='EV Type: ' + str(t.name) + '<br>Model Year: %{x}<br>Count: %{y}')) # Update hovertemplate for each trace
-
-# fig_type.update_layout(showlegend=False)
-fig_type.update_xaxes(title='Model Year')
-fig_type.update_yaxes(title='EV Count')
+    st.plotly_chart(fig_type)
 
 # Plot side by side (Streamlit columns)
 col1, col2 = st.columns(2)
-with col1: st.plotly_chart(fig_adoption) # Plot 2-1
-with col2: st.plotly_chart(fig_type) # Plot 2-2
+with col1: render_chart(viz_2_1, 'EV Distribution by Model Year') # Plot 2-1
+with col2: render_chart(viz_2_2, 'EV Type by Model Year (BEV vs. PHEV)') # Plot 2-2
 
 st.markdown("""
 Observations:
@@ -407,6 +403,19 @@ st.divider()
 st.header("3. Economic Indicator")
 
 ## 3.1) EV Count vs. Median Household Income by Legislative District
+
+# OLS regression for trendline
+def calculate_ols(df, x_col, y_col):
+    # Data preparation
+    X = sm.add_constant(df[x_col]) # Add constant term for intercept
+    y = df[y_col]
+    # Get OLS parameters
+    model = sm.OLS(y, X).fit()
+    slope = model.params[1]
+    intercept = model.params[0]
+    r_squared = model.rsquared
+    return slope, intercept, r_squared
+
 # OLS regression for trendline
 slope, intercept, r_squared = calculate_ols(ev_merged, 'median_household_income', 'ev_count')
 
