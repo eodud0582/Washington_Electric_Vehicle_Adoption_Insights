@@ -827,12 +827,18 @@ By addressing these factors, Washington State can continue to lead in EV adoptio
 
 # ================================== #
 # Add a sidebar for additional information or controls
-st.sidebar.header("About This Dashboard")
 
+st.sidebar.header("Usage Guide")
+st.sidebar.info("""
+- Select legislative district(s) to filter the charts and highlight data specific to the district(s).
+- Choose from various analysis topics and available chart types with scaling options.
+- Hover over the charts to display additional information related to the data points.
+""")
+
+st.sidebar.header("About This Dashboard")
 st.sidebar.info("This dashboard provides an in-depth analysis of electric vehicle adoption in Washington State, examining factors such as political trends, economic indicators, and infrastructure development. The goal is to inform policy decisions and industry strategies to promote sustainable transportation.")
 
 st.sidebar.header("Data Sources")
-
 st.sidebar.markdown("""
 - Electric Vehicle Population in Washington State
 - General Election Results in Washington State 2022
