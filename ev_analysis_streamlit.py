@@ -68,7 +68,7 @@ else:
 
 st.title("Electric Vehicle Adoption in Washington State: Trends, Economy, Infrastructure, and Politics")
 
-col1, col2, col3 = st.columns([1,3,1])
+col1, col2, col3 = st.columns([1,4,1])
 with col1: st.write("")
 with col2: st.image("https://github.com/user-attachments/assets/a599e7a7-8468-4ba7-808b-95e71a799a87", caption="Image created with the help of ChatGPT by OpenAI")
 with col3: st.write("")
