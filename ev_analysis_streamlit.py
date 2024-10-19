@@ -602,8 +602,8 @@ def viz_4(chart_title):
     )
     
     fig_charger.update_layout(legend_title_text='') # Hide the legend title
-    fig_charger.update_xaxes(title=x_data)
-    fig_charger.update_yaxes(title=y_data)
+    fig_charger.update_xaxes(title=x_labels.get(x_data, x_data))
+    fig_charger.update_yaxes(title=x_labels.get(y_data, y_data))
     
     st.plotly_chart(fig_charger)
 
