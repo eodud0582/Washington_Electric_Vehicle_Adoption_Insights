@@ -68,13 +68,13 @@ else:
 
 st.title("Electric Vehicle Adoption in Washington State: Trends, Economy, Infrastructure, and Politics")
 
-col1, col2, col3 = st.columns([1,2,1])
-with col1: st.write("")
-with col2: 
-    st.image("https://github.com/user-attachments/assets/a599e7a7-8468-4ba7-808b-95e71a799a87", 
-             caption="Washington targets 100% electric vehicle sales by 2030 (Image created with the help of ChatGPT by OpenAI)")
-    # st.markdown("<p style='text-align: center;'>(Image created with the help of ChatGPT by OpenAI)</p>", unsafe_allow_html=True)
-with col3: st.write("")
+# col1, col2, col3 = st.columns([1,2,1])
+# with col1: st.write("")
+# with col2: 
+#     st.image("https://github.com/user-attachments/assets/a599e7a7-8468-4ba7-808b-95e71a799a87", 
+#              caption="Washington targets 100% electric vehicle sales by 2030 (Image created with the help of ChatGPT by OpenAI)")
+#     # st.markdown("<p style='text-align: center;'>(Image created with the help of ChatGPT by OpenAI)</p>", unsafe_allow_html=True)
+# with col3: st.write("")
 
 st.markdown("""
 This dashboard explores the relationship between electric vehicle (EV) adoption in Washington State, economic factors, infrastructure developments, and political trends. My goal is to provide insights for policymakers, industry stakeholders, and researchers interested in promoting sustainable transportation.
