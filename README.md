@@ -4,8 +4,9 @@
 <p align="center">
   <img src="https://github.com/user-attachments/assets/a599e7a7-8468-4ba7-808b-95e71a799a87" style="width:60%" alt="washington ev">
 </p>
-<p align="center" style="font-size: 10px; margin-top: 1px;">
-  Image created with the help of ChatGPT by OpenAI
+<p align="center" style="font-size: 8px; margin-top: 1px;">
+  Washington targets 100% electric vehicle sales by 2030 
+  (Image created with the help of ChatGPT by OpenAI)
 </p>
 
 Welcome to the **Washington State Electric Vehicle (EV) Adoption Analysis** project! This dashboard provides a detailed analysis of EV adoption in Washington State, examining trends in relation to political factors, economic indicators, and infrastructure development.
