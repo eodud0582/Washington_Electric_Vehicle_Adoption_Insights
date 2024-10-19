@@ -26,6 +26,7 @@ def calculate_ols(df, x_col, y_col):
 
 # Set page config
 st.set_page_config(page_title="Washington State EV Adoption Analysis", page_icon=":battery:", layout="wide")
+# emoji: https://streamlit-emoji-shortcodes-streamlit-app-gwckff.streamlit.app/
 
 highlight_color = '#0068C9'
 unhighlight_color = 'lightgray'
