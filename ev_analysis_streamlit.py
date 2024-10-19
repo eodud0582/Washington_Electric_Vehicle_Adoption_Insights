@@ -235,7 +235,7 @@ def viz_1_3(chart_title='Top 10 EV Manufacturers: EV Count and Average Electric 
     
     # Add secondar y-axis for average electric range marker
     fig_manufacturers.update_layout(
-        title=title,
+        title=chart_title,
         xaxis_title='Manufacturer',
         yaxis_title='EV Count',
         # Secondary y-axis
