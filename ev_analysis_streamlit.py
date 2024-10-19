@@ -399,7 +399,7 @@ def calculate_ols(df, x_col, y_col):
     r_squared = model.rsquared
     return slope, intercept, r_squared
 
-def viz_3_1(chart_title='EV Count vs. Median Household Income by Legislative District'):
+def viz_3(chart_title='EV Count vs. Median Household Income by Legislative District'):
     # OLS regression for trendline
     slope, intercept, r_squared = calculate_ols(ev_merged, 'median_household_income', 'ev_count')
     
@@ -458,7 +458,7 @@ def viz_3_1(chart_title='EV Count vs. Median Household Income by Legislative Dis
     
     st.plotly_chart(fig_income)
 
-render_chart(viz_3_1, 'EV Count vs. Median Household Income by Legislative District')
+render_chart(viz_3, 'EV Count vs. Median Household Income by Legislative District')
 
 st.markdown("""
 Observations:
@@ -493,100 +493,104 @@ if scaling_option == "Scaled":
     if viz_type == "EV Count vs. Charger by Legislative District":
         x_data = 'transformed_charger_count'
         y_data = 'transformed_ev_count'
-        title = 'EV Count vs. Transformed Charger Count by Legislative District'
+        chart4_title = 'EV Count vs. Transformed Charger Count by Legislative District'
     elif viz_type == "EV Count vs. Charger-to-EV Ratio by Legislative District":
         x_data = 'transformed_charger_ev_ratio'
         y_data = 'transformed_ev_count'
-        title = 'EV Count vs. Transformed Charger-to-EV Ratio by Legislative District'
+        chart4_title = 'EV Count vs. Transformed Charger-to-EV Ratio by Legislative District'
     else:
         x_data = 'transformed_charger_density'
         y_data = 'transformed_ev_count'
-        title = 'EV Count vs. Transformed Charger-to-Area Ratio by Legislative District'
+        chart4_title = 'EV Count vs. Transformed Charger-to-Area Ratio by Legislative District'
 # Raw data
 else: 
     if viz_type == "EV Count vs. Charger by Legislative District":
         x_data = 'charger_count'
         y_data = 'ev_count'
-        title = 'EV Count vs. Charger by Legislative District'
+        chart4_title = 'EV Count vs. Charger by Legislative District'
     elif viz_type == "EV Count vs. Charger-to-EV Ratio by Legislative District":
         x_data = 'charger_ev_ratio'
         y_data = 'ev_count'
-        title = 'EV Count vs. Charger-to-EV Ratio by Legislative District'
+        chart4_title = 'EV Count vs. Charger-to-EV Ratio by Legislative District'
     else:
         x_data = 'charger_density'
         y_data = 'ev_count'
-        title = 'EV Count vs. Charger-to-Area Ratio by Legislative District'
+        chart4_title = 'EV Count vs. Charger-to-Area Ratio by Legislative District'
 
-# OLS regression for trendline
-slope, intercept, r_squared = calculate_ols(ev_merged, x_data, y_data)
+def viz_4(chart_title):
 
-# Dictionary to label the x-axis based on selected data
-x_labels = {
-    'transformed_charger_count': 'Scaled Charger Count',
-    'transformed_ev_count': 'Scaled EV Count',
-    'transformed_charger_ev_ratio': 'Scaled Charger-to-EV Ratio',
-    'transformed_charger_density': 'Scaled Charger Density',
-    'charger_count': 'Charger Count',
-    'ev_count': 'EV Count',
-    'charger_ev_ratio': 'Charger-to-EV Ratio',
-    'charger_density': 'Charger Density',
-    # 'median_household_income': 'Median Household Income'
-}
-
-if selected_districts:
-    ev_merged['selected_highlight'] = np.where(
-        ev_merged['legislative_district'].isin(selected_districts),
-        'Selected', 
-        'Unselected'
-    )
-    color_discrete_map = {'Selected': highlight_color, 'Unselected': unhighlight_color}
+    # OLS regression for trendline
+    slope, intercept, r_squared = calculate_ols(ev_merged, x_data, y_data)
     
-    fig_charger = px.scatter(
-        ev_merged,
-        x=x_data,
-        y=y_data,
-        title=title,
-        color='selected_highlight',
-        color_discrete_map=color_discrete_map,
-        trendline='ols',
-        trendline_scope='overall',
-        trendline_color_override=unhighlight_color,
-        hover_data=['legislative_district'],#, x_data, y_data],
-        hover_name='legislative_district',
+    # Dictionary to label the x-axis based on selected data
+    x_labels = {
+        'transformed_charger_count': 'Scaled Charger Count',
+        'transformed_ev_count': 'Scaled EV Count',
+        'transformed_charger_ev_ratio': 'Scaled Charger-to-EV Ratio',
+        'transformed_charger_density': 'Scaled Charger Density',
+        'charger_count': 'Charger Count',
+        'ev_count': 'EV Count',
+        'charger_ev_ratio': 'Charger-to-EV Ratio',
+        'charger_density': 'Charger Density',
+        # 'median_household_income': 'Median Household Income'
+    }
+    
+    if selected_districts:
+        ev_merged['selected_highlight'] = np.where(
+            ev_merged['legislative_district'].isin(selected_districts),
+            'Selected', 
+            'Unselected'
+        )
+        color_discrete_map = {'Selected': highlight_color, 'Unselected': unhighlight_color}
+        
+        fig_charger = px.scatter(
+            ev_merged,
+            x=x_data,
+            y=y_data,
+            title=chart_title,
+            color='selected_highlight',
+            color_discrete_map=color_discrete_map,
+            trendline='ols',
+            trendline_scope='overall',
+            trendline_color_override=unhighlight_color,
+            hover_data=['legislative_district'],#, x_data, y_data],
+            hover_name='legislative_district',
+        )
+    else:
+        fig_charger = px.scatter(
+            ev_merged.assign(group='Legislative District'), # Assign the same group 'Legislative District' to all data
+            x=x_data,
+            y=y_data,
+            title=chart_title,
+            color='group', # Specify color group
+            color_discrete_map={'Legislative District': highlight_color}, # Set the designated color
+            trendline='ols',
+            trendline_scope='overall',
+            trendline_color_override=highlight_color,
+            hover_data=['legislative_district'],#, x_data, y_data],
+            hover_name='legislative_district',
+        )
+    
+    # Custom dynamic hovertemplate based on x_data label
+    # Add the OLS equation and R^2 to hovertemplate
+    ols_equation = f'<br>OLS trendline:<br>y = {slope:.2f}x + {intercept:.2f}<br>R² = {r_squared:.2f}'
+    
+    fig_charger.update_traces(
+        hovertemplate=(
+            'Legislative District: %{hovertext}<br>'
+            f'{x_labels.get(x_data, "X Value")}: ' + '%{x}<br>'
+            'EV Count: %{y}<br>'
+            f'{ols_equation}'
+        )
     )
-else:
-    fig_charger = px.scatter(
-        ev_merged.assign(group='Legislative District'), # Assign the same group 'Legislative District' to all data
-        x=x_data,
-        y=y_data,
-        title=title,
-        color='group', # Specify color group
-        color_discrete_map={'Legislative District': highlight_color}, # Set the designated color
-        trendline='ols',
-        trendline_scope='overall',
-        trendline_color_override=highlight_color,
-        hover_data=['legislative_district'],#, x_data, y_data],
-        hover_name='legislative_district',
-    )
+    
+    fig_charger.update_layout(legend_title_text='') # Hide the legend title
+    fig_charger.update_xaxes(title=x_data)
+    fig_charger.update_yaxes(title=y_data)
+    
+    st.plotly_chart(fig_charger)
 
-# Custom dynamic hovertemplate based on x_data label
-# Add the OLS equation and R^2 to hovertemplate
-ols_equation = f'<br>OLS trendline:<br>y = {slope:.2f}x + {intercept:.2f}<br>R² = {r_squared:.2f}'
-
-fig_charger.update_traces(
-    hovertemplate=(
-        'Legislative District: %{hovertext}<br>'
-        f'{x_labels.get(x_data, "X Value")}: ' + '%{x}<br>'
-        'EV Count: %{y}<br>'
-        f'{ols_equation}'
-    )
-)
-
-fig_charger.update_layout(legend_title_text='') # Hide the legend title
-fig_charger.update_xaxes(title=x_data)
-fig_charger.update_yaxes(title=y_data)
-
-st.plotly_chart(fig_charger)
+render_chart(viz_4, chart4_title)
 
 st.markdown("""
 Observations:
