@@ -203,7 +203,7 @@ fig_manufacturers.add_trace(
         mode='markers',
         marker=dict(
             symbol='line-ew', # Horizontal '--' line shape (East-West line)
-            size=17,
+            size=18,
             line=dict(
                 width=3,
                 color=unhighlight_color
