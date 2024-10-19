@@ -187,7 +187,7 @@ for x, y in zip(avg_electric_range.index, avg_electric_range.values):
         showarrow=False, # Hide the arrow associated with an annotation
         bgcolor=unhighlight_color, # Marker color
         height=3, # Height of the annotation
-        width=38, # Width of the annotation
+        width=30, # Width of the annotation
         font=dict(color=unhighlight_color),
         # bordercolor='black' # Border color for better visibility
         # borderwidth=1 # Border width for better visibility
