@@ -153,7 +153,7 @@ fig_manufacturers.add_trace(
     go.Bar(
         x=top_manufacturers_names,
         y=top_manufacturers_counts,
-        name='', # Hide trace name
+        name='EV Count', # Trace name; text in legend 
         marker_color=highlight_color,
         hoverinfo='text', # Set text on hover
         hovertemplate='Manufacturer: %{x}<br>EV Count: %{y}', 
@@ -178,22 +178,56 @@ fig_manufacturers.update_layout(
     barmode='group' # Keep this to avoid bars overlapping
 )
 
-# Add average electric range annotations as "markers" (secondary y-axis)
-for x, y in zip(avg_electric_range.index, avg_electric_range.values):
-    fig_manufacturers.add_annotation(
-        x=x,
-        y=y,
-        text=str(y), # Empty text to create a marker effect
-        showarrow=False, # Hide the arrow associated with an annotation
-        bgcolor=unhighlight_color, # Marker color
-        height=3, # Height of the annotation
-        width=30, # Width of the annotation
-        font=dict(color=unhighlight_color),
-        # bordercolor='black' # Border color for better visibility
-        # borderwidth=1 # Border width for better visibility
-        opacity=0.8, # Adjust opacity
-        yref='y2' # At secondary y-axis
+# # Add average electric range annotations as "markers" (secondary y-axis)
+# for x, y in zip(avg_electric_range.index, avg_electric_range.values):
+#     fig_manufacturers.add_annotation(
+#         x=x,
+#         y=y,
+#         text=str(y), # Empty text to create a marker effect
+#         showarrow=False, # Hide the arrow associated with an annotation
+#         bgcolor=unhighlight_color, # Marker color
+#         height=3, # Height of the annotation
+#         width=38, # Width of the annotation
+#         font=dict(color=unhighlight_color),
+#         # bordercolor='black' # Border color for better visibility
+#         # borderwidth=1 # Border width for better visibility
+#         opacity=0.8, # Adjust opacity
+#         yref='y2' # At secondary y-axis
+#     )
+
+# Add average electric range as 
+fig_manufacturers.add_trace(
+    go.Scatter(
+        x=avg_electric_range.index,
+        y=avg_electric_range.values,
+        mode='markers',
+        marker=dict(
+            symbol='line-ew', # Horizontal '--' line shape (East-West line)
+            size=20,
+            line=dict(
+                width=3,
+                color=unhighlight_color
+            )
+        ),
+        name='Avg Electric Range', # Text in legend
+        yaxis='y2',
+        hoverinfo='text', # Set text on hover
+        hovertemplate='Manufacturer: %{x}<br>Average Electric Range: %{y:.2f}', 
+        opacity=0.8
     )
+)
+
+fig_manufacturers.update_layout(
+    showlegend=True,
+    legend=dict(
+        orientation='h', # Horizontal orientation
+        yanchor='bottom', # Anchor the legend to the bottom
+        y=1.02, # Position it above the chart
+        xanchor='center', # Anchor the legend to the center
+        x=0.5, # Center the legend horizontally
+        title=None # Hide the legend title
+    )
+)
 
 # Plot side by side (Streamlit columns)
 col1, col2 = st.columns(2)
