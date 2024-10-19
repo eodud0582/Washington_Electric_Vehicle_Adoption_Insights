@@ -104,7 +104,14 @@ st.divider()
 # with col3: st.write("")
 
 st.warning("This dashboard explores the relationship between electric vehicle")
-st.info("This dashboard explores the relationship between electric vehicle")
+st.info("""
+This dashboard explores the relationship between electric vehicle (EV) adoption in Washington State, economic factors, infrastructure developments, and political trends. The goal is to provide insights for policymakers, industry stakeholders, and researchers interested in promoting sustainable transportation.
+
+**Designed for:**
+- Washington State government policymakers
+- Electric vehicle manufacturers and related industry professionals
+- Policymakers and researchers from other states
+""")
 st.success("This dashboard explores the relationship between electric vehicle")
 st.error("This dashboard explores the relationship between electric vehicle")
 st.markdown(
