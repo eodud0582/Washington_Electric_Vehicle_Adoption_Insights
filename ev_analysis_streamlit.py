@@ -44,7 +44,6 @@ unhighlight_color = 'lightgray'
 
 # ================================== #
 # Data preparation
-
 # Load data
 @st.cache_data
 def load_data():
@@ -95,7 +94,6 @@ except Exception as e:
 
 # ================================== #
 # Title and introduction
-
 st.title("Electric Vehicle Adoption in Washington State")
 st.markdown("### Trends, Economy, Infrastructure, and Politics")
 
@@ -133,12 +131,11 @@ def render_chart(chart_function, chart_title):
 
 # ================================== #
 ### 1. Overview of EV Adoption in Washington
-
 st.header("1. Overview of EV Adoption in Washington")
 
 ## 1.1) Electric Vehicle Population by State
-
 def viz_1_1(chart_title='Electric Vehicle Registrations by State'):
+    
     # Set colors, highlighting Washington state
     ev_state['state_category'] = np.where(
         ev_state['state'] == 'Washington',
@@ -165,8 +162,8 @@ def viz_1_1(chart_title='Electric Vehicle Registrations by State'):
 render_chart(viz_1_1, 'Electric Vehicle Registrations by State')
 
 ## 1.2) EV Type Distribution
-
 def viz_1_2(chart_title='EV Type Distribution'):
+    
     # Set colors for each ev_type: largest gets '#0068C9', others get 'lightgray'
     ev_type_counts = ev_filtered.groupby('ev_type').size() # Calculate the counts for each ev_type
     largest_ev_type = ev_type_counts.idxmax() # Index of ev_type with the largest count
@@ -187,8 +184,7 @@ def viz_1_2(chart_title='EV Type Distribution'):
 
     st.plotly_chart(fig_ev_type)
 
-## 1.3) Top EV Manufacturers (ft. with avg electric range)
-
+## 1.3) Top 10 EV Manufacturers: EV Count and Average Electric Range
 def viz_1_3(chart_title='Top 10 EV Manufacturers: EV Count and Average Electric Range'):
 
     top_manufacturers = ev_filtered['make'].value_counts().nlargest(10) # EV counts by maker within the districts
@@ -289,12 +285,11 @@ st.divider()
 
 # ================================== #
 ### 2. EV Adoption Trends
-
 st.header("2. EV Adoption Trends")
 
 ## 2.1) EV Adoption by Model Year
-
 def viz_2_1(chart_title='EV Distribution by Model Year'):
+    
     # ev_by_year = ev_filtered['model_year'].value_counts().sort_index()
     ev_by_year = ev_filtered['model_year'].value_counts().sort_index().reset_index()
     ev_by_year.columns = ['model_year', 'ev_count']
@@ -316,8 +311,7 @@ def viz_2_1(chart_title='EV Distribution by Model Year'):
 
     st.plotly_chart(fig_adoption)
 
-## 2.2) EV Type by Model Year
-
+## 2.2) EV Type by Model Year (BEV vs. PHEV)
 def viz_2_2(chart_title='EV Type by Model Year (BEV vs. PHEV)'): 
 
     # Count EV by each model year and ev type
@@ -382,10 +376,7 @@ st.divider()
 
 # ================================== #
 ### 3. Economic Analysis
-
 st.header("3. Economic Indicator")
-
-## 3.1) EV Count vs. Median Household Income by Legislative District
 
 # OLS regression for trendline
 def calculate_ols(df, x_col, y_col):
@@ -399,6 +390,7 @@ def calculate_ols(df, x_col, y_col):
     r_squared = model.rsquared
     return slope, intercept, r_squared
 
+## 3.1) EV Count vs. Median Household Income by Legislative District
 def viz_3(chart_title='EV Count vs. Median Household Income by Legislative District'):
     # OLS regression for trendline
     slope, intercept, r_squared = calculate_ols(ev_merged, 'median_household_income', 'ev_count')
@@ -470,10 +462,9 @@ st.divider()
 
 # ================================== #
 ### 4. Charging Infrastructure Analysis
-
 st.header("4. Charging Infrastructure Development")
 
-## 4.1) EV Count vs. Charging Infrasturcture Factors
+## 4.1) EV Count vs. Charging Infrasturcture Variables
 
 # Create a dropdown for selecting visualization type
 viz_type = st.selectbox(
@@ -604,11 +595,8 @@ Observations:
 st.divider()
 
 # ================================== #
-### 5. Geographic Distribution and Political Landscape
-
+### 5. Political Landscape
 st.header("5. Political Landscape")
-
-## 5.1) Legislative District and Political Landscape
 
 # Create a dropdown for selecting visualization type
 viz_type = st.selectbox(
@@ -623,7 +611,7 @@ viz_type = st.selectbox(
 party_colors = {'Democratic': '#0068C9', 'Republican': '#D32F2F'} # Material design red; modern UI
 # unhighlight_color = 'lightgray' # Color for unselected districts
 
-# 5.1) EV Count by Legislative District and Political Party
+## 5.1) EV Count by Legislative District and Political Party
 def viz_5_1(chart_title='EV Count by Legislative District and Political Party'):
     
     # Sort the dataframe by ev_count in descending order
@@ -670,7 +658,7 @@ def viz_5_1(chart_title='EV Count by Legislative District and Political Party'):
 
     st.plotly_chart(fig_pp)
 
-# 5.2) Registered Voters by Legislative District and Political Party
+## 5.2) Registered Voters by Legislative District and Political Party
 def viz_5_2(chart_title='Registered Voters by Legislative District and Political Party'):
     
     # Sort the dataframe by ev_count in descending order
@@ -711,7 +699,7 @@ def viz_5_2(chart_title='Registered Voters by Legislative District and Political
 
     st.plotly_chart(fig_pp)
 
-# 5.3) EV Count vs. Median Household Income by Legislative District
+## 5.3) EV Count vs. Median Household Income by Legislative District
 def viz_5_3(chart_title='EV Count vs. Median Household Income by Legislative District and Political Party'):
     
     if selected_districts:
@@ -799,7 +787,7 @@ def viz_5_3(chart_title='EV Count vs. Median Household Income by Legislative Dis
 
     st.plotly_chart(fig_pp)
 
-# 5.4) EV Count vs. Charging Infrastructure by Legislative District
+## 5.4) EV Count vs. Charging Infrastructure by Legislative District
 def viz_5_4(chart_title='EV Count vs. Charging Infrastructure by Legislative District and Political Party'):
     
     if selected_districts:
@@ -888,9 +876,7 @@ def viz_5_4(chart_title='EV Count vs. Charging Infrastructure by Legislative Dis
 
     st.plotly_chart(fig_pp)
 
-# fig_pp.update_layout(legend_title_text='') # Hide the legend title
-# st.plotly_chart(fig_pp)
-
+# Plot based on the selection
 if viz_type == "EV Count by Legislative District":
     render_chart(viz_5_1, 'EV Count by Legislative District and Political Party')
 elif viz_type == "Registered Voters by Legislative District":
@@ -910,9 +896,7 @@ st.divider()
 
 # ================================== #
 # 6. Conclusion and Recommendations
-
 st.header("6. Conclusion and Recommendations")
-
 st.markdown("""
 Based on the analysis, I can draw the following conclusions and make these recommendations:
 
@@ -929,8 +913,9 @@ Based on the analysis, I can draw the following conclusions and make these recom
 By addressing these factors, Washington State can continue to lead in EV adoption and set an example for sustainable transportation nationwide.
 """)
 
-# ================================== #
 st.divider()
+# ================================== #
+# Additional information about the project
 
 col1, col2 = st.columns([1, 1])
 
