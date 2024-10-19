@@ -118,6 +118,4 @@ Special thanks to the open data sources and tools that made this analysis possib
 
 ## License
 
-## License
-
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
