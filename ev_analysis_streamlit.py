@@ -83,7 +83,11 @@ This dashboard explores the relationship between electric vehicle (EV) adoption 
 - Washington State government policymakers
 - Electric vehicle manufacturers and related industry professionals
 - Policymakers and researchers from other states
+""")
 
+st.divider()
+
+st.markdown("""
 Washington State is a major player in the U.S. electric vehicle (EV) market, consistently demonstrating its commitment to sustainable transportation. Currently, it ranks 4th in the nation for total registered EVs and 2nd in per capita ownership, with 195 EVs per 10,000 people. This leadership is crucial for promoting green policies, providing lessons for other states, and fostering innovation in sustainable transportation.
 """)
 
