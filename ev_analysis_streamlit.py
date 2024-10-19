@@ -837,14 +837,14 @@ st.sidebar.markdown("""
 
 st.sidebar.header("Table of Contents")
 # 목차 항목
-st.sidebar.markdown("""
-- [1. Overview of EV Adoption in Washington](#1-overview-of-ev-adoption-in-washington)
-- [2. EV Adoption Trends](#2-ev-adoption-trends)
-- [3. Economic Indicator](#3-economic-indicator)
-- [4. Charging Infrastructure Development](#4-charging-infrastructure-development)
-- [5. Political Landscape](#5-political-landscape)
-- [6. Conclusion and Recommendations](#6-conclusion-and-recommendations)
-""")
+# st.sidebar.markdown("""
+# - [1. Overview of EV Adoption in Washington](#1-overview-of-ev-adoption-in-washington)
+# - [2. EV Adoption Trends](#2-ev-adoption-trends)
+# - [3. Economic Indicator](#3-economic-indicator)
+# - [4. Charging Infrastructure Development](#4-charging-infrastructure-development)
+# - [5. Political Landscape](#5-political-landscape)
+# - [6. Conclusion and Recommendations](#6-conclusion-and-recommendations)
+# """)
 
 st.sidebar.header("About This Dashboard")
 st.sidebar.info("This dashboard provides an in-depth analysis of electric vehicle adoption in Washington State, examining factors such as political trends, economic indicators, and infrastructure development. The goal is to inform policy decisions and industry strategies to promote sustainable transportation.")
