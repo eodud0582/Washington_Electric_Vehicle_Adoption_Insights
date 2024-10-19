@@ -160,7 +160,7 @@ def viz_1_1(chart_title):
     
     fig_state = px.bar(
         ev_state, 
-        x='stated',
+        x='state',
         y='registration_count', 
         title=chart_title, 
         color='state_category', # Use the color column to set the bar colors
@@ -188,7 +188,7 @@ def viz_1_2(chart_title):
     fig_ev_type = px.pie(
         ev_filtered,
         names='ev_typedd',
-        title=title
+        title=chart_title
     )
     
     # Set hovertemplate
