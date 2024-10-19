@@ -952,7 +952,7 @@ st.sidebar.markdown("""
 """)
 
 st.sidebar.header("About This Dashboard")
-st.sidebar.info("This dashboard provides an in-depth analysis of electric vehicle adoption in Washington State, examining factors such as political trends, economic indicators, and infrastructure development. The goal is to inform policy decisions and industry strategies to promote sustainable transportation.")
+st.sidebar.info("This dashboard provides an in-depth analysis of electric vehicle adoption in Washington State, examining factors such as economic indicators, infrastructure development, and political trends. The goal is to inform policy decisions and industry strategies to promote sustainable transportation.")
 
 st.sidebar.header("Data Sources")
 st.sidebar.markdown("""
