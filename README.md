@@ -22,7 +22,7 @@ This analysis is designed for:
 ## How to Access the Dashboard
 
 This dashboard is deployed and can be accessed at:
-- https://waevanalysis.streamlit.app/
+- https://waevanalysis.streamlit.app
 
 ## How to Run the Dashboard Locally
 
