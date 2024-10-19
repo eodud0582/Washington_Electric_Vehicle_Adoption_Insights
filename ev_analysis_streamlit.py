@@ -42,7 +42,7 @@ st.set_page_config(page_title="Washington State EV Adoption Analysis", page_icon
 highlight_color = '#0068C9'
 unhighlight_color = 'lightgray'
 
-html, [data-testid="stAppViewContainer"]
+# html, [data-testid="stAppViewContainer"]
 st.markdown("""
     <style>
     /* Adjust the body font size */
