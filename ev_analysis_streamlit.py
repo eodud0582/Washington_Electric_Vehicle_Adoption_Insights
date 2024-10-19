@@ -46,7 +46,7 @@ unhighlight_color = 'lightgray'
 st.markdown("""
     <style>
     /* Adjust the body font size */
-    html {
+    html, body {
         font-size: 70%;  /* Reduces font size to 80% of default */
     }
 
