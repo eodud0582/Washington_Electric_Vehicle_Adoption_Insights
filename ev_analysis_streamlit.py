@@ -154,6 +154,7 @@ def viz_1_1():
     except Exception as e:
         st.error(f"Error in Figure 1.1: {e}")
     
+viz_1_1()
 
 ## 1.2) EV Type Distribution
 
