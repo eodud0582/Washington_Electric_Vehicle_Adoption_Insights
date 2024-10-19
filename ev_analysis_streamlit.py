@@ -203,7 +203,7 @@ fig_manufacturers.add_trace(
         mode='markers',
         marker=dict(
             symbol='line-ew', # Horizontal '--' line shape (East-West line)
-            size=20,
+            size=18,
             line=dict(
                 width=3,
                 color=unhighlight_color
@@ -298,7 +298,7 @@ fig_type.update_layout(
     legend=dict(
         orientation='h', # Horizontal orientation
         yanchor='bottom', # Anchor the legend to the bottom
-        y=1.02, # Position it above the chart
+        y=1.00, # Position it above the chart
         xanchor='center', # Anchor the legend to the center
         x=0.5, # Center the legend horizontally
         title=None # Hide the legend title
