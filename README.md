@@ -115,3 +115,9 @@ Special thanks to the open data sources and tools that made this analysis possib
 - **Streamlit** for the interactive web app.
 - **Plotly** for visualizing data in dynamic, interactive plots.
 - **Pandas** and **NumPy** for data manipulation and analysis.
+
+## License
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
