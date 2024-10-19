@@ -166,7 +166,7 @@ render_chart(viz_1_1, 'Electric Vehicle Registrations by State')
 
 ## 1.2) EV Type Distribution
 
-def viz_1_2(chart_title='EV Type Distribution in Washington'):
+def viz_1_2(chart_title='EV Type Distribution'):
     # Set colors for each ev_type: largest gets '#0068C9', others get 'lightgray'
     ev_type_counts = ev_filtered.groupby('ev_type').size() # Calculate the counts for each ev_type
     largest_ev_type = ev_type_counts.idxmax() # Index of ev_type with the largest count
@@ -238,23 +238,6 @@ def viz_1_3(chart_title='Top 10 EV Manufacturers: EV Count and Average Electric 
         barmode='group' # Keep this to avoid bars overlapping
     )
     
-    # # Add average electric range annotations as "markers" (secondary y-axis)
-    # for x, y in zip(avg_electric_range.index, avg_electric_range.values):
-    #     fig_manufacturers.add_annotation(
-    #         x=x,
-    #         y=y,
-    #         text=str(y), # Empty text to create a marker effect
-    #         showarrow=False, # Hide the arrow associated with an annotation
-    #         bgcolor=unhighlight_color, # Marker color
-    #         height=3, # Height of the annotation
-    #         width=38, # Width of the annotation
-    #         font=dict(color=unhighlight_color),
-    #         # bordercolor='black' # Border color for better visibility
-    #         # borderwidth=1 # Border width for better visibility
-    #         opacity=0.8, # Adjust opacity
-    #         yref='y2' # At secondary y-axis
-    #     )
-    
     # Add average electric range as markers
     fig_manufacturers.add_trace(
         go.Scatter(
@@ -293,7 +276,7 @@ def viz_1_3(chart_title='Top 10 EV Manufacturers: EV Count and Average Electric 
 
 # Plot side by side (Streamlit columns)
 col1, col2 = st.columns(2)
-with col1: render_chart(viz_1_2, 'EV Type Distribution in Washington') # Plot 1-2
+with col1: render_chart(viz_1_2, 'EV Type Distribution') # Plot 1-2
 with col2: render_chart(viz_1_3, 'Top 10 EV Manufacturers: EV Count and Average Electric Range') # Plot 1-3
 
 st.markdown("""
@@ -416,63 +399,66 @@ def calculate_ols(df, x_col, y_col):
     r_squared = model.rsquared
     return slope, intercept, r_squared
 
-# OLS regression for trendline
-slope, intercept, r_squared = calculate_ols(ev_merged, 'median_household_income', 'ev_count')
-
-if selected_districts:
-    ev_merged['selected_highlight'] = np.where(
-        ev_merged['legislative_district'].isin(selected_districts),
-        'Selected',
-        'Unselected'
-    )
-    color_discrete_map = {'Selected': highlight_color, 'Unselected': unhighlight_color}
+def viz_3_1(chart_title='EV Count vs. Median Household Income by Legislative District'):
+    # OLS regression for trendline
+    slope, intercept, r_squared = calculate_ols(ev_merged, 'median_household_income', 'ev_count')
     
-    fig_income = px.scatter(
-        ev_merged,
-        x='median_household_income',
-        y='ev_count',
-        title='EV Count vs. Median Household Income by Legislative District',
-        color='selected_highlight',
-        color_discrete_map=color_discrete_map,
-        trendline='ols',
-        trendline_scope='overall',
-        trendline_color_override=unhighlight_color,
-        hover_data=['legislative_district', 'median_household_income', 'ev_count'],
-        hover_name='legislative_district',
+    if selected_districts:
+        ev_merged['selected_highlight'] = np.where(
+            ev_merged['legislative_district'].isin(selected_districts),
+            'Selected',
+            'Unselected'
+        )
+        color_discrete_map = {'Selected': highlight_color, 'Unselected': unhighlight_color}
+        
+        fig_income = px.scatter(
+            ev_merged,
+            x='median_household_income',
+            y='ev_count',
+            title=chart_title,
+            color='selected_highlight',
+            color_discrete_map=color_discrete_map,
+            trendline='ols',
+            trendline_scope='overall',
+            trendline_color_override=unhighlight_color,
+            hover_data=['legislative_district', 'median_household_income', 'ev_count'],
+            hover_name='legislative_district',
+        )
+    else:
+        fig_income = px.scatter(
+            ev_merged.assign(group='Legislative District'), # Assign the same group 'Legislative District' to all data
+            x='median_household_income',
+            y='ev_count',
+            title=chart_title,
+            color='group', # Specify color group
+            color_discrete_map={'Legislative District': highlight_color}, # Set the designated color
+            trendline='ols',
+            trendline_scope='overall',
+            trendline_color_override=highlight_color,
+            hover_data=['legislative_district', 'median_household_income', 'ev_count'],
+            hover_name='legislative_district',
+        )
+    
+    # Customize hover template
+    # Add the OLS equation and R^2 to hovertemplate
+    ols_equation = f'<br>OLS trendline:<br>y = {slope:.2f}x + {intercept:.2f}<br>R² = {r_squared:.2f}'
+    
+    fig_income.update_traces(
+        hovertemplate=(
+            'Legislative District: %{hovertext}<br>'
+            'Median Household Income: $%{x:,.0f}<br>'
+            'EV Count: %{y}<br>'
+            f'{ols_equation}'
+        )
     )
-else:
-    fig_income = px.scatter(
-        ev_merged.assign(group='Legislative District'), # Assign the same group 'Legislative District' to all data
-        x='median_household_income',
-        y='ev_count',
-        title='EV Count vs. Median Household Income by Legislative District',
-        color='group', # Specify color group
-        color_discrete_map={'Legislative District': highlight_color}, # Set the designated color
-        trendline='ols',
-        trendline_scope='overall',
-        trendline_color_override=highlight_color,
-        hover_data=['legislative_district', 'median_household_income', 'ev_count'],
-        hover_name='legislative_district',
-    )
+    
+    fig_income.update_layout(legend_title_text='') # Hide the legend title
+    fig_income.update_xaxes(title='Median Household Income')
+    fig_income.update_yaxes(title='EV Count')
+    
+    st.plotly_chart(fig_income)
 
-# Customize hover template
-# Add the OLS equation and R^2 to hovertemplate
-ols_equation = f'<br>OLS trendline:<br>y = {slope:.2f}x + {intercept:.2f}<br>R² = {r_squared:.2f}'
-
-fig_income.update_traces(
-    hovertemplate=(
-        'Legislative District: %{hovertext}<br>'
-        'Median Household Income: $%{x:,.0f}<br>'
-        'EV Count: %{y}<br>'
-        f'{ols_equation}'
-    )
-)
-
-fig_income.update_layout(legend_title_text='') # Hide the legend title
-fig_income.update_xaxes(title='Median Household Income')
-fig_income.update_yaxes(title='EV Count')
-
-st.plotly_chart(fig_income)
+render_chart(viz_3_1, 'EV Count vs. Median Household Income by Legislative District')
 
 st.markdown("""
 Observations:
