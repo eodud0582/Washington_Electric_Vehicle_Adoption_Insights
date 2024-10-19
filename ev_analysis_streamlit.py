@@ -68,7 +68,6 @@ else:
 # Title and introduction
 
 st.title("Electric Vehicle Adoption in Washington State: Trends, Economy, Infrastructure, and Politics")
-st.markdown("### Insights by Daeyoung Kim")
 
 # col1, col2, col3 = st.columns([1,2,1])
 # with col1: st.write("")
@@ -839,6 +838,19 @@ Based on the analysis, I can draw the following conclusions and make these recom
 5. **Policy Implications**: The success of Washington's EV policies could serve as a model for other states. Consider sharing best practices and lessons learned with policymakers from other regions.
 
 By addressing these factors, Washington State can continue to lead in EV adoption and set an example for sustainable transportation nationwide.
+""")
+
+# ================================== #
+st.divider()
+
+st.markdown("""
+### Insights by Daeyoung Kim
+- Email: kimdae15@msu.edu
+- GitHub: [GitHub](https://github.com/eodud0582)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/eodud0582)
+
+### License
+- MIT
 """)
 
 # ================================== #
