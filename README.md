@@ -50,7 +50,14 @@ Packages installed:
    cd Washington_State_Electric_Vehicle_Adoption_Analysis
    ```
 
-3. **Install dependencies**:
+2. **Create and activate a virtual environment (optional but recommended)**
+
+   ```
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. **Install required packages**:
 
    The easiest way to install the necessary packages is by using the `requirements.txt` file::
    
@@ -76,7 +83,7 @@ Packages installed:
 
 7. **Access the dashboard**:
    After running the command:
-   - The Streamlit dashboard will automatically open in your browser.
+   - The Streamlit dashboard will automatically open in your browser on `http://localhost:8501`.
    - Or, a local URL such as `http://localhost:8501` will be provided in the terminal. Open that link in your browser to view and interact with the dashboard.
 
 ### Project Structure
