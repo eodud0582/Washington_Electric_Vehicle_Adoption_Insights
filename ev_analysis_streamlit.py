@@ -838,7 +838,7 @@ st.sidebar.markdown("""
 st.sidebar.header("Table of Contents")
 # 목차 항목
 st.sidebar.markdown("""
-- [Section 1](#section-1)
+- [1. Overview of EV Adoption in Washington](#overview-of-ev-adoption-in-washington)
 - [Section 2](#section-2)
 - [Section 3](#section-3)
 """)
