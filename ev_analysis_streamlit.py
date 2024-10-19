@@ -75,6 +75,7 @@ with col2:
              caption=
              '''
              Washington targets 100% electric vehicle sales by 2030
+             
              (Image created with the help of ChatGPT by OpenAI)
              ''')
     # st.markdown("<p style='text-align: center;'>(Image created with the help of ChatGPT by OpenAI)</p>", unsafe_allow_html=True)
