@@ -187,7 +187,7 @@ def viz_1_2(chart_title):
     # Create the pie chart with the custom colors
     fig_ev_type = px.pie(
         ev_filtered,
-        names='ev_typedd',
+        names='ev_type',
         title=chart_title
     )
     
