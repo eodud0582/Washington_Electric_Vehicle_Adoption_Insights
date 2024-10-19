@@ -51,7 +51,7 @@ st.sidebar.header("Select Legislative District(s)")
 districts = sorted(ev_merged['legislative_district'].unique(), key=lambda x: int(x)) # 1~49 order
 
 selected_districts = st.sidebar.multiselect(
-    "Choose from the list below:",  # This is still the label
+    "Choose from the list below:",
     districts
 )
 
@@ -666,7 +666,7 @@ elif viz_type == "EV Count vs. Median Household Income":
         ev_merged['selected_highlight'] = ev_merged['party_won']
         color_discrete_map = party_colors
 
-        # (Add) calculate OLS params for each party_won(selected_highlight)
+        # Calculate OLS params for each party_won(selected_highlight)
         ols_params = {}
         for party in ev_merged['party_won'].unique():
             party_data = ev_merged[ev_merged['party_won'] == party]
@@ -687,9 +687,9 @@ elif viz_type == "EV Count vs. Median Household Income":
             # trendline_color_override=unhighlight_color
         )
 
-        # (Add) Add the OLS equation and R^2 to hovertemplate
+        # Add the OLS equation and R^2 to hovertemplate
         for trace in fig_pp.data:
-            party = trace.name  # 'selected_highlight' 이름 (party_won 이름)
+            party = trace.name  # 'selected_highlight' name (party_won)
             
             if party in ols_params:
                 slope = ols_params[party]['slope']
@@ -750,7 +750,7 @@ else:
         ev_merged['selected_highlight'] = ev_merged['party_won']
         color_discrete_map = party_colors
 
-        # (Add) calculate OLS params for each party_won(selected_highlight)
+        # Calculate OLS params for each party_won(selected_highlight)
         ols_params = {}
         for party in ev_merged['party_won'].unique():
             party_data = ev_merged[ev_merged['party_won'] == party]
@@ -771,7 +771,7 @@ else:
             # trendline_color_override=unhighlight_color
         )
 
-        # (Add) Add the OLS equation and R^2 to hovertemplate
+        # Add the OLS equation and R^2 to hovertemplate
         for trace in fig_pp.data:
             party = trace.name  # 'selected_highlight' name (party_won)
             
