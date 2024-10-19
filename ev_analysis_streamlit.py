@@ -124,28 +124,36 @@ st.header("1. Overview of EV Adoption in Washington")
 
 ## 1.1) Electric Vehicle Population by State
 
-# Set colors, highlighting Washington state
-ev_state['state_category'] = np.where(
-    ev_state['state'] == 'Washington',
-    'Washington', 
-    'Other'
-)
+def viz_1_1():
+    try:
 
-fig_state = px.bar(
-    ev_state, 
-    x='state', 
-    y='registration_count', 
-    title='Electric Vehicle Registrations by State', 
-    color='state_category', # Use the color column to set the bar colors
-    color_discrete_map={'Other': unhighlight_color, 'Washington': highlight_color}, 
-    category_orders={'state': ev_state['state']} # Maintain the original order of 'state'
-) 
-fig_state.update_xaxes(title='State')
-fig_state.update_yaxes(title='Number of EVs')
-fig_state.update_layout(showlegend=False)
-fig_state.update_traces(hovertemplate='State: %{x}<br>EV Count: %{y}')
+        # Set colors, highlighting Washington state
+        ev_state['state_category'] = np.where(
+            ev_state['state'] == 'Washington',
+            'Washington', 
+            'Other'
+        )
+        
+        fig_state = px.bar(
+            ev_state, 
+            # x='state', 
+            x='statedfdf'
+            y='registration_count', 
+            title='Electric Vehicle Registrations by State', 
+            color='state_category', # Use the color column to set the bar colors
+            color_discrete_map={'Other': unhighlight_color, 'Washington': highlight_color}, 
+            category_orders={'state': ev_state['state']} # Maintain the original order of 'state'
+        ) 
+        fig_state.update_xaxes(title='State')
+        fig_state.update_yaxes(title='Number of EVs')
+        fig_state.update_layout(showlegend=False)
+        fig_state.update_traces(hovertemplate='State: %{x}<br>EV Count: %{y}')
+        
+        st.plotly_chart(fig_state)
 
-st.plotly_chart(fig_state)
+    except Exception as e:
+        st.error(f"Error in Figure 1.1: {e}")
+    
 
 ## 1.2) EV Type Distribution
 
@@ -233,7 +241,7 @@ fig_manufacturers.update_layout(
 #         yref='y2' # At secondary y-axis
 #     )
 
-# Add average electric range as 
+# Add average electric range as markers
 fig_manufacturers.add_trace(
     go.Scatter(
         x=avg_electric_range.index,
