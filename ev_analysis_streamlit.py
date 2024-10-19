@@ -146,6 +146,10 @@ st.markdown("""
 Washington State is a major player in the U.S. electric vehicle (EV) market, consistently demonstrating its commitment to sustainable transportation. Currently, it ranks 4th in the nation for total registered EVs and 2nd in per capita ownership, with 195 EVs per 10,000 people. This leadership is crucial for promoting green policies, providing lessons for other states, and fostering innovation in sustainable transportation.
 """)
 
+# ================================== #
+### 1. Overview of EV Adoption in Washington
+st.header("1. Overview of EV Adoption in Washington")
+
 def render_chart(chart_function, chart_title):
     """Exceute visualization function and handle any error"""
     try:
@@ -153,10 +157,6 @@ def render_chart(chart_function, chart_title):
         chart_function(chart_title) # visualizatino function
     except Exception as e:
         st.error(f"Error in Chart '{chart_title}': {e}")
-
-# ================================== #
-### 1. Overview of EV Adoption in Washington
-st.header("1. Overview of EV Adoption in Washington")
 
 ## 1.1) Electric Vehicle Population by State
 def viz_1_1(chart_title='Electric Vehicle Registrations by State'):
