@@ -60,32 +60,50 @@ unhighlight_color = 'lightgray'
 # Load data
 @st.cache_data
 def load_data():
-    with open('data_processed/ev.pickle', 'rb') as f:
-        ev = pickle.load(f)
-    with open('data_processed/ev_merged.pickle', 'rb') as f:
-        ev_merged = pickle.load(f)
-    with open('data_processed/ev_state.pickle', 'rb') as f:
-        ev_state = pickle.load(f)
-    return ev, ev_merged, ev_state
+    """Load required data"""
+    try:
+        with open('data_processed/ev.pickle', 'rb') as f:
+            ev = pickle.load(f)
+        with open('data_processed/ev_merged.pickle', 'rb') as f:
+            ev_merged = pickle.load(f)
+        with open('data_processed/ev_state.pickle', 'rb') as f:
+            ev_state = pickle.load(f)
+        return ev, ev_merged, ev_state
+    except Exception as e:
+        st.error(f"Error loading data: {e}")
+        return None, None, None
 
 ev, ev_merged, ev_state = load_data()
 
+# Ensure data is loaded properly before proceeding
+if ev is None or ev_merged is None or ev_state is None:
+    st.stop() # Stop the app if data loading fails
+
 # Selection option for legislative districts
 st.sidebar.header("Select Legislative District(s)")
-districts = sorted(ev_merged['legislative_district'].unique(), key=lambda x: int(x)) # 1~49 order
+try:
+    districts = sorted(ev_merged['legislative_district'].unique(), key=lambda x: int(x)) # 1~49 order
+except Exception as e:
+    st.error(f"Error processing districts: {e}")
+    st.stop() # Stop the app if district processing fails
 
+# Selected districts
 selected_districts = st.sidebar.multiselect(
     "Choose from the list below:",
     districts
 )
 
 # Filter the data based on selected districts
-if selected_districts:
-    ev_filtered = ev[ev['legislative_district'].isin(selected_districts)]
-    ev_merged_filtered = ev_merged[ev_merged['legislative_district'].isin(selected_districts)]
-else:
-    ev_filtered = ev
-    ev_merged_filtered = ev_merged
+try:
+    if selected_districts:
+        ev_filtered = ev[ev['legislative_district'].isin(selected_districts)]
+        ev_merged_filtered = ev_merged[ev_merged['legislative_district'].isin(selected_districts)]
+    else:
+        ev_filtered = ev
+        ev_merged_filtered = ev_merged
+except Exception as e:
+    st.error(f"Error filtering data: {e}")
+    st.stop() # Stop the app if filtering fails
 
 # ================================== #
 # Title and introduction
@@ -116,6 +134,14 @@ st.divider()
 st.markdown("""
 Washington State is a major player in the U.S. electric vehicle (EV) market, consistently demonstrating its commitment to sustainable transportation. Currently, it ranks 4th in the nation for total registered EVs and 2nd in per capita ownership, with 195 EVs per 10,000 people. This leadership is crucial for promoting green policies, providing lessons for other states, and fostering innovation in sustainable transportation.
 """)
+
+def render_chart(chart_function, chart_title):
+    """Exceute visualization function and handle any error"""
+    try:
+        st.subheader(chart_title)
+        chart_function() # visualizatino function
+    except Exception as e:
+        st.error(f"Error in Chart '{chart_title}': {e}")
 
 # ================================== #
 ### 1. Overview of EV Adoption in Washington
@@ -154,6 +180,32 @@ def viz_1_1():
         st.error(f"Error in Chart '{title}': {e}")
     
 viz_1_1()
+
+def viz_1_1(chart_title):
+    # Set colors, highlighting Washington state
+    ev_state['state_category'] = np.where(
+        ev_state['state'] == 'Washington',
+        'Washington', 
+        'Other'
+    )
+    
+    fig_state = px.bar(
+        ev_state, 
+        x='state',
+        y='registration_count', 
+        title=chart_title, 
+        color='state_category', # Use the color column to set the bar colors
+        color_discrete_map={'Other': unhighlight_color, 'Washington': highlight_color}, 
+        category_orders={'state': ev_state['state']} # Maintain the original order of 'state'
+    ) 
+    fig_state.update_xaxes(title='State')
+    fig_state.update_yaxes(title='Number of EVs')
+    fig_state.update_layout(showlegend=False)
+    fig_state.update_traces(hovertemplate='State: %{x}<br>EV Count: %{y}')
+    
+    st.plotly_chart(fig_state)
+
+render_chart(viz_1_1, 'Electric Vehicle Registrations by State')
 
 ## 1.2) EV Type Distribution
 
