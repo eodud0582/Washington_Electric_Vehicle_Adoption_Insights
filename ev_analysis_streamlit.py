@@ -25,7 +25,7 @@ def calculate_ols(df, x_col, y_col):
 # Global setting
 
 # Set page config
-st.set_page_config(page_title="Washington State EV Adoption Analysis", page_icon="🧊", layout="wide")
+st.set_page_config(page_title="Washington State EV Adoption Analysis", page_icon=":battery:", layout="wide")
 
 st.image("https://github.com/user-attachments/assets/1423a53e-14c0-427f-8dd1-b3ad207607e7")
 
