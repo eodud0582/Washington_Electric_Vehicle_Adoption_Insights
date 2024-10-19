@@ -137,7 +137,7 @@ def viz_1_1():
         fig_state = px.bar(
             ev_state, 
             # x='state', 
-            x='statedfdf'
+            x='statedfdf',
             y='registration_count', 
             title='Electric Vehicle Registrations by State', 
             color='state_category', # Use the color column to set the bar colors
