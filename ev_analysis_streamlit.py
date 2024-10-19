@@ -90,7 +90,7 @@ Washington State is a major player in the U.S. electric vehicle (EV) market, con
 # ================================== #
 ### 1. Overview of EV Adoption in Washington
 
-st.header("1. Overview of EV Adoption in Washington")
+st.header("1. Overview of EV Adoption in Washington", divider="gray")
 
 ## 1.1) Electric Vehicle Population by State
 
