@@ -39,6 +39,14 @@ import plotly.graph_objects as go
 st.set_page_config(page_title="Washington State EV Adoption Analysis", page_icon=":battery:", layout="wide")
 # emoji: https://streamlit-emoji-shortcodes-streamlit-app-gwckff.streamlit.app/
 
+st.markdown("""
+    <style>
+    [data-testid="stAppViewContainer"] {
+        background-color: #0e1117;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 highlight_color = '#0068C9'
 unhighlight_color = 'lightgray'
 
