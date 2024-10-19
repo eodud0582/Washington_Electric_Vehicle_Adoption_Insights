@@ -150,7 +150,7 @@ st.header("1. Overview of EV Adoption in Washington")
 
 ## 1.1) Electric Vehicle Population by State
 
-def viz_1_1(chart_title):
+def viz_1_1(chart_title='Electric Vehicle Registrations by State'):
     # Set colors, highlighting Washington state
     ev_state['state_category'] = np.where(
         ev_state['state'] == 'Washington',
@@ -178,7 +178,7 @@ render_chart(viz_1_1, 'Electric Vehicle Registrations by State')
 
 ## 1.2) EV Type Distribution
 
-def viz_1_2(chart_title):
+def viz_1_2(chart_title='EV Type Distribution in Washington'):
     # Set colors for each ev_type: largest gets '#0068C9', others get 'lightgray'
     ev_type_counts = ev_filtered.groupby('ev_type').size() # Calculate the counts for each ev_type
     largest_ev_type = ev_type_counts.idxmax() # Index of ev_type with the largest count
@@ -199,121 +199,114 @@ def viz_1_2(chart_title):
 
     st.plotly_chart(fig_ev_type)
 
-render_chart(viz_1_2, 'EV Type Distribution in Washington')
-
 ## 1.3) Top EV Manufacturers (ft. with avg electric range)
 
-def viz_1_3():
-    title = 'Top 10 EV Manufacturers: EV Count and Average Electric Range'
-    try:
-        top_manufacturers = ev_filtered['make'].value_counts().nlargest(10) # EV counts by maker within the districts
-        top_manufacturers_names = top_manufacturers.index # Top maker name
-        top_manufacturers_counts = top_manufacturers.values # Top makers' ev counts
-        
-        # Calculate average electric range for every manufacturer from the original data
-        # - Will be fixed values despite districts selection
-        cond = (ev['electric_range'] != 0.0) & (ev['electric_range'].isna() == False) # Exclude 0 and null
-        avg_electric_range = ev[cond].groupby('make')['electric_range'].mean()
-        
-        # Extract avg electric range of filtered top makers that have avg electric range value
-        cond = top_manufacturers_names.isin(avg_electric_range.index) # Get the names of filtered top makers (currently within selected districts)
-        top_manufacturers_with_range = top_manufacturers_names[cond] 
-        avg_electric_range = avg_electric_range[top_manufacturers_with_range] # And finally avg electric range values of them
-        
-        # Create a figure
-        fig_manufacturers = go.Figure()
-        
-        # Add EV count bar (main y-axis)
-        fig_manufacturers.add_trace(
-            go.Bar(
-                x=top_manufacturers_names,
-                y=top_manufacturers_counts,
-                name='EV Count', # Trace name; text in legend 
-                marker_color=highlight_color,
-                hoverinfo='text', # Set text on hover
-                hovertemplate='Manufacturer: %{x}<br>EV Count: %{y}', 
-                yaxis='y' # Main y-axis
-            )
-        )
-        
-        # Add secondar y-axis for average electric range marker
-        fig_manufacturers.update_layout(
-            title=title,
-            xaxis_title='Manufacturer',
-            yaxis_title='EV Count',
-            # Secondary y-axis
-            yaxis2=dict(
-                title='Average Electric Range (miles)',
-                overlaying='y',
-                side='right',
-                showgrid=False, # Disable grid for secondary y-axis
-                zeroline=False # Disable zero line for clarity
-            ),
-            legend=dict(title='Metrics'),
-            barmode='group' # Keep this to avoid bars overlapping
-        )
-        
-        # # Add average electric range annotations as "markers" (secondary y-axis)
-        # for x, y in zip(avg_electric_range.index, avg_electric_range.values):
-        #     fig_manufacturers.add_annotation(
-        #         x=x,
-        #         y=y,
-        #         text=str(y), # Empty text to create a marker effect
-        #         showarrow=False, # Hide the arrow associated with an annotation
-        #         bgcolor=unhighlight_color, # Marker color
-        #         height=3, # Height of the annotation
-        #         width=38, # Width of the annotation
-        #         font=dict(color=unhighlight_color),
-        #         # bordercolor='black' # Border color for better visibility
-        #         # borderwidth=1 # Border width for better visibility
-        #         opacity=0.8, # Adjust opacity
-        #         yref='y2' # At secondary y-axis
-        #     )
-        
-        # Add average electric range as markers
-        fig_manufacturers.add_trace(
-            go.Scatter(
-                x=avg_electric_range.index,
-                y=avg_electric_range.values,
-                mode='markers',
-                marker=dict(
-                    symbol='line-ew', # Horizontal '--' line shape (East-West line)
-                    size=18,
-                    line=dict(
-                        width=3,
-                        color=unhighlight_color
-                    )
-                ),
-                name='Avg Electric Range', # Text in legend
-                yaxis='y2',
-                hoverinfo='text', # Set text on hover
-                hovertemplate='Manufacturer: %{x}<br>Average Electric Range: %{y:.2f}', 
-                opacity=0.8
-            )
-        )
-        
-        fig_manufacturers.update_layout(
-            showlegend=True,
-            legend=dict(
-                orientation='h', # Horizontal orientation
-                yanchor='bottom', # Anchor the legend to the bottom
-                y=1.00, # Position it above the chart
-                xanchor='center', # Anchor the legend to the center
-                x=0.5, # Center the legend horizontally
-                title=None # Hide the legend title
-            )
-        )
+def viz_1_3(chart_title='Top 10 EV Manufacturers: EV Count and Average Electric Range'):
 
-        st.plotly_chart(fig_manufacturers)
+    top_manufacturers = ev_filtered['make'].value_counts().nlargest(10) # EV counts by maker within the districts
+    top_manufacturers_names = top_manufacturers.index # Top maker name
+    top_manufacturers_counts = top_manufacturers.values # Top makers' ev counts
     
-    except Exception as e:
-        st.error(f"Error in Chart '{title}': {e}")
-        
+    # Calculate average electric range for every manufacturer from the original data
+    # - Will be fixed values despite districts selection
+    cond = (ev['electric_range'] != 0.0) & (ev['electric_range'].isna() == False) # Exclude 0 and null
+    avg_electric_range = ev[cond].groupby('make')['electric_range'].mean()
+    
+    # Extract avg electric range of filtered top makers that have avg electric range value
+    cond = top_manufacturers_names.isin(avg_electric_range.index) # Get the names of filtered top makers (currently within selected districts)
+    top_manufacturers_with_range = top_manufacturers_names[cond] 
+    avg_electric_range = avg_electric_range[top_manufacturers_with_range] # And finally avg electric range values of them
+    
+    # Create a figure
+    fig_manufacturers = go.Figure()
+    
+    # Add EV count bar (main y-axis)
+    fig_manufacturers.add_trace(
+        go.Bar(
+            x=top_manufacturers_names,
+            y=top_manufacturers_counts,
+            name='EV Count', # Trace name; text in legend 
+            marker_color=highlight_color,
+            hoverinfo='text', # Set text on hover
+            hovertemplate='Manufacturer: %{x}<br>EV Count: %{y}', 
+            yaxis='y' # Main y-axis
+        )
+    )
+    
+    # Add secondar y-axis for average electric range marker
+    fig_manufacturers.update_layout(
+        title=title,
+        xaxis_title='Manufacturer',
+        yaxis_title='EV Count',
+        # Secondary y-axis
+        yaxis2=dict(
+            title='Average Electric Range (miles)',
+            overlaying='y',
+            side='right',
+            showgrid=False, # Disable grid for secondary y-axis
+            zeroline=False # Disable zero line for clarity
+        ),
+        legend=dict(title='Metrics'),
+        barmode='group' # Keep this to avoid bars overlapping
+    )
+    
+    # # Add average electric range annotations as "markers" (secondary y-axis)
+    # for x, y in zip(avg_electric_range.index, avg_electric_range.values):
+    #     fig_manufacturers.add_annotation(
+    #         x=x,
+    #         y=y,
+    #         text=str(y), # Empty text to create a marker effect
+    #         showarrow=False, # Hide the arrow associated with an annotation
+    #         bgcolor=unhighlight_color, # Marker color
+    #         height=3, # Height of the annotation
+    #         width=38, # Width of the annotation
+    #         font=dict(color=unhighlight_color),
+    #         # bordercolor='black' # Border color for better visibility
+    #         # borderwidth=1 # Border width for better visibility
+    #         opacity=0.8, # Adjust opacity
+    #         yref='y2' # At secondary y-axis
+    #     )
+    
+    # Add average electric range as markers
+    fig_manufacturers.add_trace(
+        go.Scatter(
+            x=avg_electric_range.index,
+            y=avg_electric_range.values,
+            mode='markers',
+            marker=dict(
+                symbol='line-ew', # Horizontal '--' line shape (East-West line)
+                size=18,
+                line=dict(
+                    width=3,
+                    color=unhighlight_color
+                )
+            ),
+            name='Avg Electric Range', # Text in legend
+            yaxis='y2',
+            hoverinfo='text', # Set text on hover
+            hovertemplate='Manufacturer: %{x}<br>Average Electric Range: %{y:.2f}', 
+            opacity=0.8
+        )
+    )
+    
+    fig_manufacturers.update_layout(
+        showlegend=True,
+        legend=dict(
+            orientation='h', # Horizontal orientation
+            yanchor='bottom', # Anchor the legend to the bottom
+            y=1.00, # Position it above the chart
+            xanchor='center', # Anchor the legend to the center
+            x=0.5, # Center the legend horizontally
+            title=None # Hide the legend title
+        )
+    )
+
+    st.plotly_chart(fig_manufacturers)
 
 # Plot side by side (Streamlit columns)
 col1, col2 = st.columns(2)
-with col1: viz_1_2() # Plot 1-2
-with col2: viz_1_3() # Plot 1-3
+with col1: render_chart(viz_1_2, 'EV Type Distribution in Washington') # Plot 1-2
+with col2: render_chart(viz_1_3, 'Top 10 EV Manufacturers: EV Count and Average Electric Range') # Plot 1-3
 
 st.markdown("""
 Observations:
