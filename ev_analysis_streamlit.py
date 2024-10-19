@@ -334,7 +334,7 @@ Observations:
 # ================================== #
 ### 3. Economic Analysis
 
-st.header("3. Economic Analysis")
+st.header("3. Economic Indicator")
 
 ## 3.1) EV Count vs. Median Household Income by Legislative District
 # OLS regression for trendline
@@ -404,7 +404,7 @@ Observations:
 # ================================== #
 ### 4. Charging Infrastructure Analysis
 
-st.header("4. Charging Infrastructure Analysis")
+st.header("4. Charging Infrastructure Development")
 
 ## 4.1) EV Count vs. Charging Infrasturcture Factors
 
@@ -532,7 +532,7 @@ Observations:
 # ================================== #
 ### 5. Geographic Distribution and Political Landscape
 
-st.header("5. Geographic Distribution and Political Landscape")
+st.header("5. Political Landscape")
 
 ## 5.1) Legislative District and Political Landscape
 
@@ -839,8 +839,11 @@ st.sidebar.header("Table of Contents")
 # 목차 항목
 st.sidebar.markdown("""
 - [1. Overview of EV Adoption in Washington](#1-overview-of-ev-adoption-in-washington)
-- [Section 2](#section-2)
-- [Section 3](#section-3)
+- [2. EV Adoption Trends](#2-ev-adoption-trends)
+- [3. Economic Indicator](#3-economic-indicator)
+- [4. Charging Infrastructure Development](#4-charging-infrastructure-development)
+- [5. Political Landscape](#5-political-landscape)
+- [6. Conclusion and Recommendations](#6-conclusion-and-recommendations)
 """)
 
 st.sidebar.header("About This Dashboard")
