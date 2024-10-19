@@ -2,7 +2,7 @@
 ---
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/a599e7a7-8468-4ba7-808b-95e71a799a87" style="width:50%" alt="washington ev">
+  <img src="https://github.com/user-attachments/assets/a599e7a7-8468-4ba7-808b-95e71a799a87" style="width:60%" alt="washington ev">
 </p>
 <p align="center" style="font-size: 10px; margin-top: 1px;">
   Image created with the help of ChatGPT by OpenAI
