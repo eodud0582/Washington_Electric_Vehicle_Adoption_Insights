@@ -94,7 +94,7 @@ Washington State is a major player in the U.S. electric vehicle (EV) market, con
 # ================================== #
 ### 1. Overview of EV Adoption in Washington
 
-st.header("1. Overview of EV Adoption in Washington", divider="gray")
+st.header("1. Overview of EV Adoption in Washington")
 
 ## 1.1) Electric Vehicle Population by State
 
@@ -251,6 +251,8 @@ Observations:
 - Battery Electric Vehicles (BEVs) represent the majority of Washington's EV market, accounting for a significant portion of the adoption trend. 
 - Tesla leads as the dominant manufacturer, highlighting the state's strong preference for high-performance, long-range electric vehicles.
 """)
+
+st.divider()
 
 # ================================== #
 ### 2. EV Adoption Trends
