@@ -178,32 +178,29 @@ render_chart(viz_1_1, 'Electric Vehicle Registrations by State')
 
 ## 1.2) EV Type Distribution
 
-def viz_1_2():
-    title = 'EV Type Distribution in Washington'
-    try:
-        # Set colors for each ev_type: largest gets '#0068C9', others get 'lightgray'
-        ev_type_counts = ev_filtered.groupby('ev_type').size() # Calculate the counts for each ev_type
-        largest_ev_type = ev_type_counts.idxmax() # Index of ev_type with the largest count
-        custom_colors = [highlight_color if ev_type == largest_ev_type else unhighlight_color for ev_type in ev_filtered['ev_type']]
-        
-        # Create the pie chart with the custom colors
-        fig_ev_type = px.pie(
-            ev_filtered,
-            names='ev_typedd',
-            title=title
-        )
-        
-        # Set hovertemplate
-        fig_ev_type.update_traces(
-            hovertemplate='EV Type: %{label}<br>Count: %{value}<br>Percentage: %{percent:.2%}',
-            marker=dict(colors=custom_colors) # Apply colors
-        )
+def viz_1_2(chart_title):
+    # Set colors for each ev_type: largest gets '#0068C9', others get 'lightgray'
+    ev_type_counts = ev_filtered.groupby('ev_type').size() # Calculate the counts for each ev_type
+    largest_ev_type = ev_type_counts.idxmax() # Index of ev_type with the largest count
+    custom_colors = [highlight_color if ev_type == largest_ev_type else unhighlight_color for ev_type in ev_filtered['ev_type']]
+    
+    # Create the pie chart with the custom colors
+    fig_ev_type = px.pie(
+        ev_filtered,
+        names='ev_typedd',
+        title=title
+    )
+    
+    # Set hovertemplate
+    fig_ev_type.update_traces(
+        hovertemplate='EV Type: %{label}<br>Count: %{value}<br>Percentage: %{percent:.2%}',
+        marker=dict(colors=custom_colors) # Apply colors
+    )
 
-        st.plotly_chart(fig_ev_type)
-        
-    except Exception as e:
-        st.error(f"Error in Chart '{title}': {e}")
-        
+    st.plotly_chart(fig_ev_type)
+
+render_chart(viz_1_2, 'EV Type Distribution in Washington')
+
 ## 1.3) Top EV Manufacturers (ft. with avg electric range)
 
 def viz_1_3():
