@@ -32,7 +32,7 @@ st.markdown("## Basic EV Statistics")
 
 st.write(ev.describe())
 
-# Allow user to select legislative districts
+# To select legislative districts
 districts = ev_merged['legislative_district'].unique()
 selected_districts = st.sidebar.multiselect("Select Legislative District(s):", districts)
 
@@ -46,7 +46,7 @@ else:
 
 # Visualize EV registration by type from the original dataset
 fig_ev_type = px.bar(
-    ev_filtered,  # Use the original ev dataset for this chart
+    ev_filtered,
     x='ev_type', 
     title='Electric Vehicle Registration by Type',
     labels={'ev_type': 'EV Type'},
