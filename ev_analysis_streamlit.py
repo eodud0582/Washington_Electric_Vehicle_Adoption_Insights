@@ -1,4 +1,4 @@
-# ev_analysis.py
+# ev_analysis_streamlit.py
 
 import pickle
 import pandas as pd
@@ -838,11 +838,3 @@ st.sidebar.markdown("""
 - Electric Vehicle Registration Counts by State
 - Washington State Legislative Districts 2022 (Geospatial)
 """)
-
-# execute in Terminal:
-# streamlit run MSU/Fall_2024/CMSE_830/midterm/ev_analysis.py
-
-# ================================== #
-# Note:
-# 기후/환경 데이터(탄소 배출량 등), 충전소 유형(급속/완속)별 분포, 도시 vs 교외 지역의 EV 채택 비교 등
-
