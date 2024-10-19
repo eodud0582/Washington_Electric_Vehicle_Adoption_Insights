@@ -25,7 +25,9 @@ def calculate_ols(df, x_col, y_col):
 # Global setting
 
 # Set page config
-st.set_page_config(page_title="Washington State EV Adoption Analysis", layout="wide")
+st.set_page_config(page_title="Washington State EV Adoption Analysis", page_icon="🧊", layout="wide")
+
+st.image("https://github.com/user-attachments/assets/1423a53e-14c0-427f-8dd1-b3ad207607e7")
 
 highlight_color = '#0068C9'
 unhighlight_color = 'lightgray'
@@ -821,7 +823,7 @@ By addressing these factors, Washington State can continue to lead in EV adoptio
 # Add a sidebar for additional information or controls
 st.sidebar.header("About This Dashboard")
 
-st.sidebar.info("This dashboard provides an in-depth analysis of electric vehicle adoption in Washington State, examining factors such as political trends, economic indicators, and infrastructure development. It aims to inform policy decisions and industry strategies to promote sustainable transportation.")
+st.sidebar.info("This dashboard provides an in-depth analysis of electric vehicle adoption in Washington State, examining factors such as political trends, economic indicators, and infrastructure development. The goal is to inform policy decisions and industry strategies to promote sustainable transportation.")
 
 st.sidebar.header("Data Sources")
 
