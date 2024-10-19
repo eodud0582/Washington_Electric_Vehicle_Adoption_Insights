@@ -93,8 +93,6 @@ else:
 st.title("Electric Vehicle Adoption in Washington State")
 st.markdown("### Trends, Economy, Infrastructure, and Politics")
 
-st.divider()
-
 # col1, col2, col3 = st.columns([1,2,1])
 # with col1: st.write("")
 # with col2: 
