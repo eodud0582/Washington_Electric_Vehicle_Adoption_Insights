@@ -39,32 +39,33 @@ import plotly.graph_objects as go
 st.set_page_config(page_title="Washington State EV Adoption Analysis", page_icon=":battery:", layout="wide")
 # emoji: https://streamlit-emoji-shortcodes-streamlit-app-gwckff.streamlit.app/
 
-highlight_color = '#0068C9'
-unhighlight_color = 'lightgray'
-
-# html, body, [data-testid="stAppViewContainer"]
+# Adjust sizes
 st.markdown("""
     <style>
     /* Adjust the body font size */
+    /* Reduces font size to 80% of default */
     html, body, [data-testid="stAppViewContainer"] {
-        font-size: 80%;  /* Reduces font size to 80% of default */
+        font-size: 80%;
     }
 
-    /* Optionally reduce the size of headings */
+    /* Reduces the heading size */
     /* 
     h1, h2, h3, h4, h5, h6 {
-        font-size: 100%; /* Reduces the heading size */
+        font-size: 100%;
     }
     */
 
-    /* Adjust Streamlit-specific components like charts */
+    /* Scale down Plotly charts */
     /* 
     [data-testid="stPlotlyChart"] {
-        transform: scale(0.8);  /* Scale down Plotly charts */
+        transform: scale(0.8); 
     */
     }
     </style>
 """, unsafe_allow_html=True)
+
+highlight_color = '#0068C9'
+unhighlight_color = 'lightgray'
 
 # ================================== #
 # Data preparation
