@@ -46,17 +46,19 @@ st.markdown("""
     <style>
     /* Adjust the body font size */
     html, body, [data-testid="stAppViewContainer"] {
-        font-size: 80%;  /* Reduces font size to 80% of default */
+        font-size: 90%;  /* Reduces font size to 80% of default */
     }
 
     /* Optionally reduce the size of headings */
     h1, h2, h3, h4, h5, h6 {
-        font-size: 80%; /* Reduces the heading size */
+        font-size: 100%; /* Reduces the heading size */
     }
 
     /* Adjust Streamlit-specific components like charts */
+    /* 
     [data-testid="stPlotlyChart"] {
         transform: scale(0.8);  /* Scale down Plotly charts */
+    */
     }
     </style>
 """, unsafe_allow_html=True)
