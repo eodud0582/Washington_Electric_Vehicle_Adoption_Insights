@@ -100,7 +100,7 @@ Washington_State_Electric_Vehicle_Adoption_Analysis/
 ├── ev_analysis_streamlit.py  # Main Python file for Streamlit app
 ├── .streamlit/
 │   └── config.toml           # Streamlit configuration
-├── requirements.txt          # Python dependencies
+├── requirements.txt          # Python packages
 └── README.md                 # Project overview and instructions (this file)
 ```
 
