@@ -30,18 +30,6 @@ st.set_page_config(page_title="Washington State EV Adoption Analysis", page_icon
 highlight_color = '#0068C9'
 unhighlight_color = 'lightgray'
 
-st.markdown(
-    """
-    <style>
-    .streamlit-container {
-        max-width: 1200px;  /* 최대 너비 설정 */
-        margin: auto;  /* 가운데 정렬 */
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
 # ================================== #
 # Data preparation
 
