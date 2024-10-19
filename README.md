@@ -9,7 +9,7 @@
   (Image created with the help of ChatGPT by OpenAI)
 </p>
 
-Welcome to the **Washington State Electric Vehicle (EV) Adoption Analysis** project! This dashboard provides a detailed analysis of EV adoption in Washington State, examining trends in relation to political factors, economic indicators, and infrastructure development.
+Welcome to the **Washington State Electric Vehicle (EV) Adoption Analysis** project! This dashboard provides a detailed analysis of EV adoption in Washington State, exploring its relationship with economic indicators, infrastructure development, and political factors.
 
 This analysis is designed for:
 - **Policymakers** looking to make informed decisions about EV promotion.
