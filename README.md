@@ -4,8 +4,8 @@
 <p align="center">
   <img src="https://github.com/user-attachments/assets/a599e7a7-8468-4ba7-808b-95e71a799a87" style="width:60%" alt="washington ev">
 </p>
-<p align="center" style="font-size: 8px; margin-top: 1px;">
-  Washington targets 100% electric vehicle sales by 2030 
+<p align="center" style="font-size: 6px; margin-top: 1px;">
+  Washington targets 100% electric vehicle sales by 2030 <br>
   (Image created with the help of ChatGPT by OpenAI)
 </p>
 
