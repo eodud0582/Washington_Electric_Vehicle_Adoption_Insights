@@ -98,6 +98,8 @@ Washington_State_Electric_Vehicle_Adoption_Analysis/
 │
 ├── data_processed/           # Folder containing the processed data files in pickle format
 ├── ev_analysis_streamlit.py  # Main Python file for Streamlit app
+├── .streamlit/
+│   └── config.toml           # Streamlit configuration
 ├── requirements.txt          # Python dependencies
 └── README.md                 # Project overview and instructions (this file)
 ```
