@@ -835,6 +835,14 @@ st.sidebar.markdown("""
 - Hover over charts to view additional information about data points.
 """)
 
+st.sidebar.header("Table of Contents")
+# 목차 항목
+st.sidebar.markdown("""
+- [Section 1](#section-1)
+- [Section 2](#section-2)
+- [Section 3](#section-3)
+""")
+
 st.sidebar.header("About This Dashboard")
 st.sidebar.info("This dashboard provides an in-depth analysis of electric vehicle adoption in Washington State, examining factors such as political trends, economic indicators, and infrastructure development. The goal is to inform policy decisions and industry strategies to promote sustainable transportation.")
 
