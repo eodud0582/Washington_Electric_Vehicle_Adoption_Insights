@@ -893,7 +893,7 @@ st.sidebar.markdown("""
 
 st.sidebar.header("Table of Contents")
 st.sidebar.markdown("""
-- [Home](#electric-vehicle-adoption-in-washington-state-trends-economy-infrastructure-and-politics)
+- [Home](#electric-vehicle-adoption-in-washington-state)
 - [1. Overview of EV Adoption in Washington](#1-overview-of-ev-adoption-in-washington)
 - [2. EV Adoption Trends](#2-ev-adoption-trends)
 - [3. Economic Indicator](#3-economic-indicator)
