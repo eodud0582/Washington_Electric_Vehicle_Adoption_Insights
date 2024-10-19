@@ -843,20 +843,12 @@ By addressing these factors, Washington State can continue to lead in EV adoptio
 # ================================== #
 st.divider()
 
-col1, col2 = st.columns([2, 1])
+col1, col2 = st.columns([1, 1])
 
-st.markdown("""
-### Insights by Daeyoung Kim
-- Email: kimdae15@msu.edu
-- GitHub: [GitHub](https://github.com/eodud0582)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/eodud0582)
-""")
 with col1:
     st.markdown("### Insights by Daeyoung Kim")
     st.write(
-        "Email: kimdae15@msu.edu")
-    st.write(
-        "[GitHub](https://github.com/eodud0582) | [LinkedIn](https://linkedin.com/in/eodud0582)"
+        "Email: kimdae15@msu.edu" | "[GitHub](https://github.com/eodud0582) | [LinkedIn](https://linkedin.com/in/eodud0582)"
     )
 
 with col2:
