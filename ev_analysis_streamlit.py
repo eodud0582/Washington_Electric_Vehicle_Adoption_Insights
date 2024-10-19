@@ -91,7 +91,7 @@ else:
 # Title and introduction
 
 st.title("Electric Vehicle Adoption in Washington State")
-st.markdown("## Trends, Economy, Infrastructure, and Politics")
+st.markdown("### Trends, Economy, Infrastructure, and Politics")
 
 st.divider()
 
