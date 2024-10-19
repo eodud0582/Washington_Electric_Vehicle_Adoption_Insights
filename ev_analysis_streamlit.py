@@ -136,7 +136,7 @@ def viz_1_1():
         
         fig_state = px.bar(
             ev_state, 
-            x='stateㅇㄹ',
+            x='state',
             y='registration_count', 
             title=title, 
             color='state_category', # Use the color column to set the bar colors
@@ -168,7 +168,7 @@ def viz_1_2():
         # Create the pie chart with the custom colors
         fig_ev_type = px.pie(
             ev_filtered,
-            names='ev_type',
+            names='ev_typedd',
             title=title
         )
         
