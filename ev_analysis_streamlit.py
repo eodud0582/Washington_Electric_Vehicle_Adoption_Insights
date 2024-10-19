@@ -337,6 +337,8 @@ Observations:
 - The trend towards more recent model years could indicate growing consumer interest, improved technology, and increased availability of EVs (though it's not a perfect representation of new EV adoption rates).
 """)
 
+st.divider()
+
 # ================================== #
 ### 3. Economic Analysis
 
@@ -406,6 +408,8 @@ Observations:
 - The positive correlation between household income and EV adoption underscores the affordability factor.
 """)
 # Policymakers should consider incentives for lower-income households to ensure widespread adoption.
+
+st.divider()
 
 # ================================== #
 ### 4. Charging Infrastructure Analysis
@@ -534,6 +538,8 @@ Observations:
 - In regions with a high number of EVs, the charging infrastructure may not be keeping pace, leading to a lower Charger-to-EV Ratio, indicating the need for additional charging stations to meet demand.
 """)
 # Investment in charging infrastructure is critical. While some districts have kept pace with EV adoption, others lag behind, highlighting the need for targeted infrastructure expansion to support growing demand.
+
+st.divider()
 
 # ================================== #
 ### 5. Geographic Distribution and Political Landscape
@@ -809,6 +815,8 @@ Observations:
 - Democratic-leaning districts tend to have higher EV adoption rates, likely driven by supportive environmental policies.
 """)
 # Expanding awareness and incentives in Republican-leaning districts could foster bipartisan support for EV adoption.
+
+st.divider()
 
 # ================================== #
 # 6. Conclusion and Recommendations
