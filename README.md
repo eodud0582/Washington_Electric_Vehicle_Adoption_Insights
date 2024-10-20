@@ -47,6 +47,9 @@ Packages installed:
 
 ### Step-by-Step Instructions
 
+<details>
+<summary><strong>Click here to expand the instructions</strong></summary>
+
 1. **Clone the repository**
    
    First, clone this repository to your local machine:
@@ -92,13 +95,15 @@ Packages installed:
     
    After running the command, the Streamlit dashboard will automatically open in your browser on `http://localhost:8501`. Or, a local URL will be provided in the terminal. Open that link in your browser to view and interact with the dashboard.
 
+</details>
+
 ### Project Structure
 
 ```
 Washington_State_Electric_Vehicle_Adoption_Analysis/
 │
-├── data_processed/           # Folder containing the processed data files in pickle format
 ├── ev_analysis_streamlit.py  # Main Python file for Streamlit app
+├── data_processed/           # Folder containing the processed data files in pickle format
 ├── .streamlit/
 │   └── config.toml           # Streamlit configuration
 ├── requirements.txt          # Python packages
