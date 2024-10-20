@@ -47,23 +47,22 @@ Packages installed:
 
 ### Step-by-Step Instructions
 
-1. **Clone the repository**:  
-   First, clone this repository to your local machine:
+1. **Clone the repository**
    
+   First, clone this repository to your local machine:
    ```
    git clone https://github.com/eodud0582/Washington_State_Electric_Vehicle_Adoption_Analysis.git
    cd Washington_State_Electric_Vehicle_Adoption_Analysis
    ```
 
-2. **Create and activate a virtual environment (optional but recommended)**
-
+3. **Create and activate a virtual environment (optional but recommended)**
    ```
    python -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
-3. **Install required packages**:
-
+4. **Install required packages**
+   
    The easiest way to install the necessary packages is by using the `requirements.txt` file::
    
    ```
@@ -76,20 +75,22 @@ Packages installed:
    pip install pandas==2.2.3 numpy==1.26.4 statsmodels==0.14.2 plotly==5.24.1 streamlit==1.38.0
    ```
 
-4. **Download the data**:  
-   Ensure the data files (`ev.pickle`, `ev_merged.pickle`, `ev_state.pickle`) are available in the `data_processed/` folder. If these files are not included in the repository due to size limits, you will need to manually download or provide these files.
+5. **Download the data**
+   
+   Ensure the data files (`ev.pickle`, `ev_merged.pickle`, `ev_state.pickle`) are available in the `data_processed/` folder.
+   If these files are not included in the repository due to size limits, you will need to manually download or provide these files.
 
-5. **Run the Streamlit app**:  
+7. **Run the Streamlit app**
+   
    Once everything is set up, you can launch the Streamlit app by running the following command:
 
    ```
    streamlit run ev_analysis_streamlit.py
    ```
 
-7. **Access the dashboard**:
-   After running the command:
-   - The Streamlit dashboard will automatically open in your browser on `http://localhost:8501`.
-   - Or, a local URL such as `http://localhost:8501` will be provided in the terminal. Open that link in your browser to view and interact with the dashboard.
+9. **Access the dashboard**
+    
+   After running the command, the Streamlit dashboard will automatically open in your browser on `http://localhost:8501`. Or, a local URL will be provided in the terminal. Open that link in your browser to view and interact with the dashboard.
 
 ### Project Structure
 
@@ -109,9 +110,44 @@ Washington_State_Electric_Vehicle_Adoption_Analysis/
 This dashboard leverages the following data:
 - **Electric Vehicle Population in Washington State**
 - **Washington State General Election Results 2022**
-- **Alternative Fuel Stations (Charging Stations) in Washington**
+- **Alternative Fuel Stations in Washington (Charging Stations)**
 - **Median Household Income by Legislative District**
 - **Electric Vehicle Registration Counts by State**
+- **Washington State Legislative Districts 2022 (Geospatial Info)**
+
+These datasets have been merged, feature-engineered, and transformed into the following variables:
+
+<div style="overflow-x: auto;">
+
+| Variable                     | Description                                           |
+|------------------------------|-------------------------------------------------------|
+| `legislative_district`        | Washington State legislative district ID              |
+| `ev_count`                   | Number of electric vehicles (EVs)                     |
+| `registered_voters`           | Total registered voters in the district               |
+| `ballots_cast`                | Number of ballots cast in the latest election         |
+| `%_turnout`                   | Voter turnout percentage                             |
+| `patty_murray`                | Votes received by candidate Patty Murray             |
+| `tiffany_smiley`              | Votes received by candidate Tiffany Smiley           |
+| `party_won`                   | Party that won in the district                       |
+| `charger_count`               | Total number of EV chargers                          |
+| `geoid`                       | Unique geographic identifier for the district        |
+| `median_household_income`     | Median household income in the district              |
+| `margin_error`                | Margin of error for household income estimates       |
+| `shape_leng`                  | Length of the district boundary                      |
+| `shape_le_1`                  | Additional measure of district boundary length       |
+| `shape_area`                  | Total area of the district                           |
+| `shape__area`                 | Alternative measure for district area                |
+| `shape__length`               | Alternative measure for district boundary length     |
+| `charger_density`             | Density of EV chargers in the district               |
+| `charger_density_per_100`     | Charger density per 100 square miles                 |
+| `charger_ev_ratio`            | Ratio of EV chargers to EVs                          |
+| `party_won_encoded`           | Encoded value of the winning party                   |
+| `transformed_ev_count`        | Transformed number of EVs for analysis               |
+| `transformed_charger_count`   | Transformed number of chargers for analysis          |
+| `transformed_charger_ev_ratio`| Transformed charger-to-EV ratio for analysis         |
+| `transformed_charger_density` | Transformed charger density for analysis             |
+
+</div>
 
 ## Acknowledgements
 
