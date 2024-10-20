@@ -127,7 +127,7 @@ This dashboard leverages the following data:
 - **Electric Vehicle Registration Counts by State**
 - **Washington State Legislative Districts 2022 (Geospatial Info)**
 
-These datasets have been merged, feature-engineered, and transformed into the following variables:
+These datasets have been cleaned, merged, and processed into the following variables:
 
 <div style="overflow-x: auto;">  
   <details>
