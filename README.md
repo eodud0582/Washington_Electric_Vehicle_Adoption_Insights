@@ -16,7 +16,7 @@ This analysis is designed for:
 - **Industry stakeholders** seeking insights into market trends.
 - **Researchers and other states** aiming to understand the key factors driving EV adoption.
 
-## Key Features
+## 1. Key Features
 - **EV Adoption Overview**: Analyze the distribution of electric vehicles across Washington State and compare it with other U.S. states.
 - **Economic Insights**: Understand how median household income relates to EV adoption rates.
 - **Infrastructure Analysis**: Explore the relationship between EV adoption and the availability of charging infrastructure.
@@ -24,16 +24,16 @@ This analysis is designed for:
 - **Customizable Filters**: Users can select different legislative districts for a more tailored analysis.
 - **Chart Options**: Within some major topics, users can choose from various chart types to gain deeper insights.
 
-## How to Access the Dashboard
+## 2. How to Access the Dashboard
 
 This dashboard is deployed and can be accessed at:
 - https://waevanalysis.streamlit.app
 
-## How to Run the Dashboard Locally
+## 3. How to Run the Dashboard Locally
 
 This project is built with **Streamlit**, a tool that allows you to easily create interactive dashboards and web apps in Python. Follow these steps to run the dashboard locally on your machine.
 
-### Prerequisites
+### 1) Prerequisites
 
 Python installed:
 - Python 3.12.6
@@ -45,26 +45,31 @@ Packages installed:
 - plotly 5.24.1
 - streamlit 1.38.0
 
-### Step-by-Step Instructions
+### 2) Step-by-Step Instructions
+
+Once the requirements are met, follow these steps:
 
 <details>
 <summary><strong>Click here to expand the instructions</strong></summary>
+<br>
 
-1. **Clone the repository**
+a) **Clone the repository**
    
    First, clone this repository to your local machine:
+   
    ```
    git clone https://github.com/eodud0582/Washington_State_Electric_Vehicle_Adoption_Analysis.git
    cd Washington_State_Electric_Vehicle_Adoption_Analysis
    ```
 
-3. **Create and activate a virtual environment (optional but recommended)**
+b) **Create and activate a virtual environment (optional but recommended)**
+   
    ```
    python -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
-4. **Install required packages**
+c) **Install required packages**
    
    The easiest way to install the necessary packages is by using the `requirements.txt` file::
    
@@ -78,12 +83,12 @@ Packages installed:
    pip install pandas==2.2.3 numpy==1.26.4 statsmodels==0.14.2 plotly==5.24.1 streamlit==1.38.0
    ```
 
-5. **Download the data**
+d) **Download the data**
    
    Ensure the data files (`ev.pickle`, `ev_merged.pickle`, `ev_state.pickle`) are available in the `data_processed/` folder.
    If these files are not included in the repository due to size limits, you will need to manually download or provide these files.
 
-7. **Run the Streamlit app**
+e) **Run the Streamlit app**
    
    Once everything is set up, you can launch the Streamlit app by running the following command:
 
@@ -91,13 +96,14 @@ Packages installed:
    streamlit run ev_analysis_streamlit.py
    ```
 
-9. **Access the dashboard**
+f) **Access the dashboard**
     
    After running the command, the Streamlit dashboard will automatically open in your browser on `http://localhost:8501`. Or, a local URL will be provided in the terminal. Open that link in your browser to view and interact with the dashboard.
-
+  
 </details>
 
-### Project Structure
+
+### 3) Project Structure
 
 ```
 Washington_State_Electric_Vehicle_Adoption_Analysis/
@@ -110,7 +116,7 @@ Washington_State_Electric_Vehicle_Adoption_Analysis/
 └── README.md                 # Project overview and instructions (this file)
 ```
 
-## Data Sources
+## 4. Data Sources
 
 This dashboard leverages the following data:
 - **Electric Vehicle Population in Washington State**
@@ -122,43 +128,43 @@ This dashboard leverages the following data:
 
 These datasets have been merged, feature-engineered, and transformed into the following variables:
 
-<div style="overflow-x: auto;">
-
-<details>
-<summary><strong>Click here to expand the table</strong></summary>
-
-| Variable                     | Description                                           |
-|------------------------------|-------------------------------------------------------|
-| `legislative_district`        | Washington State legislative district ID              |
-| `ev_count`                   | Number of electric vehicles (EVs)                     |
-| `registered_voters`           | Total registered voters in the district               |
-| `ballots_cast`                | Number of ballots cast in the latest election         |
-| `%_turnout`                   | Voter turnout percentage                             |
-| `patty_murray`                | Votes received by candidate Patty Murray             |
-| `tiffany_smiley`              | Votes received by candidate Tiffany Smiley           |
-| `party_won`                   | Party that won in the district                       |
-| `charger_count`               | Total number of EV chargers                          |
-| `geoid`                       | Unique geographic identifier for the district        |
-| `median_household_income`     | Median household income in the district              |
-| `margin_error`                | Margin of error for household income estimates       |
-| `shape_leng`                  | Length of the district boundary                      |
-| `shape_le_1`                  | Additional measure of district boundary length       |
-| `shape_area`                  | Total area of the district                           |
-| `shape__area`                 | Alternative measure for district area                |
-| `shape__length`               | Alternative measure for district boundary length     |
-| `charger_density`             | Density of EV chargers in the district               |
-| `charger_density_per_100`     | Charger density per 100 square miles                 |
-| `charger_ev_ratio`            | Ratio of EV chargers to EVs                          |
-| `party_won_encoded`           | Encoded value of the winning party                   |
-| `transformed_ev_count`        | Transformed number of EVs for analysis               |
-| `transformed_charger_count`   | Transformed number of chargers for analysis          |
-| `transformed_charger_ev_ratio`| Transformed charger-to-EV ratio for analysis         |
-| `transformed_charger_density` | Transformed charger density for analysis             |
-
-</details>
+<div style="overflow-x: auto;">  
+  <details>
+  <summary><strong>Click here to expand the table</strong></summary>
+  <br>
+    
+  | Variable                     | Description                                           |
+  |------------------------------|-------------------------------------------------------|
+  | `legislative_district`        | Washington State legislative district ID              |
+  | `ev_count`                   | Number of electric vehicles (EVs)                     |
+  | `registered_voters`           | Total registered voters in the district               |
+  | `ballots_cast`                | Number of ballots cast in the latest election         |
+  | `%_turnout`                   | Voter turnout percentage                             |
+  | `patty_murray`                | Votes received by candidate Patty Murray             |
+  | `tiffany_smiley`              | Votes received by candidate Tiffany Smiley           |
+  | `party_won`                   | Party that won in the district                       |
+  | `charger_count`               | Total number of EV chargers                          |
+  | `geoid`                       | Unique geographic identifier for the district        |
+  | `median_household_income`     | Median household income in the district              |
+  | `margin_error`                | Margin of error for household income estimates       |
+  | `shape_leng`                  | Length of the district boundary                      |
+  | `shape_le_1`                  | Additional measure of district boundary length       |
+  | `shape_area`                  | Total area of the district                           |
+  | `shape__area`                 | Alternative measure for district area                |
+  | `shape__length`               | Alternative measure for district boundary length     |
+  | `charger_density`             | Density of EV chargers in the district               |
+  | `charger_density_per_100`     | Charger density per 100 square miles                 |
+  | `charger_ev_ratio`            | Ratio of EV chargers to EVs                          |
+  | `party_won_encoded`           | Encoded value of the winning party                   |
+  | `transformed_ev_count`        | Transformed number of EVs for analysis               |
+  | `transformed_charger_count`   | Transformed number of chargers for analysis          |
+  | `transformed_charger_ev_ratio`| Transformed charger-to-EV ratio for analysis         |
+  | `transformed_charger_density` | Transformed charger density for analysis             |
+    
+  </details>
 </div>
 
-## Acknowledgements
+## 5. Acknowledgements
 
 Special thanks to the open data sources and tools that made this analysis possible. This project was built using:
 - **Streamlit** for the interactive web app.
