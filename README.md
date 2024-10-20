@@ -119,6 +119,9 @@ These datasets have been merged, feature-engineered, and transformed into the fo
 
 <div style="overflow-x: auto;">
 
+<details>
+<summary><strong>Click here to expand the table</strong></summary>
+
 | Variable                     | Description                                           |
 |------------------------------|-------------------------------------------------------|
 | `legislative_district`        | Washington State legislative district ID              |
@@ -147,6 +150,7 @@ These datasets have been merged, feature-engineered, and transformed into the fo
 | `transformed_charger_ev_ratio`| Transformed charger-to-EV ratio for analysis         |
 | `transformed_charger_density` | Transformed charger density for analysis             |
 
+</details>
 </div>
 
 ## Acknowledgements
