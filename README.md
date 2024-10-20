@@ -54,7 +54,7 @@ Once the requirements are met, follow these steps:
 <summary><strong>Click here to expand the instructions</strong></summary>
 <br>
 
-a) **Clone the repository**
+**a) Clone the repository**
    
    First, clone this repository to your local machine:
    
@@ -63,14 +63,14 @@ a) **Clone the repository**
    cd Washington_State_Electric_Vehicle_Adoption_Analysis
    ```
 
-b) **Create and activate a virtual environment (optional but recommended)**
+**b) Create and activate a virtual environment (optional but recommended)**
    
    ```
    python -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
-c) **Install required packages**
+**c) Install required packages**
    
    The easiest way to install the necessary packages is by using the `requirements.txt` file::
    
@@ -84,12 +84,12 @@ c) **Install required packages**
    pip install pandas==2.2.3 numpy==1.26.4 statsmodels==0.14.2 plotly==5.24.1 streamlit==1.38.0
    ```
 
-d) **Download the data**
+**d) Download the data**
    
    Ensure the data files (`ev.pickle`, `ev_merged.pickle`, `ev_state.pickle`) are available in the `data_processed/` folder.
    If these files are not included in the repository due to size limits, you will need to manually download or provide these files.
 
-e) **Run the Streamlit app**
+**e) Run the Streamlit app**
    
    Once everything is set up, you can launch the Streamlit app by running the following command:
 
@@ -97,9 +97,9 @@ e) **Run the Streamlit app**
    streamlit run ev_analysis_streamlit.py
    ```
 
-f) **Access the dashboard**
+**f) Access the dashboard**
     
-   After running the command, the Streamlit dashboard will automatically open in your browser on `http://localhost:8501`. Or, a local URL will be provided in the terminal. Open that link in your browser to view and interact with the dashboard.
+   After running the command, the Streamlit dashboard will automatically open in your browser on `http://localhost:8501`. Otherwise, a local URL will be provided in the terminal. Open that link in your browser to view and interact with the dashboard.
   
 </details>
 
