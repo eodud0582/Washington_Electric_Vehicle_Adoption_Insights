@@ -26,8 +26,9 @@ This analysis is designed for:
 
 ## 2. How to Access the Dashboard
 
-This dashboard is deployed and can be accessed at:
-- https://waevanalysis.streamlit.app
+This dashboard has been deployed on Streamlit and is publicly accessible. You can view it by visiting the following link:
+
+[https://waevanalysis.streamlit.app](https://waevanalysis.streamlit.app)
 
 ## 3. How to Run the Dashboard Locally
 
