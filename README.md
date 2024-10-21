@@ -118,12 +118,12 @@ Washington_State_Electric_Vehicle_Adoption_Analysis/
 ## 4. Data Sources
 
 This dashboard leverages the following data:
-- **Electric Vehicle Population in Washington State**
-- **Washington State General Election Results 2022**
-- **Alternative Fuel Stations in Washington (Charging Stations)**
-- **Median Household Income by Legislative District**
-- **Electric Vehicle Registration Counts by State**
-- **Washington State Legislative Districts 2022 (Geospatial Info)**
+- **Electric Vehicle Registrations by State**
+- **Electric Vehicle Population Data (Washington)**
+- **2022 Washington State Legislative Election Results**
+- **Alternative Fuel Stations (Charging Stations)**
+- **Median Household Income in the Past 12 Months (ACS 2022 5-year)**
+- **Washington State Legislative Districts 2022 (Geospatial)**
 
 These datasets have been cleaned, merged, and processed into the following variables:
 
