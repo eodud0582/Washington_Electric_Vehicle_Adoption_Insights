@@ -994,10 +994,16 @@ st.sidebar.info("This dashboard provides an in-depth analysis of electric vehicl
 
 st.sidebar.header("Data Sources")
 st.sidebar.markdown("""
-- Electric Vehicle Population in Washington State
-- General Election Results in Washington State 2022
-- Alternative Fuel Stations in Washington State
-- Median Household Income in Washington State 2022
-- Electric Vehicle Registration Counts by State
+- Electric Vehicle Registrations by State
+- Electric Vehicle Population Data (Washington)
+- 2022 Washington State Legislative Election Results
+- Alternative Fuel Stations (Charging Stations)
+- Median Household Income (ACS 2022 5-year)
 - Washington State Legislative Districts 2022 (Geospatial)
 """)
+# - Electric Vehicle Registration Counts by State
+# - Electric Vehicle Population in Washington State
+# - General Election Results in Washington State 2022
+# - Alternative Fuel Stations in Washington State
+# - Median Household Income in Washington State 2022
+# - Washington State Legislative Districts 2022 (Geospatial)
