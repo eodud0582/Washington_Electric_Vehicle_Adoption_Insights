@@ -48,8 +48,6 @@ Packages installed:
 
 ### 2) Step-by-Step Instructions
 
-Once the requirements are met, follow these steps:
-
 <details>
 <summary><strong>Click here to expand the instructions</strong></summary>
 <br>
