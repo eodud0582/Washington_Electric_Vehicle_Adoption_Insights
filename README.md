@@ -17,7 +17,7 @@ This analysis is designed for:
 - **Researchers and other states** aiming to understand the key factors driving EV adoption.
 
 ## 1. Key Features
-- **EV Adoption Overview**: Analyze the distribution of electric vehicles across Washington State and compare it with other U.S. states.
+- **EV Adoption Overview**: Analyze the distribution of electric vehicles across Washington State. <!-- and compare it with other U.S. states -->
 - **Economic Insights**: Understand how median household income relates to EV adoption rates.
 - **Infrastructure Analysis**: Explore the relationship between EV adoption and the availability of charging infrastructure.
 - **Political Landscape**: See how EV adoption correlates with political trends and legislative districts.
@@ -26,7 +26,7 @@ This analysis is designed for:
 
 ## 2. How to Access the Dashboard
 
-This dashboard has been deployed on Streamlit and is publicly accessible. You can view it by visiting the following link:
+This dashboard has been deployed on **Streamlit** and is publicly accessible. You can view it by simply visiting the following link:
 
 [https://waevanalysis.streamlit.app](https://waevanalysis.streamlit.app)
 
