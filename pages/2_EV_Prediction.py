@@ -229,7 +229,7 @@ with col2:
     # - Streamlit doesn't natively support direct HTML rendering for SHAP visualizations.
     # - Need to save the force plot as an interactive HTML snippet and embed it using st.components.v1.html.
     shap_html = f"<head>{shap.getjs()}</head><body>{force_plot_html.html()}</body>"
-    html(shap_html, height=200)
+    html(shap_html, height=150)
 
 # ================================== #
 # SHAP explanation
