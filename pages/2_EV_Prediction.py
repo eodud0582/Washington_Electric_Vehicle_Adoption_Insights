@@ -304,17 +304,17 @@ with col2:
 # Add a sidebar for additional information or controls
 st.sidebar.header("Usage Guide")
 st.sidebar.markdown("""
-- Use sliders to adjust key input variables
-- Observe real-time EV count predictions
-- Examine SHAP values to understand feature impacts
-- Experiment with different scenarios to explore potential EV adoption trends
+- Use sliders to adjust key input variables.
+- Observe real-time EV count predictions.
+- Examine SHAP values to understand feature impacts.
+- Experiment with different scenarios to explore potential EV adoption trends.
 """)
 
 st.sidebar.header("About This Tool")
 st.sidebar.info("This predictive tool enables you to explore electric vehicle (EV) adoption in Washington State by:"\
-                "\n- Predicting EV count based on key economic and infrastructure variables"\
-                "\n- Allowing interactive adjustment of input parameters"\
-                "\n- Visualizing the impact of individual features on EV predictions using SHAP analysis")
+                "\n- Predicting EV count based on key economic and infrastructure variables."\
+                "\n- Allowing interactive adjustment of input parameters."\
+                "\n- Visualizing the impact of individual features on EV predictions using SHAP analysis.")
 
 # ================================== #
 # Additional information about the project
