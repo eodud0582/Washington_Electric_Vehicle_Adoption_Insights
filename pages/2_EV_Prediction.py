@@ -210,7 +210,7 @@ with col1:
     shap_table = pd.DataFrame({
         'Variable': selected_features,
         'SHAP Value': shap_values.values[0]
-    }).sort_values(by='SHAP Value', ascending=False).reset_inex(drop=True)
+    }).sort_values(by='SHAP Value', ascending=False).reset_index(drop=True)
     st.table(shap_table)
 with col2:
     # Generate SHAP force plot (interactive visualization)
