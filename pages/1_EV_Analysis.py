@@ -21,9 +21,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-# execute in Terminal:
-# streamlit run MSU/Fall_2024/CMSE_830/project/ev_analysis_streamlit.py
-
 import pickle
 import pandas as pd
 import numpy as np
@@ -1004,6 +1001,3 @@ st.sidebar.header("About This Dashboard")
 st.sidebar.info("This dashboard provides an in-depth analysis of electric vehicle adoption in Washington State, examining factors such as economic indicators, infrastructure development, and political trends. The goal is to inform policy decisions and industry strategies to promote sustainable transportation.")
 
 # ================================== #
-
-# Note:
-# 기후/환경 데이터(탄소 배출량 등), 충전소 유형(급속/완속)별 분포, 도시 vs 교외 지역의 EV 채택 비교 등
