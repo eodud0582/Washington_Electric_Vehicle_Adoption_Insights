@@ -259,8 +259,8 @@ with col2:
     st.markdown(
     """
     How to Read the Force Plot
-    - Blue (Right Side): Indicates features that decrease the model's prediction
     - Red (Left Side): Indicates features that increase the model's prediction
+    - Blue (Right Side): Indicates features that decrease the model's prediction
     - Base Value (Middle): The starting prediction before considering individual feature contributions
     
     Example:
