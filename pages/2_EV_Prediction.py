@@ -211,7 +211,7 @@ with col1:
     shap_table = pd.DataFrame({
         'Variable': selected_features,
         'SHAP Value': shap_values.values[0]
-    }).sort_values(by='SHAP Value', ascending=False)# .to_dict(orient='records') #.reset_index(drop=True)
+    }).sort_values(by='SHAP Value', ascending=False).to_dict(orient='records') #.reset_index(drop=True)
     st.table(shap_table)
     # st.dataframe(shap_table, hide_index=True)
 with col2:
