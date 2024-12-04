@@ -86,11 +86,11 @@ Use the menu at the top left to navigate to the desired page.
 def load_data():
     """Load required data"""
     try:
-        with open('MSU/Fall_2024/CMSE_830/project/data_processed/ev.pickle', 'rb') as f:
+        with open('data_processed/ev.pickle', 'rb') as f:
             ev = pickle.load(f)
-        with open('MSU/Fall_2024/CMSE_830/project/data_processed/ev_merged.pickle', 'rb') as f:
+        with open('data_processed/ev_merged.pickle', 'rb') as f:
             ev_merged = pickle.load(f)
-        with open('MSU/Fall_2024/CMSE_830/project/data_processed/ev_state.pickle', 'rb') as f:
+        with open('data_processed/ev_state.pickle', 'rb') as f:
             ev_state = pickle.load(f)
         return ev, ev_merged, ev_state
     except Exception as e:
