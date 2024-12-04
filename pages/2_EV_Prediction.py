@@ -21,17 +21,16 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-import streamlit as st
-import altair as alt
-
 import pandas as pd
 import numpy as np
 import pickle
 
-from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import GradientBoostingRegressor
 
 import shap
+import altair as alt
+import streamlit as st
 from streamlit.components.v1 import html
 # ================================== #
 # Global setting
