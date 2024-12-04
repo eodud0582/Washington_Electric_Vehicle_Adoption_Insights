@@ -1,10 +1,30 @@
-# streamlit run MSU/Fall_2024/CMSE_830/project/app/main.py
+"""
+MIT License
 
+Copyright (c) 2024 Daeyoung Kim
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
 import pickle
 import pandas as pd
 import numpy as np
 import streamlit as st
-
 # ================================== #
 # Global setting
 
@@ -81,7 +101,7 @@ Use the menu at the top left to navigate to the desired page.
 """)
 
 # ================================== #
-# 캐싱 및 초기 로드
+# Caching and initial data load
 @st.cache_data
 def load_data():
     """Load required data"""
@@ -96,10 +116,12 @@ def load_data():
     except Exception as e:
         st.error(f"Error loading data: {e}")
         return None, None, None
-# load_data()는 메인 페이지에서 실행되어 데이터를 캐싱하고 st.session_state에 저장
-# @st.cache_data로 데이터 로드가 캐싱되므로 파일을 반복적으로 읽지 않
+# The load_data() function is executed on the main page, caching the data and storing it in st.session_state
+# Using @st.cache_data ensures the data load is cached, preventing repeated file reads
 
-# Main logic: 데이터 로드 후 session_state에 저장
+# Load data and store it in session_state
+# - Sharing data across pages
+# - All pages can reuse the data via st.session_state
 if 'data_loaded' not in st.session_state:
     ev, ev_merged, ev_state = load_data()
 
@@ -110,14 +132,10 @@ if 'data_loaded' not in st.session_state:
     st.session_state['ev'] = ev
     st.session_state['ev_merged'] = ev_merged
     st.session_state['ev_state'] = ev_state
-    st.session_state['data_loaded'] = True  # 데이터를 한 번만 로드하도록 플래그 설정
-
-# 페이지 간 공유:
-# 모든 페이지에서 st.session_state를 통해 데이터를 재사용
+    st.session_state['data_loaded'] = True # Set a flag to ensure data is loaded only once
 
 # ================================== #
 # Add a sidebar for additional information or controls
-
 st.sidebar.header("Data Sources")
 st.sidebar.markdown("""
 - Electric Vehicle Registrations by State
@@ -136,17 +154,14 @@ st.sidebar.markdown("""
 
 # ================================== #
 # Additional information about the project
-
 st.divider()
 
 col1, col2 = st.columns([1, 1])
-
 with col1:
     st.markdown("### Insights by Daeyoung Kim")
     st.write(
         "Email: kimdae15@msu.edu | [GitHub](https://github.com/eodud0582) | [LinkedIn](https://linkedin.com/in/eodud0582)"
     )
-
 with col2:
     st.markdown("### License")
     st.write("MIT")
