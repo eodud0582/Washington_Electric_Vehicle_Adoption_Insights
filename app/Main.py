@@ -106,9 +106,33 @@ Use the menu at the top left to navigate to the desired page.
 # ================================== #
 # 캐싱 및 초기 로드
 @st.cache_data
+# def load_data():
+#     """Load required data"""
+#     try:
+#         with open('data_processed/ev.pickle', 'rb') as f:
+#             ev = pickle.load(f)
+#         with open('data_processed/ev_merged.pickle', 'rb') as f:
+#             ev_merged = pickle.load(f)
+#         with open('data_processed/ev_state.pickle', 'rb') as f:
+#             ev_state = pickle.load(f)
+#         return ev, ev_merged, ev_state
+#     except Exception as e:
+#         st.error(f"Error loading data: {e}")
+#         return None, None, None
+# load_data()는 메인 페이지에서 실행되어 데이터를 캐싱하고 st.session_state에 저장
+# @st.cache_data로 데이터 로드가 캐싱되므로 파일을 반복적으로 읽지 않
+
+@st.cache_data
 def load_data():
     """Load required data"""
     try:
+        # Print current working directory to verify path
+        import os
+        print("Current working directory:", os.getcwd())
+        
+        # List files in the directory
+        print("Files in data_processed:", os.listdir('data_processed'))
+        
         with open('data_processed/ev.pickle', 'rb') as f:
             ev = pickle.load(f)
         with open('data_processed/ev_merged.pickle', 'rb') as f:
@@ -117,10 +141,11 @@ def load_data():
             ev_state = pickle.load(f)
         return ev, ev_merged, ev_state
     except Exception as e:
-        st.error(f"Error loading data: {e}")
+        # More detailed error logging
+        st.error(f"Detailed Error: {e}")
+        import traceback
+        st.error(traceback.format_exc())
         return None, None, None
-# load_data()는 메인 페이지에서 실행되어 데이터를 캐싱하고 st.session_state에 저장
-# @st.cache_data로 데이터 로드가 캐싱되므로 파일을 반복적으로 읽지 않
 
 # Main logic: 데이터 로드 후 session_state에 저장
 if 'data_loaded' not in st.session_state:
