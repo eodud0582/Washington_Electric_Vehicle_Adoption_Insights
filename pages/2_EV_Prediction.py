@@ -267,7 +267,7 @@ col1, col2 = st.columns(2)
 with col1:
     st.markdown(
     """
-    ### Understanding SHAP Values and Force Plot
+    **Understanding SHAP Values and Force Plot**
     
     **Base Value:**
     - This is the starting point or the average prediction if no specific features are considered.
@@ -286,17 +286,15 @@ with col1:
 with col2:
     st.markdown(
     """
-    ### How to Read the Force Plot
+    **How to Read the Force Plot**
     - **Red (Left Side):** Indicates features that increase the model's prediction.
     - **Blue (Right Side):** Indicates features that decrease the model's prediction.
     - **Base Value (Middle):** The starting prediction before considering individual feature contributions.
     
-    #### Example:
+    **Insights Example**
     - If the base value is 50, and one feature increases the prediction by 10 while another decreases it by 5, the final prediction will be 55 (50 + 10 - 5).
-    
-    #### Force Plot Insights:
-    - Typically, **`median_household_income`**, **`dem_votes`**, and **`rep_votes`** contribute to the **red region**, indicating they often increase the prediction.
-    - **`margin_error`** is usually observed in the **blue region**, suggesting it decreases the prediction in most cases.
+    - **`median_household_income`**, **`dem_votes`**, and **`rep_votes`** contribute to the **red region**, indicating they increase the prediction.
+    - **`margin_error`** is observed in the **blue region**, suggesting it decreases the prediction in most cases.
     - The length of the bars represents the magnitude of each feature's impact:
         - **`median_household_income`** and **`dem_votes`** generally have longer bars, showing they have a strong influence on the prediction.
         - **`margin_error`** also has a significant bar length, indicating its notable impact despite being in the blue region.
