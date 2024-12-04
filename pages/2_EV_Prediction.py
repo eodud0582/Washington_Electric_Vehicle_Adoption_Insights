@@ -71,7 +71,7 @@ red_color = '#D32F2F'
 # ================================== #
 # Intro
 st.title("Electric Vehicle Adoption in Washington State")
-st.markdown("### EV Count Prediction")
+st.markdown("### Electric Vehicle Count Prediction")
 
 st.divider()
 
