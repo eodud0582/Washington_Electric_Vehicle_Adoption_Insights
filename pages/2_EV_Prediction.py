@@ -138,7 +138,7 @@ with col1:
     )
 with col2:
     # 2) Feature Importance
-    st.write("### Feature Importance")
+    st.write("### Key Features and Importance")
     
     # Feature Importance (from the Gradient Boosting Model)
     fi_features = [col for col in selected_features if col != 'margin_error']
@@ -212,8 +212,8 @@ with col1:
         'Variable': selected_features,
         'SHAP Value': shap_values.values[0]
     }).sort_values(by='SHAP Value', ascending=False)# .to_dict(orient='records') #.reset_index(drop=True)
-    # st.table(shap_table)
-    st.dataframe(shap_table, hide_index=True)
+    st.table(shap_table)
+    # st.dataframe(shap_table, hide_index=True)
 with col2:
     # Generate SHAP force plot (interactive visualization)
     st.write("### SHAP Force Plot")
