@@ -148,7 +148,7 @@ with col1:
     original_prediction = model.predict(scaled_input)[0] # ev_count (original value)
     
     # Prediction
-    st.write("### Predicted EV Count")
+    st.write("### Predicted Electric Vehicle Count")
     st.markdown(
     """
     <div style="display: flex; justify-content: center; align-items: center; height: 100%; min-height: 150px;">
@@ -231,13 +231,13 @@ with col1:
     st.write("### Variable Impact Analysis (SHAP Values)")
     shap_table = pd.DataFrame({
         'Variable': selected_features,
-        'SHAP Value': shap_values.values[0]
+        'Impact Score': shap_values.values[0]
     }).sort_values(by='SHAP Value', ascending=False).reset_index(drop=True) #.to_dict(orient='records')
     st.table(shap_table)
     # st.dataframe(shap_table, hide_index=True)
 with col2:
     # Generate SHAP force plot (interactive visualization)
-    st.write("### SHAP Force Plot")
+    st.write("### Variable Impact Direction (SHAP Force Plot)")
     force_plot_html = shap.force_plot(
         explainer.expected_value,
         shap_values.values[0],
