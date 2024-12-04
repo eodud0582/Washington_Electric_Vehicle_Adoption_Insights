@@ -193,6 +193,7 @@ with col2:
 # st.write("### Simulation: Effect of Variable Changes")
 # st.table(simulation_df)
 
+# ---
 # 2) SHAP effect
 
 # SHAP Explainer Initialization
@@ -209,7 +210,7 @@ with col1:
     shap_table = pd.DataFrame({
         'Variable': selected_features,
         'SHAP Value': shap_values.values[0]
-    }).sort_values(by='SHAP Value', ascending=False)
+    }).sort_values(by='SHAP Value', ascending=False).reset_inex(drop=True)
     st.table(shap_table)
 with col2:
     # Generate SHAP force plot (interactive visualization)
