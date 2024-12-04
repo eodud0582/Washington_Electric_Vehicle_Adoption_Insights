@@ -130,7 +130,7 @@ with col1:
     st.write("### Predicted EV Count")
     st.markdown(
     """
-    <div style="display: flex; justify-content: center; align-items: center; height: 100%; min-height: 200px;">
+    <div style="display: flex; justify-content: center; align-items: center; height: 100%; min-height: 170px;">
         <h1 style="color: #0068C9; font-weight: bold;">{:.2f}</h1>
     </div>
     """.format(original_prediction),
@@ -154,7 +154,7 @@ with col2:
         tooltip=['Feature', 'Importance']
     ).properties(
         width='container', # Adaptive width
-        height=200 # Height for clarity
+        height=170 # Height for clarity
     )
     
     st.altair_chart(chart, use_container_width=True)
