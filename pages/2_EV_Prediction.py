@@ -176,7 +176,7 @@ with col2:
         tooltip=['Feature', 'Importance']
     ).properties(
         width='container', # Adaptive width
-        height=160 #170 # Height for clarity
+        height=160 # Height for clarity
     )
     
     st.altair_chart(chart, use_container_width=True)
@@ -251,7 +251,7 @@ with col2:
     # - Streamlit doesn't natively support direct HTML rendering for SHAP visualizations.
     # - Need to save the force plot as an interactive HTML snippet and embed it using st.components.v1.html.
     shap_html = f"<head>{shap.getjs()}</head><body>{force_plot_html.html()}</body>"
-    html(shap_html, height=150)
+    html(shap_html, height=160)
 
 # st.write("### SHAP Waterfall Plot")
 # shap.waterfall_plot(shap_values[0], feature_names=selected_features)
