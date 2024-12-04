@@ -294,7 +294,7 @@ with col2:
     **Insights Example**
     - If the base value is 50, and one feature increases the prediction by 10 while another decreases it by 5, the final prediction will be 55 (50 + 10 - 5).
     - **`median_household_income`**, **`dem_votes`**, and **`rep_votes`** contribute to the **red region**, indicating they increase the prediction.
-    - **`margin_error`** is observed in the **blue region**, suggesting it decreases the prediction in most cases.
+    - **`margin_error`** is observed in the **blue region**, suggesting it decreases the prediction.
     - The length of the bars represents the magnitude of each feature's impact:
         - **`median_household_income`** and **`dem_votes`** generally have longer bars, showing they have a strong influence on the prediction.
         - **`margin_error`** also has a significant bar length, indicating its notable impact despite being in the blue region.
