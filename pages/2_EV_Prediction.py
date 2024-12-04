@@ -1,3 +1,26 @@
+"""
+MIT License
+
+Copyright (c) 2024 Daeyoung Kim
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
 import streamlit as st
 import altair as alt
 
@@ -10,7 +33,6 @@ from sklearn.preprocessing import StandardScaler
 
 import shap
 from streamlit.components.v1 import html
-
 # ================================== #
 # Global setting
 
@@ -195,7 +217,7 @@ with col2:
 # st.table(simulation_df)
 
 # ---
-# 2) SHAP effect
+# 2) SHAP
 
 # SHAP Explainer Initialization
 explainer = shap.Explainer(model, feature_names=selected_features)
@@ -231,6 +253,9 @@ with col2:
     shap_html = f"<head>{shap.getjs()}</head><body>{force_plot_html.html()}</body>"
     html(shap_html, height=150)
 
+st.write("### SHAP Waterfall Plot")
+shap.waterfall_plot(shap_values[0], feature_names=selected_features)
+
 # ================================== #
 # SHAP explanation
 st.markdown(
@@ -242,7 +267,7 @@ col1, col2 = st.columns(2)
 with col1:
     st.markdown(
     """
-    Understanding SHAP Values and Force Plot
+    ### Understanding SHAP Values and Force Plot
     
     **Base Value:**
     - This is the starting point or the average prediction if no specific features are considered.
@@ -261,14 +286,20 @@ with col1:
 with col2:
     st.markdown(
     """
-    How to Read the Force Plot
-    - Red (Left Side): Indicates features that increase the model's prediction
-    - Blue (Right Side): Indicates features that decrease the model's prediction
-    - Base Value (Middle): The starting prediction before considering individual feature contributions
+    ### How to Read the Force Plot
+    - **Red (Left Side):** Indicates features that increase the model's prediction.
+    - **Blue (Right Side):** Indicates features that decrease the model's prediction.
+    - **Base Value (Middle):** The starting prediction before considering individual feature contributions.
     
-    Example:
+    #### Example:
     - If the base value is 50, and one feature increases the prediction by 10 while another decreases it by 5, the final prediction will be 55 (50 + 10 - 5).
     
+    #### Force Plot Insights:
+    - Typically, **`median_household_income`**, **`dem_votes`**, and **`rep_votes`** contribute to the **red region**, indicating they often increase the prediction.
+    - **`margin_error`** is usually observed in the **blue region**, suggesting it decreases the prediction in most cases.
+    - The length of the bars represents the magnitude of each feature's impact:
+        - **`median_household_income`** and **`dem_votes`** generally have longer bars, showing they have a strong influence on the prediction.
+        - **`margin_error`** also has a significant bar length, indicating its notable impact despite being in the blue region.
     """
     )
 # ================================== #
