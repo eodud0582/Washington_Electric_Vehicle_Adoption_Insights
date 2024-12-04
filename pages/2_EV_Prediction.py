@@ -152,7 +152,7 @@ with col1:
     st.write("### Predicted EV Count")
     st.markdown(
     """
-    <div style="display: flex; justify-content: center; align-items: center; height: 100%; min-height: 170px;">
+    <div style="display: flex; justify-content: center; align-items: center; height: 100%; min-height: 150px;">
         <h1 style="color: #0068C9; font-weight: bold;">{:.2f}</h1>
     </div>
     """.format(original_prediction),
