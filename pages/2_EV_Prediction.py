@@ -222,11 +222,9 @@ with col2:
         # plot_cmap=["#000000", highlight_color]
     )
     # Embed the SHAP force plot in Streamlit using an iframe
-    '''
-    Rendering shap.force_plot as an HTML plot in Streamlit requires wrapping it in an iframe. 
-    Streamlit doesn't natively support direct HTML rendering for SHAP visualizations.
-    You need to save the force plot as an interactive HTML snippet and embed it using st.components.v1.html.
-    '''
+    # - Rendering shap.force_plot as an HTML plot in Streamlit requires wrapping it in an iframe. 
+    # - Streamlit doesn't natively support direct HTML rendering for SHAP visualizations.
+    # - Need to save the force plot as an interactive HTML snippet and embed it using st.components.v1.html.
     shap_html = f"<head>{shap.getjs()}</head><body>{force_plot_html.html()}</body>"
     html(shap_html, height=200)
 
