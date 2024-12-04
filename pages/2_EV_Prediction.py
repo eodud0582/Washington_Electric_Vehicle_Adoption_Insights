@@ -45,6 +45,7 @@ st.markdown("""
 
 highlight_color = '#0068C9'
 unhighlight_color = 'lightgray'
+red_color = '#D32F2F'
 
 # ================================== #
 # Intro
@@ -221,7 +222,7 @@ with col2:
         shap_values.values[0],
         feature_names=selected_features,
         matplotlib=False, # Render as HTML
-        # plot_cmap=["#000000", highlight_color]
+        plot_cmap=[red_color, highlight_color]
     )
     # Embed the SHAP force plot in Streamlit using an iframe
     # - Rendering shap.force_plot as an HTML plot in Streamlit requires wrapping it in an iframe. 
@@ -229,25 +230,6 @@ with col2:
     # - Need to save the force plot as an interactive HTML snippet and embed it using st.components.v1.html.
     shap_html = f"<head>{shap.getjs()}</head><body>{force_plot_html.html()}</body>"
     html(shap_html, height=200)
-
-# Generate the SHAP force plot as HTML
-force_plot_html = shap.force_plot(
-    explainer.expected_value,
-    shap_values.values[0],
-    feature_names=selected_features,
-    matplotlib=False
-)
-
-# Add custom CSS for better text visibility
-custom_css = """
-<style>
-    .shap-bar-text { color: #FFFFFF !important; } /* Adjust the text color */
-</style>
-"""
-
-# Embed the plot in Streamlit with custom CSS
-shap_html = f"<head>{shap.getjs()}{custom_css}</head><body>{force_plot_html.html()}</body>"
-html(shap_html, height=200)
 
 # ================================== #
 # SHAP explanation
