@@ -253,8 +253,8 @@ with col2:
     shap_html = f"<head>{shap.getjs()}</head><body>{force_plot_html.html()}</body>"
     html(shap_html, height=150)
 
-st.write("### SHAP Waterfall Plot")
-shap.waterfall_plot(shap_values[0], feature_names=selected_features)
+# st.write("### SHAP Waterfall Plot")
+# shap.waterfall_plot(shap_values[0], feature_names=selected_features)
 
 # ================================== #
 # SHAP explanation
