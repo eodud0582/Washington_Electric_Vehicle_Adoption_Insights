@@ -18,8 +18,6 @@ from streamlit.components.v1 import html
 st.set_page_config(page_title="Washington State EV Adoption Analysis", page_icon=":battery:", layout="wide")
 # emoji: https://streamlit-emoji-shortcodes-streamlit-app-gwckff.streamlit.app/
 
-# st.set_page_config(page_title="EV Count Prediction", layout="wide")
-
 # Adjust sizes
 st.markdown("""
     <style>
@@ -66,39 +64,7 @@ else:
     st.warning("Data has not been loaded. Please load the data on the main page.")
     st.stop()
 
-# @st.cache_data
-# def load_or_train_model():
-#     """Load a pre-trained model or train a new one."""
-#     try:
-#         # Try to load the saved model
-#         with open('best_model_gbr.pkl', 'rb') as f:
-#             model = pickle.load(f)
-#     except FileNotFoundError:
-#         # Train the model if not already saved
-#         # data, _, _ = load_processed_data()
-#         X = ev_merged[['median_household_income', 'dem_votes', 'margin_error']]
-#         y = ev_merged['ev_count']
-#         model = GradientBoostingRegressor(n_estimators=500, random_state=777)
-#         model.fit(X, y)
-#         # Save the trained model
-#         with open('best_model_gbr.pkl', 'wb') as f:
-#             pickle.dump(model, f)
-#     return model
-# model = load_or_train_model()
-# def prepare_scaler_and_model(data):
-#     """Fit scaler and train the final model on all data."""
-#     X = data[['median_household_income', 'dem_votes', 'margin_error']]
-#     y = data['ev_count']
-#     # Fit the scaler on all data
-#     scaler = StandardScaler()
-#     X_scaled = scaler.fit_transform(X)
-#     # Train the final model on scaled data
-#     model = GradientBoostingRegressor(n_estimators=500, random_state=777)
-#     model.fit(X_scaled, y)
-#     return scaler, model
-# scaler, model = prepare_scaler_and_model(ev_merged)
-
-# 모델과 스케일러 로드
+# Load model and scaler
 with open('data_processed/final_model.pkl', 'rb') as f:
     loaded_model = pickle.load(f)
     model = loaded_model['model']
@@ -106,17 +72,16 @@ with open('data_processed/final_model.pkl', 'rb') as f:
     selected_features = loaded_model['selected_features']
 
 # ================================== #
-# Input setting
+# User input setting
 
-# 사용자 입력 받기 (새로운 테스트 데이터)
-# 입력된 데이터를 스케일링한 후 학습된 모델에 전달하므로, 완전히 새로운 데이터를 예측하는 과정
+# User input (new test data)
 st.sidebar.header("Input Variables")
 income = st.sidebar.slider(
-    "Median Household Income",
-    float(ev_merged['median_household_income'].min()),
-    float(ev_merged['median_household_income'].max()),
-    float(ev_merged['median_household_income'].mean()),
-    step=1.0
+    "Median Household Income", # Label for input slider
+    float(ev_merged['median_household_income'].min()), # Minimum value for slider
+    float(ev_merged['median_household_income'].max()), # Maximum value for slider
+    float(ev_merged['median_household_income'].mean()), # Default value (mean)
+    step=1.0 # Step size for slider
 )
 dem_votes = st.sidebar.slider(
     "Democratic Party Votes",
@@ -134,39 +99,34 @@ rep_votes = st.sidebar.slider(
 )
 charger_density_scaled = st.sidebar.slider(
     "Charger Density (scaled, x10⁹)",
-    float(ev_merged['charger_density'].min() * 1e9),  # 최소값 스케일 조정
-    float(ev_merged['charger_density'].max() * 1e9),  # 최대값 스케일 조정
-    float(ev_merged['charger_density'].mean() * 1e9),  # 평균값 스케일 조정
+    float(ev_merged['charger_density'].min() * 1e9), # Minimum value, scaled
+    float(ev_merged['charger_density'].max() * 1e9), # Maximum value, scaled
+    float(ev_merged['charger_density'].mean() * 1e9), # Default value (mean), scaled
     step=0.1
 )
-charger_density = charger_density_scaled / 1e9  # 원래 단위로 변환
-margin_error = ev_merged['margin_error'].mean()  # Fixed constant for simplicity
+charger_density = charger_density_scaled / 1e9 # Convert scaled input back to original unit
+margin_error = ev_merged['margin_error'].mean() # Use the mean value for margin error (fixed/constant for simplicity)
 
-# 입력 데이터 생성
+# Create input data
 original_input = pd.DataFrame({
-    'median_household_income': [income],
-    'margin_error': [margin_error],
-    'dem_votes': [dem_votes],
-    'rep_votes': [rep_votes],
-    'charger_density': [charger_density]
+    'median_household_income': [income], # User input for household income
+    'margin_error': [margin_error], # Constant value for margin error
+    'dem_votes': [dem_votes], # User input for Democratic votes
+    'rep_votes': [rep_votes], # User input for Republican votes
+    'charger_density': [charger_density] # User input for charger density, converted to original unit
 })
 
-# 선택된 변수 검증
-# expected_feature_names = ['median_household_income', 'margin_error', 'dem_votes', 'rep_votes', 'charger_density']
+# Verify selected variables
 assert list(original_input.columns) == selected_features, "Feature names do not match expected names!"
 
 col1, col2 = st.columns(2)
 with col1:
-    # 1. EV count prediction
+    # 1) EV count prediction
     scaled_input = scaler.transform(original_input[selected_features])
-    original_prediction = model.predict(scaled_input)[0] # target인 ev_count는 애초에 원 값임
+    original_prediction = model.predict(scaled_input)[0] # ev_count (original value)
     
-    # Prediction 결과 표시
+    # Prediction
     st.write("### Predicted EV Count")
-    # st.markdown(
-    #     f"<h1 style='text-align: center; color: #0068C9;'><b>{original_prediction:.2f}</b></h1>",
-    #     unsafe_allow_html=True
-    # )
     st.markdown(
     """
     <div style="display: flex; justify-content: center; align-items: center; height: 100%; min-height: 200px;">
@@ -176,24 +136,24 @@ with col1:
     unsafe_allow_html=True
     )
 with col2:
-    # 2. Feature Importance
+    # 2) Feature Importance
     st.write("### Feature Importance")
     
     # Feature Importance (from the Gradient Boosting Model)
     fi_features = [col for col in selected_features if col != 'margin_error']
     feature_importance = pd.DataFrame({
         'Feature': fi_features,
-        'Importance': model.feature_importances_[np.where(np.isin(selected_features, fi_features))] # 표시된 변수 중요도는 최종 학습된 모델 기준
+        'Importance': model.feature_importances_[np.where(np.isin(selected_features, fi_features))] # Extracted from the model trained with the entire dataset
     }).sort_values(by='Importance', ascending=False)
     
     # Altair chart
     chart = alt.Chart(feature_importance).mark_bar(color=highlight_color).encode(
-        x=alt.X('Importance', title='Importance'),
-        y=alt.Y('Feature', sort='-x', title='Feature'),  # 중요도 순서로 정렬
+        x=alt.X('Importance', title='Importance'), # Importance values
+        y=alt.Y('Feature', sort='-x', title='Feature'), # Lists the features, sorted by importance
         tooltip=['Feature', 'Importance']
     ).properties(
-        width=600,  # 너비 설정
-        height=200  # 높이 설정
+        width='container', # Adaptive width
+        height=200 # Height for clarity
     )
     
     st.altair_chart(chart, use_container_width=True)
@@ -201,15 +161,13 @@ with col2:
 # ================================== #
 # Evaluate effect of variable/variable changes
 
-# Simulation: effect of variable changes
-# 1)
-# 시뮬레이션 테이블 생성
+# 1) Simulation: effect of variable changes
 # simulation_results = []
 # for feature in selected_features:
 #     modified_input = original_input.copy()
     
-#     # 변수 증가/감소 설정
-#     change_amount = (original_input[feature][0] + 1.0)  # 10% 변화 또는 최소 1.0
+#     # Set up increase/decrease for the variable
+#     change_amount = (original_input[feature][0] + 1.0) # 10% change or a minimum of 1.0
     
 #     modified_input[feature] = original_input[feature] + change_amount
 #     increased_scaled = scaler.transform(modified_input)
@@ -229,23 +187,24 @@ with col2:
 #         "Decreased Effect": decreased_prediction - original_prediction
 #     })
 
+# Create simulation table
 # simulation_df = pd.DataFrame(simulation_results)
 
-# # Simulation 결과 테이블 표시
 # st.write("### Simulation: Effect of Variable Changes")
 # st.table(simulation_df)
 
-# 2) SHAP
+# 2) SHAP effect
 
-# SHAP 해석기 초기화
+# SHAP Explainer Initialization
 explainer = shap.Explainer(model, feature_names=selected_features)
 
-# SHAP 값 계산
+# Compute SHAP values for the scaled input
 shap_values = explainer(scaled_input)
 
+# Display SHAP results in two columns
 col1, col2 = st.columns(2)
 with col1:
-    # SHAP Summary Plot
+    # Display a table summarizing SHAP values
     st.write("### Variable Impact Analysis (SHAP Values)")
     shap_table = pd.DataFrame({
         'Variable': selected_features,
@@ -253,16 +212,21 @@ with col1:
     }).sort_values(by='SHAP Value', ascending=False)
     st.table(shap_table)
 with col2:
-    # 전체 SHAP Force Plot (시각적 요약 제공) 생성 및 HTML 렌더링
+    # Generate SHAP force plot (interactive visualization)
     st.write("### SHAP Force Plot")
     force_plot_html = shap.force_plot(
         explainer.expected_value,
         shap_values.values[0],
         feature_names=selected_features,
-        matplotlib=False,  # HTML로 렌더링
+        matplotlib=False, # Render as HTML
         # plot_cmap=["#000000", highlight_color]
     )
-    # HTML로 Streamlit에 표시
+    # Embed the SHAP force plot in Streamlit using an iframe
+    '''
+    Rendering shap.force_plot as an HTML plot in Streamlit requires wrapping it in an iframe. 
+    Streamlit doesn't natively support direct HTML rendering for SHAP visualizations.
+    You need to save the force plot as an interactive HTML snippet and embed it using st.components.v1.html.
+    '''
     shap_html = f"<head>{shap.getjs()}</head><body>{force_plot_html.html()}</body>"
     html(shap_html, height=200)
 
@@ -308,7 +272,6 @@ with col2:
     )
 # ================================== #
 # Add a sidebar for additional information or controls
-
 st.sidebar.header("Usage Guide")
 st.sidebar.markdown("""
 - Use sliders to adjust key input variables
@@ -325,7 +288,6 @@ st.sidebar.info("This predictive tool enables you to explore electric vehicle (E
 
 # ================================== #
 # Additional information about the project
-
 st.divider()
 
 col1, col2 = st.columns([1, 1])
