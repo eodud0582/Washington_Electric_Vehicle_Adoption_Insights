@@ -99,7 +99,7 @@ else:
 # scaler, model = prepare_scaler_and_model(ev_merged)
 
 # 모델과 스케일러 로드
-with open('MSU/Fall_2024/CMSE_830/project/final_model.pkl', 'rb') as f:
+with open('data_processed/final_model.pkl', 'rb') as f:
     loaded_model = pickle.load(f)
     model = loaded_model['model']
     scaler = loaded_model['scaler']
