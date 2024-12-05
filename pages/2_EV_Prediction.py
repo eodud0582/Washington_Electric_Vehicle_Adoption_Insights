@@ -140,6 +140,15 @@ st.markdown("""
 #     </style>
 #     """, unsafe_allow_html=True)
 
+st.markdown(
+    """
+    <style>
+    div[class*="stSlider"] > label > div[data-testid="stMarkdownContainer"] > p {
+        font-size: 10px;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 highlight_color = '#0068C9'
 unhighlight_color = 'lightgray'
 red_color = '#D32F2F'
