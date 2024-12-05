@@ -108,12 +108,12 @@ st.sidebar.markdown("""
     
     /* 슬라이더 레이블 텍스트 크기 조정 */
     .stSlider > label {
-        font-size: 16px !important;
+        font-size: 12px !important;
     }
     
     /* 슬라이더 값 표시 텍스트 크기 조정 */
     .stSlider .stMarkdown {
-        font-size: 14px !important;
+        font-size: 10px !important;
     }
     
     /* 슬라이더 핸들(동그라미) 크기 조정 */
