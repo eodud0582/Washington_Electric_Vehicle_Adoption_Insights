@@ -65,31 +65,31 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # 사이드바 텍스트 크기 조정을 위한 CSS
-st.sidebar.markdown("""
-    <style>
-    /* 사이드바 전체 텍스트 크기 조정 */
-    .stSidebar {
-        font-size: 16px !important;
-    }
+# st.sidebar.markdown("""
+#     <style>
+#     /* 사이드바 전체 텍스트 크기 조정 */
+#     .stSidebar {
+#         font-size: 16px !important;
+#     }
     
-    /* 헤더 텍스트 크기 조정 */
-    .stSidebar .stMarkdown h2 {
-        font-size: 20px !important;
-    }
+#     /* 헤더 텍스트 크기 조정 */
+#     .stSidebar .stMarkdown h2 {
+#         font-size: 20px !important;
+#     }
     
-    /* 레이블 텍스트 크기 조정 */
-    .stSidebar .stLabel {
-        font-size: 14px !important;
-    }
+#     /* 레이블 텍스트 크기 조정 */
+#     .stSidebar .stLabel {
+#         font-size: 14px !important;
+#     }
     
-    /* 더 구체적인 텍스트 요소 조정 */
-    .stSidebar .stSelectbox,
-    .stSidebar .stSlider,
-    .stSidebar .stTextInput {
-        font-size: 14px !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
+#     /* 더 구체적인 텍스트 요소 조정 */
+#     .stSidebar .stSelectbox,
+#     .stSidebar .stSlider,
+#     .stSidebar .stTextInput {
+#         font-size: 14px !important;
+#     }
+#     </style>
+#     """, unsafe_allow_html=True)
 
 
 highlight_color = '#0068C9'
