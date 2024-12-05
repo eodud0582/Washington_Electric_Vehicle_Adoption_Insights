@@ -106,6 +106,22 @@ st.sidebar.markdown("""
     [data-testid="stSidebar"] .stLabel {
         font-size: 10px !important;
     }
+
+    /* 사이드바 슬라이더 너비 조정 */
+    [data-testid="stSidebar"] .stSlider {
+        width: 100% !important;
+    }
+    
+    /* 슬라이더 핸들(동그란 부분) 크기 조정 */
+    [data-testid="stSidebar"] .slider-handle {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    
+    /* 슬라이더 트랙(선) 높이 조정 */
+    [data-testid="stSidebar"] .slider-track {
+        height: 8px !important;
+    }
     </style>
     """, unsafe_allow_html=True)
 
