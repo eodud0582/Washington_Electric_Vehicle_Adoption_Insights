@@ -143,7 +143,7 @@ st.markdown("""
 st.markdown(
     """
     <style>
-    div[class*="stSlider"] > label > div[data-testid="stMarkdownContainer"] > p {
+    div[class*="stSlider"] > label > div[data-testid="stSliderTickBarMin"] > p {
         font-size: 10px;
     }
     </style>
