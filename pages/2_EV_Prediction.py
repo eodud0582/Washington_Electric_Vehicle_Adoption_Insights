@@ -97,7 +97,7 @@ with open('data_processed/final_model.pkl', 'rb') as f:
 # User input setting
 
 # User input (new test data)
-st.sidebar.header("Input Variables")
+st.sidebar.header("Choose Values for Input Variables")
 
 income = st.sidebar.slider(
     "Median Household Income", # Label for input slider
