@@ -99,35 +99,35 @@ with open('data_processed/final_model.pkl', 'rb') as f:
 # User input (new test data)
 st.sidebar.header("Input Variables")
 
-st.sidebar.markdown("""
-    <style>
-    /* 슬라이더 전체 크기 조정 */
-    .stSlider {
-        width: 100% !important;
-    }
+# st.sidebar.markdown("""
+#     <style>
+#     /* 슬라이더 전체 크기 조정 */
+#     .stSlider {
+#         width: 100% !important;
+#     }
     
-    /* 슬라이더 레이블 텍스트 크기 조정 */
-    .stSlider > label {
-        font-size: 12px !important;
-    }
+#     /* 슬라이더 레이블 텍스트 크기 조정 */
+#     .stSlider > label {
+#         font-size: 12px !important;
+#     }
     
-    /* 슬라이더 값 표시 텍스트 크기 조정 */
-    .stSlider .stMarkdown {
-        font-size: 10px !important;
-    }
+#     /* 슬라이더 값 표시 텍스트 크기 조정 */
+#     .stSlider .stMarkdown {
+#         font-size: 10px !important;
+#     }
     
-    /* 슬라이더 핸들(동그라미) 크기 조정 */
-    .stSlider .slider-handle {
-        width: 20px !important;
-        height: 20px !important;
-    }
+#     /* 슬라이더 핸들(동그라미) 크기 조정 */
+#     .stSlider .slider-handle {
+#         width: 20px !important;
+#         height: 20px !important;
+#     }
     
-    /* 슬라이더 트랙(선) 높이 조정 */
-    .stSlider .slider-track {
-        height: 8px !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
+#     /* 슬라이더 트랙(선) 높이 조정 */
+#     .stSlider .slider-track {
+#         height: 8px !important;
+#     }
+#     </style>
+#     """, unsafe_allow_html=True)
 
 income = st.sidebar.slider(
     "Median Household Income", # Label for input slider
