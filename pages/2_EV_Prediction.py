@@ -140,11 +140,10 @@ st.markdown("""
 #     </style>
 #     """, unsafe_allow_html=True)
 
-st.markdown(
-    """
+st.sidebar.markdown("""
     <style>
-    div[class="stSlider"] > div[class="data-baseweb"] > div[data-testid="stSliderTickBar"] > div {
-        font-size: 10px;
+    [data-testid="stSliderValue"] {
+        font-size: 8px !important;
     }
     </style>
     """, unsafe_allow_html=True)
