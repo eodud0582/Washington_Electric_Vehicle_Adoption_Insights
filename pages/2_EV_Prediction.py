@@ -76,6 +76,10 @@ st.sidebar.markdown("""
     .st-emotion-cache-1inwz65 {
         font-size: 11px !important;
     }
+
+    [data-testid="stSliderThumbValue"] {
+        font-size: 11px !important;
+    }
     </style>
     """, unsafe_allow_html=True)
 
