@@ -106,14 +106,14 @@ income = st.sidebar.slider(
     step=1.0 # Step size for slider
 )
 dem_votes = st.sidebar.slider(
-    "Democratic Party Votes",
+    "Democratic Party Support (Votes)",
     float(ev_merged['dem_votes'].min()),
     float(ev_merged['dem_votes'].max()),
     float(ev_merged['dem_votes'].mean()),
     step=1.0
 )
 rep_votes = st.sidebar.slider(
-    "Republican Party Votes",
+    "Republican Party Support (Votes)",
     float(ev_merged['rep_votes'].min()),
     float(ev_merged['rep_votes'].max()),
     float(ev_merged['rep_votes'].mean()),
