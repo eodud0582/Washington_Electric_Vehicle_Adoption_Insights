@@ -111,7 +111,8 @@ except Exception as e:
 # Selected districts
 selected_districts = st.sidebar.multiselect(
     "Choose from the list below:",
-    districts
+    districts,
+    help="Select legislative district(s) of interest"
 )
 
 # Filter the data based on selected districts
