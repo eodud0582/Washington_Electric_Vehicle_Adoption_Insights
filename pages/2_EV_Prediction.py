@@ -255,7 +255,7 @@ with col1:
     st.write("### Variable Impact Analysis (SHAP Values)")
     shap_table = pd.DataFrame({
         'Variable': selected_features,
-        'Input Value:': original_input[selected_features][0]
+        'Input Value:': original_input[selected_features][0],
         'Impact Score': shap_values.values[0]
     }).sort_values(by='Impact Score', ascending=False).reset_index(drop=True) #.to_dict(orient='records')
     st.table(shap_table)
