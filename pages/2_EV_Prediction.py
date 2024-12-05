@@ -99,37 +99,6 @@ with open('data_processed/final_model.pkl', 'rb') as f:
 # User input (new test data)
 st.sidebar.header("Input Variables")
 
-st.sidebar.markdown("""
-    <style>
-    /* 슬라이더 전체 크기 조정 */
-    .stSlider {
-        height: 50%
-        width: 100% !important;
-    }
-    
-    /* 슬라이더 레이블 텍스트 크기 조정 */
-    .stSlider > label {
-        font-size: 10px !important;
-    }
-    
-    /* 슬라이더 값 표시 텍스트 크기 조정 */
-    .stSlider .stMarkdown {
-        font-size: 8px !important;
-    }
-    
-    /* 슬라이더 핸들(동그라미) 크기 조정 */
-    .stSlider .slider-handle {
-        width: 14px !important;
-        height: 14px !important;
-    }
-    
-    /* 슬라이더 트랙(선) 높이 조정 */
-    .stSlider .slider-track {
-        height: 6px !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
 income = st.sidebar.slider(
     "Median Household Income", # Label for input slider
     float(ev_merged['median_household_income'].min()), # Minimum value for slider
@@ -143,21 +112,24 @@ dem_votes = st.sidebar.slider(
     float(ev_merged['dem_votes'].min()),
     float(ev_merged['dem_votes'].max()),
     float(ev_merged['dem_votes'].mean()),
-    step=1.0
+    step=1.0,
+    help="Select the Democratic support range"
 )
 rep_votes = st.sidebar.slider(
     "Republican Party Support (Votes)",
     float(ev_merged['rep_votes'].min()),
     float(ev_merged['rep_votes'].max()),
     float(ev_merged['rep_votes'].mean()),
-    step=1.0
+    step=1.0,
+    help="Select the Republican support range"
 )
 charger_density_scaled = st.sidebar.slider(
     "Charger Density (scaled, x10⁹)",
     float(ev_merged['charger_density'].min() * 1e9), # Minimum value, scaled
     float(ev_merged['charger_density'].max() * 1e9), # Maximum value, scaled
     float(ev_merged['charger_density'].mean() * 1e9), # Default value (mean), scaled
-    step=0.1
+    step=0.1,
+    help="Select the charger density range"
 )
 charger_density = charger_density_scaled / 1e9 # Convert scaled input back to original unit
 margin_error = ev_merged['margin_error'].mean() # Use the mean value for margin error (fixed/constant for simplicity)
