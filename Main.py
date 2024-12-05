@@ -140,11 +140,12 @@ if 'data_loaded' not in st.session_state:
 st.sidebar.header("Data Sources")
 st.sidebar.markdown("""
 - Electric Vehicle Registrations by State
-- Electric Vehicle Population Data (Washington)
-- 2022 Washington State Legislative Election Results
-- Alternative Fuel Stations (Charging Stations)
-- Median Household Income (ACS 2022 5-year)
+- Washington State Electric Vehicle Population Data
+- Washington State 2022 Legislative Election Results
+- Washington State Alternative Fuel Stations (Charging Stations)
+- Washington State Median Household Income (ACS 2022 5-year)
 - Washington State Legislative Districts 2022 (Geospatial)
+- Washington State Voter Demographics Tables (Age)
 """)
 # - Electric Vehicle Registration Counts by State
 # - Electric Vehicle Population in Washington State
