@@ -123,9 +123,19 @@ st.sidebar.markdown("""
         height: 8px !important;
     }
 
-    /* 슬라이더에 표시되는 값(value) 텍스트 크기 조정 */
-    [data-testid="stSidebar"] .stSlider .stMarkdown {
-        font-size: 8px !important; # 원하는 크기로 조정 가능
+    /* 슬라이더 값 텍스트 크기 조정 방법 1 */
+    [data-testid="stSidebar"] .stSlider div[role="slider"] {
+        font-size: 8px !important;
+    }
+    
+    /* 슬라이더 값 텍스트 크기 조정 방법 2 */
+    [data-testid="stSidebar"] .stSlider .slider-value {
+        font-size: 8px !important;
+    }
+    
+    /* 더 구체적인 선택자 사용 */
+    [data-testid="stSidebar"] .stSlider > div > div > div > span {
+        font-size: 8px !important;
     }
     </style>
     """, unsafe_allow_html=True)
