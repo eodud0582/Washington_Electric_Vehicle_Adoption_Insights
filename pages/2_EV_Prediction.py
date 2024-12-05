@@ -205,7 +205,8 @@ charger_density_scaled = st.sidebar.slider(
     float(ev_merged['charger_density'].max() * 1e9), # Maximum value, scaled
     float(ev_merged['charger_density'].mean() * 1e9), # Default value (mean), scaled
     step=0.1,
-    help="Select the charger density range"
+    help="Select the charger density range",
+    label_visibility='hidden'
 )
 charger_density = charger_density_scaled / 1e9 # Convert scaled input back to original unit
 margin_error = ev_merged['margin_error'].mean() # Use the mean value for margin error (fixed/constant for simplicity)
