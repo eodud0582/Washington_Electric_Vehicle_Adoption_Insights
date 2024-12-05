@@ -90,55 +90,55 @@ st.markdown("""
 #     }
 #     </style>
 #     """, unsafe_allow_html=True)
-st.sidebar.markdown("""
-    <style>
-    /* 사이드바 전체 텍스트 크기 조정 */
-    [data-testid="stSidebar"] {
-        font-size: 12px !important;
-    }
+# st.sidebar.markdown("""
+#     <style>
+#     /* 사이드바 전체 텍스트 크기 조정 */
+#     [data-testid="stSidebar"] {
+#         font-size: 12px !important;
+#     }
     
-    /* 헤더 텍스트 크기 조정 */
-    [data-testid="stSidebar"] h2 {
-        font-size: 16px !important;
-    }
+#     /* 헤더 텍스트 크기 조정 */
+#     [data-testid="stSidebar"] h2 {
+#         font-size: 16px !important;
+#     }
     
-    /* 레이블 텍스트 크기 조정 */
-    [data-testid="stSidebar"] .stLabel {
-        font-size: 10px !important;
-    }
+#     /* 레이블 텍스트 크기 조정 */
+#     [data-testid="stSidebar"] .stLabel {
+#         font-size: 10px !important;
+#     }
 
-    /* 사이드바 슬라이더 너비 조정 */
-    [data-testid="stSidebar"] .stSlider {
-        width: 100% !important;
-    }
+#     /* 사이드바 슬라이더 너비 조정 */
+#     [data-testid="stSidebar"] .stSlider {
+#         width: 100% !important;
+#     }
     
-    /* 슬라이더 핸들(동그란 부분) 크기 조정 */
-    [data-testid="stSidebar"] .slider-handle {
-        width: 15px !important;
-        height: 15px !important;
-    }
+#     /* 슬라이더 핸들(동그란 부분) 크기 조정 */
+#     [data-testid="stSidebar"] .slider-handle {
+#         width: 15px !important;
+#         height: 15px !important;
+#     }
     
-    /* 슬라이더 트랙(선) 높이 조정 */
-    [data-testid="stSidebar"] .slider-track {
-        height: 8px !important;
-    }
+#     /* 슬라이더 트랙(선) 높이 조정 */
+#     [data-testid="stSidebar"] .slider-track {
+#         height: 8px !important;
+#     }
 
-    /* 슬라이더 값 텍스트 크기 조정 방법 1 */
-    [data-testid="stSidebar"] .stSlider div[role="slider"] {
-        font-size: 8px !important;
-    }
+#     /* 슬라이더 값 텍스트 크기 조정 방법 1 */
+#     [data-testid="stSidebar"] .stSlider div[role="slider"] {
+#         font-size: 8px !important;
+#     }
     
-    /* 슬라이더 값 텍스트 크기 조정 방법 2 */
-    [data-testid="stSidebar"] .stSlider .slider-value {
-        font-size: 8px !important;
-    }
+#     /* 슬라이더 값 텍스트 크기 조정 방법 2 */
+#     [data-testid="stSidebar"] .stSlider .slider-value {
+#         font-size: 8px !important;
+#     }
     
-    /* 더 구체적인 선택자 사용 */
-    [data-testid="stSidebar"] .stSlider > div > div > div > span {
-        font-size: 8px !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
+#     /* 더 구체적인 선택자 사용 */
+#     [data-testid="stSidebar"] .stSlider > div > div > div > span {
+#         font-size: 8px !important;
+#     }
+#     </style>
+#     """, unsafe_allow_html=True)
 
 highlight_color = '#0068C9'
 unhighlight_color = 'lightgray'
