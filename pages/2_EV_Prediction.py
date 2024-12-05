@@ -98,6 +98,28 @@ with open('data_processed/final_model.pkl', 'rb') as f:
 
 # User input (new test data)
 st.sidebar.header("Input Variables")
+
+st.markdown("""
+    <style>
+    /* Slider width */
+    .stSlider {
+        width: 300px; /* 원하는 width 지정 */
+    }
+    
+    /* Slider label text size */
+    .stSlider label {
+        font-size: 14px; /* 라벨 텍스트 크기 */
+        font-weight: bold; /* 볼드체 옵션 */
+    }
+    
+    /* Slider value text size */
+    .stSlider div[data-testid="stTickBarMin"],
+    .stSlider div[data-testid="stTickBarMax"] {
+        font-size: 12px; /* 최소/최대값 텍스트 크기 */
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 income = st.sidebar.slider(
     "Median Household Income", # Label for input slider
     float(ev_merged['median_household_income'].min()), # Minimum value for slider
