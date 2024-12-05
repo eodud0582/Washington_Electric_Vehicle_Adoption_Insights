@@ -99,23 +99,32 @@ with open('data_processed/final_model.pkl', 'rb') as f:
 # User input (new test data)
 st.sidebar.header("Input Variables")
 
-st.markdown("""
+st.sidebar.markdown("""
     <style>
-    /* Slider width */
+    /* 슬라이더 전체 크기 조정 */
     .stSlider {
-        width: 300px; /* 원하는 width 지정 */
+        width: 100% !important;
     }
     
-    /* Slider label text size */
-    .stSlider label {
-        font-size: 14px; /* 라벨 텍스트 크기 */
-        font-weight: bold; /* 볼드체 옵션 */
+    /* 슬라이더 레이블 텍스트 크기 조정 */
+    .stSlider > label {
+        font-size: 16px !important;
     }
     
-    /* Slider value text size */
-    .stSlider div[data-testid="stTickBarMin"],
-    .stSlider div[data-testid="stTickBarMax"] {
-        font-size: 12px; /* 최소/최대값 텍스트 크기 */
+    /* 슬라이더 값 표시 텍스트 크기 조정 */
+    .stSlider .stMarkdown {
+        font-size: 14px !important;
+    }
+    
+    /* 슬라이더 핸들(동그라미) 크기 조정 */
+    .stSlider .slider-handle {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    
+    /* 슬라이더 트랙(선) 높이 조정 */
+    .stSlider .slider-track {
+        height: 8px !important;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -125,7 +134,8 @@ income = st.sidebar.slider(
     float(ev_merged['median_household_income'].min()), # Minimum value for slider
     float(ev_merged['median_household_income'].max()), # Maximum value for slider
     float(ev_merged['median_household_income'].mean()), # Default value (mean)
-    step=1.0 # Step size for slider
+    step=1.0, # Step size for slider
+    help="Select the median household income range"
 )
 dem_votes = st.sidebar.slider(
     "Democratic Party Support (Votes)",
