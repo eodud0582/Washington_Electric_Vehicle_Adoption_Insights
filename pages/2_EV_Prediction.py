@@ -143,7 +143,7 @@ st.markdown("""
 st.markdown(
     """
     <style>
-    div[class*="stSlider"] > slider > div[data-testid="stSliderTickBarMin"] {
+    div[class="stSlider"] > div[class="data-baseweb"] > div[data-testid="stSliderTickBar"] > div {
         font-size: 10px;
     }
     </style>
