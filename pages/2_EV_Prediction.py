@@ -103,6 +103,7 @@ st.sidebar.markdown("""
     <style>
     /* 슬라이더 전체 크기 조정 */
     .stSlider {
+        height: 50%
         width: 100% !important;
     }
     
