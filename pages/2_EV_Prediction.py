@@ -122,6 +122,11 @@ st.sidebar.markdown("""
     [data-testid="stSidebar"] .slider-track {
         height: 8px !important;
     }
+
+    /* 슬라이더에 표시되는 값(value) 텍스트 크기 조정 */
+    [data-testid="stSidebar"] .stSlider .stMarkdown {
+        font-size: 12px !important; # 원하는 크기로 조정 가능
+    }
     </style>
     """, unsafe_allow_html=True)
 
