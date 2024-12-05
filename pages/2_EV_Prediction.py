@@ -94,17 +94,17 @@ st.sidebar.markdown("""
     <style>
     /* 사이드바 전체 텍스트 크기 조정 */
     [data-testid="stSidebar"] {
-        font-size: 16px !important;
+        font-size: 12px !important;
     }
     
     /* 헤더 텍스트 크기 조정 */
     [data-testid="stSidebar"] h2 {
-        font-size: 20px !important;
+        font-size: 16px !important;
     }
     
     /* 레이블 텍스트 크기 조정 */
     [data-testid="stSidebar"] .stLabel {
-        font-size: 14px !important;
+        font-size: 10px !important;
     }
     </style>
     """, unsafe_allow_html=True)
