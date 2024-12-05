@@ -64,85 +64,16 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# 사이드바 텍스트 크기 조정을 위한 CSS
-# st.sidebar.markdown("""
-#     <style>
-#     /* 사이드바 전체 텍스트 크기 조정 */
-#     .stSidebar {
-#         font-size: 16px !important;
-#     }
-    
-#     /* 헤더 텍스트 크기 조정 */
-#     .stSidebar .stMarkdown h2 {
-#         font-size: 20px !important;
-#     }
-    
-#     /* 레이블 텍스트 크기 조정 */
-#     .stSidebar .stLabel {
-#         font-size: 14px !important;
-#     }
-    
-#     /* 더 구체적인 텍스트 요소 조정 */
-#     .stSidebar .stSelectbox,
-#     .stSidebar .stSlider,
-#     .stSidebar .stTextInput {
-#         font-size: 14px !important;
-#     }
-#     </style>
-#     """, unsafe_allow_html=True)
-# st.sidebar.markdown("""
-#     <style>
-#     /* 사이드바 전체 텍스트 크기 조정 */
-#     [data-testid="stSidebar"] {
-#         font-size: 12px !important;
-#     }
-    
-#     /* 헤더 텍스트 크기 조정 */
-#     [data-testid="stSidebar"] h2 {
-#         font-size: 16px !important;
-#     }
-    
-#     /* 레이블 텍스트 크기 조정 */
-#     [data-testid="stSidebar"] .stLabel {
-#         font-size: 10px !important;
-#     }
-
-#     /* 사이드바 슬라이더 너비 조정 */
-#     [data-testid="stSidebar"] .stSlider {
-#         width: 100% !important;
-#     }
-    
-#     /* 슬라이더 핸들(동그란 부분) 크기 조정 */
-#     [data-testid="stSidebar"] .slider-handle {
-#         width: 15px !important;
-#         height: 15px !important;
-#     }
-    
-#     /* 슬라이더 트랙(선) 높이 조정 */
-#     [data-testid="stSidebar"] .slider-track {
-#         height: 8px !important;
-#     }
-
-#     /* 슬라이더 값 텍스트 크기 조정 방법 1 */
-#     [data-testid="stSidebar"] .stSlider div[role="slider"] {
-#         font-size: 8px !important;
-#     }
-    
-#     /* 슬라이더 값 텍스트 크기 조정 방법 2 */
-#     [data-testid="stSidebar"] .stSlider .slider-value {
-#         font-size: 8px !important;
-#     }
-    
-#     /* 더 구체적인 선택자 사용 */
-#     [data-testid="stSidebar"] .stSlider > div > div > div > span {
-#         font-size: 8px !important;
-#     }
-#     </style>
-#     """, unsafe_allow_html=True)
-
 st.sidebar.markdown("""
     <style>
-    [data-testid="stSliderValue"] {
+    /* 슬라이더의 최소/최대 값 텍스트 크기 조정 */
+    [data-testid="stSliderTickBarMin"],
+    [data-testid="stSliderTickBarMax"] {
+        font-size: 8px !important;
+    }
+    
+    /* 추가적으로 모든 슬라이더 관련 텍스트 크기 조정 */
+    .st-emotion-cache-1inwz65 {
         font-size: 8px !important;
     }
     </style>
