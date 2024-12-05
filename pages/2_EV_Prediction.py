@@ -69,12 +69,12 @@ st.sidebar.markdown("""
     /* 슬라이더의 최소/최대 값 텍스트 크기 조정 */
     [data-testid="stSliderTickBarMin"],
     [data-testid="stSliderTickBarMax"] {
-        font-size: 10px !important;
+        font-size: 12px !important;
     }
     
     /* 추가적으로 모든 슬라이더 관련 텍스트 크기 조정 */
     .st-emotion-cache-1inwz65 {
-        font-size: 10px !important;
+        font-size: 12px !important;
     }
     </style>
     """, unsafe_allow_html=True)
