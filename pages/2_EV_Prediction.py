@@ -114,8 +114,8 @@ st.sidebar.markdown("""
     
     /* 슬라이더 핸들(동그란 부분) 크기 조정 */
     [data-testid="stSidebar"] .slider-handle {
-        width: 20px !important;
-        height: 20px !important;
+        width: 15px !important;
+        height: 15px !important;
     }
     
     /* 슬라이더 트랙(선) 높이 조정 */
@@ -125,7 +125,7 @@ st.sidebar.markdown("""
 
     /* 슬라이더에 표시되는 값(value) 텍스트 크기 조정 */
     [data-testid="stSidebar"] .stSlider .stMarkdown {
-        font-size: 12px !important; # 원하는 크기로 조정 가능
+        font-size: 8px !important; # 원하는 크기로 조정 가능
     }
     </style>
     """, unsafe_allow_html=True)
