@@ -282,17 +282,43 @@ with col2:
     # shap_html = f"<head>{shap.getjs()}</head><body>{force_plot_html.html()}</body>"
     # html(shap_html, height=160)
     
-    fig = shap.force_plot(
+    # fig = shap.force_plot(
+    #     explainer.expected_value,
+    #     shap_values.values[0],
+    #     feature_names=selected_features,
+    #     matplotlib=True, # Use Matplotlib
+    #     plot_cmap=[red_color, highlight_color],
+    #     show=False
+    # )
+    # plt.tight_layout()
+    # Display the plot in Streamlit
+    # st.pyplot(fig)
+
+    # Create a figure with a responsive aspect ratio
+    # Get the width of the column
+    col_width = st.get_option("theme.layoutWidth")
+    
+    # Dynamically adjust figure size based on column width
+    fig, ax = plt.subplots(figsize=(col_width/200, col_width/300), dpi=100)
+    
+    # Generate SHAP force plot
+    shap.force_plot(
         explainer.expected_value,
         shap_values.values[0],
         feature_names=selected_features,
-        matplotlib=True, # Use Matplotlib
+        matplotlib=True,
         plot_cmap=[red_color, highlight_color],
-        show=False
+        show=False,
+        ax=ax
     )
-    # plt.tight_layout()
-    plt.subplots_adjust(top=1.4)
-    # Display the plot in Streamlit
+    
+    # Remove extra white space
+    plt.tight_layout()
+    
+    # Adjust layout to make it more compact
+    plt.subplots_adjust(top=0.9, bottom=0.1, left=0.1, right=0.9)
+    
+    # Display the plot
     st.pyplot(fig)
 
 # st.write("### SHAP Waterfall Plot")
