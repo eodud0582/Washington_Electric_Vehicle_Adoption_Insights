@@ -263,19 +263,27 @@ with col1:
 with col2:
     # Generate SHAP force plot (interactive visualization)
     st.write("### Variable Impact Direction (SHAP Force Plot)")
-    force_plot_html = shap.force_plot(
-        explainer.expected_value,
-        shap_values.values[0],
-        feature_names=selected_features,
-        matplotlib=False, # Render as HTML
-        plot_cmap=[red_color, highlight_color]
+    # force_plot_html = shap.force_plot(
+    #     explainer.expected_value,
+    #     shap_values.values[0],
+    #     feature_names=selected_features,
+    #     matplotlib=False, # Render as HTML
+    #     plot_cmap=[red_color, highlight_color]
+    # )
+    # # Embed the SHAP force plot in Streamlit using an iframe
+    # # - Rendering shap.force_plot as an HTML plot in Streamlit requires wrapping it in an iframe. 
+    # # - Streamlit doesn't natively support direct HTML rendering for SHAP visualizations.
+    # # - Need to save the force plot as an interactive HTML snippet and embed it using st.components.v1.html.
+    # shap_html = f"<head>{shap.getjs()}</head><body>{force_plot_html.html()}</body>"
+    # html(shap_html, height=160)
+    
+    fig = shap.force_plot(
+    explainer.expected_value,
+    shap_values.values[0],
+    feature_names=selected_features,
+    matplotlib=True  # Use Matplotlib
     )
-    # Embed the SHAP force plot in Streamlit using an iframe
-    # - Rendering shap.force_plot as an HTML plot in Streamlit requires wrapping it in an iframe. 
-    # - Streamlit doesn't natively support direct HTML rendering for SHAP visualizations.
-    # - Need to save the force plot as an interactive HTML snippet and embed it using st.components.v1.html.
-    shap_html = f"<head>{shap.getjs()}</head><body>{force_plot_html.html()}</body>"
-    html(shap_html, height=250)
+    st.pyplot(fig)  # Display the Matplotlib plot in Streamlit
 
 # st.write("### SHAP Waterfall Plot")
 # shap.waterfall_plot(shap_values[0], feature_names=selected_features)
