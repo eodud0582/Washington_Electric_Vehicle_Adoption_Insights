@@ -294,28 +294,21 @@ with col2:
     # Display the plot in Streamlit
     # st.pyplot(fig)
 
-    # Create a figure with an adaptable aspect ratio
-    fig, ax = plt.subplots(figsize=(8, 4), dpi=100)
+    plt.figure(figsize=(10, 10))  # Even wider figure
+    plt.clf()  # Clear any existing figure
     
-    # Generate SHAP force plot
     shap.force_plot(
         explainer.expected_value,
         shap_values.values[0],
         feature_names=selected_features,
         matplotlib=True,
-        plot_cmap=[red_color, highlight_color],
-        show=False,
-        ax=ax
+        plot_cmap=[red_color, highlight_color]
     )
     
-    # Remove extra white space
+    plt.title('SHAP Force Plot')
     plt.tight_layout()
     
-    # Adjust layout to make it more compact
-    plt.subplots_adjust(top=0.9, bottom=0.1, left=0.1, right=0.9)
-    
-    # Display the plot
-    st.pyplot(fig)
+    st.pyplot(plt.gcf())
 
 # st.write("### SHAP Waterfall Plot")
 # shap.waterfall_plot(shap_values[0], feature_names=selected_features)
