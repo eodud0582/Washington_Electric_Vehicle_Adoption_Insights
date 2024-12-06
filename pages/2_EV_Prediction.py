@@ -304,7 +304,7 @@ with col2:
     shap_html = f"""
     <head>{shap.getjs()}</head>
     <body style="margin: 0;">
-        <div style="width: 100%; height: auto;">
+        <div style="width: 100%; height: auto; padding-bottom: 20px;">  <!-- Add padding -->
             {force_plot_html.html()}
         </div>
     </body>
