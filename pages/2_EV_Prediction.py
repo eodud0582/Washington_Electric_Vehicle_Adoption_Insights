@@ -292,25 +292,26 @@ with col2:
     # # Display the plot in Streamlit
     # st.pyplot(fig)
 
-    # Render SHAP force plot as HTML
-    force_plot_html = shap.force_plot(
+    # Generate SHAP force plot using matplotlib
+    fig, ax = plt.subplots(figsize=(10, 2))  # Customize figure size
+    shap.force_plot(
         explainer.expected_value,
         shap_values.values[0],
         feature_names=selected_features,
-        matplotlib=False  # Generate HTML for better customization
+        matplotlib=True,  # Use Matplotlib
+        show=False,       # Prevent immediate display
+        ax=ax             # Pass the Matplotlib Axes
     )
     
-    # Embed the SHAP force plot HTML in Streamlit
-    shap_html = f"""
-    <head>{shap.getjs()}</head>
-    <body style="margin: 0;">
-        <div style="width: 100%; height: auto; padding-bottom: 20px;">  <!-- Add padding -->
-            {force_plot_html.html()}
-        </div>
-    </body>
-    """
-    st.components.v1.html(shap_html, height=400)  # Adjust height for better viewing
-
+    # Adjust Base Value position (e.g., move it slightly up or down)
+    for text in ax.texts:
+        if "base value" in text.get_text().lower():
+            text.set_y(text.get_position()[1] + 0.1)  # Adjust the y position by 0.1 (or desired value)
+            text.set_color('blue')  # Optionally change text color for visibility
+    
+    # Adjust layout and display the plot
+    plt.tight_layout()
+    st.pyplot(fig)
 
 # st.write("### SHAP Waterfall Plot")
 # shap.waterfall_plot(shap_values[0], feature_names=selected_features)
