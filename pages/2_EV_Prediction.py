@@ -278,10 +278,11 @@ with col2:
     # html(shap_html, height=160)
     
     fig = shap.force_plot(
-    explainer.expected_value,
-    shap_values.values[0],
-    feature_names=selected_features,
-    matplotlib=True  # Use Matplotlib
+        explainer.expected_value,
+        shap_values.values[0],
+        feature_names=selected_features,
+        matplotlib=True,  # Use Matplotlib
+        plot_cmap=[red_color, highlight_color]
     )
     st.pyplot(fig)  # Display the Matplotlib plot in Streamlit
 
