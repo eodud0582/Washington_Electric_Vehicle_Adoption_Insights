@@ -294,9 +294,9 @@ with col2:
     # Display the plot in Streamlit
     st.pyplot(fig)
 
-    shap.force_plot(explainer.expected_value, shap_values.values[0], feature_names=selected_features, matplotlib=True, figsize=(16,5))
-    st.pyplot(bbox_inches='tight',dpi=300,pad_inches=0)
-    pl.clf()
+    # shap.force_plot(explainer.expected_value, shap_values.values[0], feature_names=selected_features, matplotlib=True, figsize=(16,5))
+    # st.pyplot(bbox_inches='tight',dpi=300,pad_inches=0)
+    # plt.clf()
 
 # st.write("### SHAP Waterfall Plot")
 # shap.waterfall_plot(shap_values[0], feature_names=selected_features)
