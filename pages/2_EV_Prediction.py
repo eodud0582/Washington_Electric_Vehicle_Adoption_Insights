@@ -294,12 +294,8 @@ with col2:
     # Display the plot in Streamlit
     # st.pyplot(fig)
 
-    # Create a figure with a responsive aspect ratio
-    # Get the width of the column
-    col_width = st.get_option("theme.layoutWidth")
-    
-    # Dynamically adjust figure size based on column width
-    fig, ax = plt.subplots(figsize=(col_width/200, col_width/300), dpi=100)
+    # Create a figure with an adaptable aspect ratio
+    fig, ax = plt.subplots(figsize=(8, 4), dpi=100)
     
     # Generate SHAP force plot
     shap.force_plot(
