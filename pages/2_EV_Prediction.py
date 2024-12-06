@@ -281,15 +281,19 @@ with col2:
     # shap_html = f"<head>{shap.getjs()}</head><body>{force_plot_html.html()}</body>"
     # html(shap_html, height=160)
     
-    fig = shap.force_plot(
+    shap.force_plot(
         explainer.expected_value,
         shap_values.values[0],
         feature_names=selected_features,
-        matplotlib=True,  # Use Matplotlib
+        matplotlib=True, # Use Matplotlib
         plot_cmap=[red_color, highlight_color]
     )
-    fig.set_size_inches(8, 1.5)
-    st.pyplot(fig)  # Display the Matplotlib plot in Streamlit
+    # Get the current figure and adjust its size
+    fig = plt.gcf() # Get current figure
+    fig.set_size_inches(8, 1.5) # Adjust the figure size
+
+    # Display the plot in Streamlit
+    st.pyplot(fig)
 
 # st.write("### SHAP Waterfall Plot")
 # shap.waterfall_plot(shap_values[0], feature_names=selected_features)
