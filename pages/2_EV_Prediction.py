@@ -282,15 +282,16 @@ with col2:
     # shap_html = f"<head>{shap.getjs()}</head><body>{force_plot_html.html()}</body>"
     # html(shap_html, height=160)
     
-    fig = shap.force_plot(
+    shap.force_plot(
         explainer.expected_value,
         shap_values.values[0],
         feature_names=selected_features,
         matplotlib=True, # Use Matplotlib
         plot_cmap=[red_color, highlight_color]
     )
-    # fig = plt.gcf()  # Get current figure
-    # fig.set_size_inches(8, 3)
+    fig = plt.gcf()  # Get current figure
+    fig.set_size_inches(8, 3)
+    
     # Display the plot in Streamlit
     st.pyplot(fig)
 
