@@ -260,10 +260,10 @@ with col1:
         'Impact Score': shap_values.values[0]
     }).sort_values(by='Impact Score', ascending=False).reset_index(drop=True) #.to_dict(orient='records')
     st.table(shap_table)
-    # st.dataframe(shap_table, hide_index=True)
     # st.dataframe(
     #     shap_table.style.format(precision=3),  # Adjust precision for better readability
-    #     height=200  # Adjust the height as needed
+    #     height=200,  # Adjust the height as needed
+    #     hide_index=True
     # )
 with col2:
     # Generate SHAP force plot (interactive visualization)
@@ -275,33 +275,11 @@ with col2:
         matplotlib=False, # Render as HTML
         plot_cmap=[red_color, highlight_color]
     )
-    # Embed the SHAP force plot in Streamlit using an iframe
+    # Embed/wrap the SHAP force plot in Streamlit using an CSS/iframe
     # - Rendering shap.force_plot as an HTML plot in Streamlit requires wrapping it in an iframe. 
     # - Streamlit doesn't natively support direct HTML rendering for SHAP visualizations.
     # - Need to save the force plot as an interactive HTML snippet and embed it using st.components.v1.html.
-    # shap_html = f"<head>{shap.getjs()}</head><body>{force_plot_html.html()}</body>"
-
-    custom_css = """
-    <style>
-        .force-container {
-            width: 100%;  /* Use full column width */
-            height: auto; /* Maintain aspect ratio */
-            overflow: hidden; /* Prevent overflow */
-        }
-        .force-container svg {
-            width: 100%;  /* Scale SVG to container width */
-            height: auto; /* Adjust height automatically */
-        }
-    </style>
-    """
-    
-    # Wrap the SHAP plot in a div with the custom CSS class
-    shap_html = f"""
-    <head>{shap.getjs()}</head>
-    {custom_css}
-    <body>{force_plot_html.html()}</body>
-    """
-
+    shap_html = f"<head>{shap.getjs()}</head><body>{force_plot_html.html()}</body>"
     html(shap_html, height=160)
     
     # fig = shap.force_plot(
