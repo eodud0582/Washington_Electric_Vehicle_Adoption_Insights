@@ -282,15 +282,35 @@ with col2:
     # shap_html = f"<head>{shap.getjs()}</head><body>{force_plot_html.html()}</body>"
     # html(shap_html, height=160)
     
-    fig = shap.force_plot(
+    # fig = shap.force_plot(
+    #     explainer.expected_value,
+    #     shap_values.values[0],
+    #     feature_names=selected_features,
+    #     matplotlib=True, # Use Matplotlib
+    #     plot_cmap=[red_color, highlight_color]
+    # )
+    # # Display the plot in Streamlit
+    # st.pyplot(fig)
+
+    # Render SHAP force plot as HTML
+    force_plot_html = shap.force_plot(
         explainer.expected_value,
         shap_values.values[0],
         feature_names=selected_features,
-        matplotlib=True, # Use Matplotlib
-        plot_cmap=[red_color, highlight_color]
+        matplotlib=False  # Generate HTML for better customization
     )
-    # Display the plot in Streamlit
-    st.pyplot(fig)
+    
+    # Embed the SHAP force plot HTML in Streamlit
+    shap_html = f"""
+    <head>{shap.getjs()}</head>
+    <body style="margin: 0;">
+        <div style="width: 100%; height: auto;">
+            {force_plot_html.html()}
+        </div>
+    </body>
+    """
+    st.components.v1.html(shap_html, height=400)  # Adjust height for better viewing
+
 
 # st.write("### SHAP Waterfall Plot")
 # shap.waterfall_plot(shap_values[0], feature_names=selected_features)
