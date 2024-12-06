@@ -200,7 +200,7 @@ with col2:
         tooltip=['Feature', 'Importance']
     ).properties(
         width='container', # Adaptive width
-        height=160 # Height for clarity
+        height=170 # Height for clarity
     )
     
     st.altair_chart(chart, use_container_width=True)
