@@ -32,6 +32,7 @@ import shap
 import altair as alt
 import streamlit as st
 from streamlit.components.v1 import html
+import matplotlib.pyplot as plt
 # ================================== #
 # Global setting
 
