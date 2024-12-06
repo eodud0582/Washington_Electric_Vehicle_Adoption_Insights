@@ -200,7 +200,7 @@ with col2:
         tooltip=['Feature', 'Importance']
     ).properties(
         width='container', # Adaptive width
-        height=170 # Height for clarity
+        height=160 # Height for clarity
     )
     
     st.altair_chart(chart, use_container_width=True)
@@ -287,12 +287,16 @@ with col2:
         shap_values.values[0],
         feature_names=selected_features,
         matplotlib=True, # Use Matplotlib
-        plot_cmap=[red_color, highlight_color],
-        # show=False
+        # plot_cmap=[red_color, highlight_color],
+        # show=False # Prevent immediate display
     )
     # plt.tight_layout()
     # Display the plot in Streamlit
     st.pyplot(fig)
+
+    shap.force_plot(explainer.expected_value, shap_values.values[0], feature_names=selected_features, matplotlib=True, figsize=(16,5))
+    st.pyplot(bbox_inches='tight',dpi=300,pad_inches=0)
+    pl.clf()
 
 # st.write("### SHAP Waterfall Plot")
 # shap.waterfall_plot(shap_values[0], feature_names=selected_features)
