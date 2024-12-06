@@ -290,8 +290,8 @@ with col2:
         plot_cmap=[red_color, highlight_color],
         show=False
     )
-    plt.tight_layout()
-    plt.subplots_adjust(top=1.2)
+    # plt.tight_layout()
+    plt.subplots_adjust(top=1.4)
     # Display the plot in Streamlit
     st.pyplot(fig)
 
