@@ -292,7 +292,7 @@ with col2:
     )
     
     # Embed/wrap the SHAP force plot in Streamlit using an iframe
-    shap_html = f"""
+    shap_html = f'''
     <head>{shap.getjs()}</head>
     <body>{force_plot_html.html()}</body>
     <script>
@@ -302,7 +302,7 @@ with col2:
             iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
         }});
     </script>
-    """
+    '''
     
     # Use st.components.v1.html to embed the HTML with adaptive height
     html(f'''<iframe id="shap-iframe" srcdoc="{shap_html}" width="100%" style="border:none;"></iframe>''', height=300)  # Initial height, will be adjusted by script
