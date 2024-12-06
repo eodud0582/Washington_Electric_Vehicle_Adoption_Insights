@@ -299,9 +299,7 @@ with col2:
     shap_html = f"""
     <head>{shap.getjs()}</head>
     {custom_css}
-    <div class="force-container">
-        {force_plot_html.html()}
-    </div>
+    <body>{force_plot_html.html()}</body>
     """
 
     html(shap_html, height=160)
