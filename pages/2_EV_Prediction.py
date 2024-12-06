@@ -291,7 +291,7 @@ with col2:
     )
     # Get the current figure and adjust its size
     fig = plt.gcf() # Get current figure
-    fig.set_size_inches(8, 1.5) # Adjust the figure size
+    fig.set_size_inches(8, 5) # Adjust the figure size
 
     # Display the plot in Streamlit
     st.pyplot(fig)
