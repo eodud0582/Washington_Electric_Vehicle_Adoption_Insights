@@ -283,7 +283,6 @@ with col2:
     # html(shap_html, height=160)
 
     # Generate SHAP force plot (interactive visualization)
-    st.write("### Variable Impact Direction (SHAP Force Plot)")
     force_plot_html = shap.force_plot(
         explainer.expected_value,
         shap_values.values[0],
@@ -306,9 +305,7 @@ with col2:
     """
     
     # Use st.components.v1.html to embed the HTML with adaptive height
-    st.components.v1.html(f"""
-        <iframe id="shap-iframe" srcdoc="{shap_html}" width="100%" style="border:none;"></iframe>
-    """, height=300)  # Initial height, will be adjusted by script
+    html(f'''<iframe id="shap-iframe" srcdoc="{shap_html}" width="100%" style="border:none;"></iframe>''', height=300)  # Initial height, will be adjusted by script
     
     # fig = shap.force_plot(
     #     explainer.expected_value,
