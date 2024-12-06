@@ -31,7 +31,7 @@ from sklearn.ensemble import GradientBoostingRegressor
 import shap
 import altair as alt
 import streamlit as st
-from streamlit.components.v1 import html, components
+from streamlit.components.v1 import html
 import matplotlib.pyplot as plt
 # ================================== #
 # Global setting
@@ -298,7 +298,7 @@ with col2:
     shap_html = f"<head>{shap.getjs()}</head>{custom_css}<body>{force_plot_html.html()}</body>"
     
     # Embed the HTML in Streamlit
-    components.html(shap_html, height=200)  # Adjust the height if needed
+    html(shap_html, height=200)  # Adjust the height if needed
     
     # fig = shap.force_plot(
     #     explainer.expected_value,
