@@ -290,23 +290,21 @@ with col2:
         matplotlib=False,  # Render as HTML
         plot_cmap=[red_color, highlight_color]
     )
+    shap_html = f"<head>{shap.getjs()}</head><body>{force_plot_html.html()}</body>"
+
+    # Create a custom CSS style to make the iframe height adaptive
+    css_style = """
+    <style>
+    #shap-force-plot {
+        width: 100%;
+        height: auto; /* Set height to auto to fill the container */
+    }
+    </style>
+    """
     
-    # Embed/wrap the SHAP force plot in Streamlit using an iframe
-    shap_html = f'''
-    <head>{shap.getjs()}</head>
-    <body>{force_plot_html.html()}</body>
-    <script>
-        // Adjust iframe height to fit content
-        window.addEventListener('DOMContentLoaded', (event) => {{
-            var iframe = document.getElementById('shap-iframe');
-            iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-        }});
-    </script>
-    '''
-    
-    # Use st.components.v1.html to embed the HTML with adaptive height
-    html(f'''<iframe id="shap-iframe" srcdoc="{shap_html}" width="100%" style="border:none;"></iframe>''', height=300)  # Initial height, will be adjusted by script
-    
+    # Embed the SHAP force plot with the custom CSS
+    st.components.v1.html(css_style + shap_html)
+
     # fig = shap.force_plot(
     #     explainer.expected_value,
     #     shap_values.values[0],
