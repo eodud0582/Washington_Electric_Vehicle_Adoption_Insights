@@ -281,16 +281,34 @@ with col2:
     # # - Need to save the force plot as an interactive HTML snippet and embed it using st.components.v1.html.
     # shap_html = f"<head>{shap.getjs()}</head><body>{force_plot_html.html()}</body>"
     # html(shap_html, height=160)
+
+    # Modify the CSS styles for the plot
+    custom_css = """
+    <style>
+    .force-svg-container {
+        margin-top: 20px;  /* Add space to avoid overlap */
+    }
+    .force-tooltip {
+        font-size: 12px;  /* Adjust tooltip font size */
+    }
+    </style>
+    """
     
-    fig = shap.force_plot(
-        explainer.expected_value,
-        shap_values.values[0],
-        feature_names=selected_features,
-        matplotlib=True, # Use Matplotlib
-        plot_cmap=[red_color, highlight_color]
-    )
-    # Display the plot in Streamlit
-    st.pyplot(fig)
+    # Combine the CSS with the SHAP plot
+    shap_html = f"<head>{shap.getjs()}</head>{custom_css}<body>{force_plot_html.html()}</body>"
+    
+    # Embed the HTML in Streamlit
+    components.html(shap_html, height=200)  # Adjust the height if needed
+    
+    # fig = shap.force_plot(
+    #     explainer.expected_value,
+    #     shap_values.values[0],
+    #     feature_names=selected_features,
+    #     matplotlib=True, # Use Matplotlib
+    #     plot_cmap=[red_color, highlight_color]
+    # )
+    # # Display the plot in Streamlit
+    # st.pyplot(fig)
 
 # st.write("### SHAP Waterfall Plot")
 # shap.waterfall_plot(shap_values[0], feature_names=selected_features)
