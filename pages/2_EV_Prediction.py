@@ -282,8 +282,8 @@ with col2:
     shap_html = f"<head>{shap.getjs()}</head><body>{force_plot_html.html()}</body>"
     # html(shap_html, height=140, width=700)
     html(
-        f'<div style="width:80%; margin:auto;">{shap_html}</div>', 
-        height=140
+        f'<div style="width:100%; margin:auto;">{shap_html}</div>', 
+        height=160
     )
     
     # fig = shap.force_plot(
