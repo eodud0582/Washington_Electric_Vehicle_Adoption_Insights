@@ -258,8 +258,12 @@ with col1:
         'Input Value:': original_input[selected_features].values[0], # [original_input[feature].iloc[0] for feature in selected_features],
         'Impact Score': shap_values.values[0]
     }).sort_values(by='Impact Score', ascending=False).reset_index(drop=True) #.to_dict(orient='records')
-    st.table(shap_table)
+    # st.table(shap_table)
     # st.dataframe(shap_table, hide_index=True)
+    st.dataframe(
+        shap_table.style.format(precision=3),  # Adjust precision for better readability
+        height=200  # Adjust the height as needed
+    )
 with col2:
     # Generate SHAP force plot (interactive visualization)
     st.write("### Variable Impact Direction (SHAP Force Plot)")
