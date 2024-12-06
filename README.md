@@ -28,7 +28,7 @@ This analysis is designed for:
 
 This dashboard has been deployed on **Streamlit** and is publicly accessible. You can view it by simply visiting the following link:
 
-[https://waevanalysis.streamlit.app](https://waevanalysis.streamlit.app)
+[https://evwash.streamlit.app](https://evwash.streamlit.app/)
 
 ## 3. How to Run the Dashboard Locally
 
