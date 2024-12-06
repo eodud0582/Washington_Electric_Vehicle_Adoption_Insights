@@ -288,7 +288,7 @@ with col2:
         feature_names=selected_features,
         matplotlib=True, # Use Matplotlib
         plot_cmap=[red_color, highlight_color],
-        show=False
+        # show=False
     )
     # plt.tight_layout()
     # Display the plot in Streamlit
