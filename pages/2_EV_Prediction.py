@@ -280,19 +280,19 @@ with col2:
     # - Streamlit doesn't natively support direct HTML rendering for SHAP visualizations.
     # - Need to save the force plot as an interactive HTML snippet and embed it using st.components.v1.html.
     shap_html = f"<head>{shap.getjs()}</head><body>{force_plot_html.html()}</body>"
-    html(shap_html, height=140, width=700)
+    html(shap_html, height=140)
     
-    # fig = shap.force_plot(
-    #     explainer.expected_value,
-    #     shap_values.values[0],
-    #     feature_names=selected_features,
-    #     matplotlib=True, # Use Matplotlib
-    #     plot_cmap=[red_color, highlight_color],
-    #     show=False
-    # )
+    fig = shap.force_plot(
+        explainer.expected_value,
+        shap_values.values[0],
+        feature_names=selected_features,
+        matplotlib=True, # Use Matplotlib
+        plot_cmap=[red_color, highlight_color],
+        show=False
+    )
     # plt.tight_layout()
     # Display the plot in Streamlit
-    # st.pyplot(fig)
+    st.pyplot(fig)
 
 # st.write("### SHAP Waterfall Plot")
 # shap.waterfall_plot(shap_values[0], feature_names=selected_features)
