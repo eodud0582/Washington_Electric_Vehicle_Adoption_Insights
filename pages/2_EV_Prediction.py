@@ -291,7 +291,7 @@ with col2:
         show=False
     )
     plt.tight_layout()
-    plt.subplots_adjust(top=0.8)
+    plt.subplots_adjust(top=1.2)
     # Display the plot in Streamlit
     st.pyplot(fig)
 
