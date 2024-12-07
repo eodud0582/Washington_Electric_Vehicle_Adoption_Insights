@@ -9,7 +9,7 @@
   (Image created with the help of ChatGPT by OpenAI)
 </p>
 
-## Problem Definition and Project Purpose
+## Problem Definition and App Purpose
 
 **Washington State** is at the forefront of **electric vehicle (EV) adoption** in the United States. With an ambitious goal of achieving 100% EV sales by 2030, the state government has implemented various incentives and policies to promote EV adoption. This commitment has resulted in one of the fastest-growing EV registration rates nationwide.
 
