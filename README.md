@@ -18,7 +18,7 @@ Despite this progress, understanding the driving factors behind EV adoption and 
 - How can policymakers adjust these variables to meet ambitious EV adoption targets?
 - What insights can Washington State's data offer to other states or stakeholders in the EV industry?
 
-This app aims to provide actionable insights and predictive tools to address these questions. Through a combination of detailed analysis and an interactive prediction service, this app helps users:
+This app aims to provide actionable insights and predictive tools to address these questions. Through a combination of detailed analysis and an interactive prediction service, this app helps users:
 - Understand the factors driving EV adoption in Washington State.
 - Evaluate how changes in key variables can influence EV registration trends.
 - Leverage Washington State's leadership in the EV market to inform strategies for other regions and industries.
