@@ -53,24 +53,30 @@ This app is built with **Streamlit**, a tool that allows you to easily create in
 
 ### 1) Prerequisites
 
-Python installed:
-- Python 3.12.6
+<details>
+<summary><strong>Click here to view the prerequisites</strong></summary>
+<br>
 
-Packages installed:
-- pandas 2.2.3
-- numpy 1.26.4
-- statsmodels 0.14.2
-- matplotlib 3.9.3
-- plotly 5.24.1
-- scikit-learn 1.5.2
-- shap 0.46.0
-- streamlit 1.38.0
-- streamlit-shap
+  Python installed:
+  - Python 3.12.6
+  
+  Packages installed:
+  - pandas 2.2.3
+  - numpy 1.26.4
+  - statsmodels 0.14.2
+  - matplotlib 3.9.3
+  - plotly 5.24.1
+  - scikit-learn 1.5.2
+  - shap 0.46.0
+  - streamlit 1.38.0
+  - streamlit-shap
+
+</details>
 
 ### 2) Step-by-Step Instructions
 
 <details>
-<summary><strong>Click here to expand the instructions</strong></summary>
+<summary><strong>Click here to view the instructions</strong></summary>
 <br>
 
 **a) Clone the repository**
@@ -122,8 +128,7 @@ Packages installed:
   
 </details>
 
-
-### 3) Project Structure
+## App Structure
 
 ```
 Washington_State_Electric_Vehicle_Adoption_Analysis/
@@ -140,7 +145,7 @@ Washington_State_Electric_Vehicle_Adoption_Analysis/
 ├── .streamlit/               # Folder containing a Streamlit configuration file
 │   └── config.toml           # Streamlit configuration
 ├── requirements.txt          # List of Python packages required to run the app
-├── README.md                 # Project overview and instructions (this file)
+├── README.md                 # App overview and instructions (this file)
 └── assets/                   # Folder for static files like images or additional resources
 ```
 
@@ -166,7 +171,7 @@ These datasets were cleaned and processed through the following steps:
 
 <div style="overflow-x: auto;">  
   <details>
-  <summary><strong>Click here to expand the table</strong></summary>
+  <summary><strong>Click here to view the variables</strong></summary>
   <br>
     
   | Variable                     | Description                                           |
@@ -218,7 +223,7 @@ These datasets were cleaned and processed through the following steps:
 
 ## Acknowledgements
 
-Special thanks to the open data sources and tools that made this analysis possible. This project was built using:
+Special thanks to the open data sources and tools that made this analysis possible. This app was built using:
 - **Streamlit** for the interactive web app.
 - **Plotly** and **Altair** for visualizing data in dynamic, interactive plots.
 - **Pandas** and **NumPy** for data manipulation and analysis.
