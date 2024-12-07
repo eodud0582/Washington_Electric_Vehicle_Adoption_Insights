@@ -96,7 +96,7 @@ This app aims to provide actionable insights and predictive tools to address the
 
 ## About the App
 
-This Washington EV Adoption Insights app provides a detailed analysis of EV adoption in Washington State, exploring its relationship with economic indicators, infrastructure development, and political factors. Additionally, a prediction feature allows you to customize key variables, observe their interactions, and evaluate how changes impact the outcomes.
+This **Washington EV Adoption Insights** app provides a detailed analysis of EV adoption in Washington State, exploring its relationship with economic indicators, infrastructure development, and political factors. Additionally, a prediction feature allows you to customize key variables, observe their interactions, and evaluate how changes impact the outcomes.
 
 This app is designed for:
 - Policymakers looking to make informed decisions about EV promotion.
