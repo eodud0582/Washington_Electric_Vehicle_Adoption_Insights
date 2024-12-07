@@ -132,6 +132,13 @@ After reviewing the dataset and cleaning process, explore the following pages fo
 - **EV Prediction**: Use key variables to predict EV registration trends and analyze potential impacts.
 """)
 
+st.sidebar.header("Table of Contents")
+st.sidebar.markdown("""
+- [1. Data Sources](#1-data-sources)
+- [2. Data Cleaning Process](#2-data-cleaning-process)
+- [3. Feature Engineering](#3-feature-engineering)
+""")
+
 # ================================== #
 # Additional information about the project
 
