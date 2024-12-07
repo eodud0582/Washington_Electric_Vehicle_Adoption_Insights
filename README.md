@@ -1,4 +1,4 @@
-# Washington State Electric Vehicle (EV) Adoption Analysis
+# Washington Electric Vehicle (EV) Adoption Insights App
 ---
 
 <p align="center">
@@ -9,14 +9,30 @@
   (Image created with the help of ChatGPT by OpenAI)
 </p>
 
-Welcome to the **Washington EV Adoption Insights**. This app provides a detailed analysis of EV adoption in Washington State, exploring its relationship with economic indicators, infrastructure development, and political factors. Additionally, a prediction feature allows you to customize key variables, observe their interactions, and evaluate how changes impact the outcomes.
+## Problem Definition and Project Purpose
 
-This tool is designed for:
+**Washington State** is at the forefront of **electric vehicle (EV) adoption** in the United States. With an ambitious goal of achieving 100% EV sales by 2030, the state government has implemented various incentives and policies to promote EV adoption. This commitment has resulted in one of the fastest-growing EV registration rates nationwide.
+
+Despite this progress, understanding the driving factors behind EV adoption and forecasting future trends remains a complex challenge. Key questions arise, such as:
+- What economic, infrastructural, or political factors most significantly influence EV adoption?
+- How can policymakers adjust these variables to meet ambitious EV adoption targets?
+- What insights can Washington State's data offer to other states or stakeholders in the EV industry?
+
+This app aims to provide actionable insights and predictive tools to address these questions. Through a combination of detailed analysis and an interactive prediction service, this app helps users:
+- Understand the factors driving EV adoption in Washington State.
+- Evaluate how changes in key variables can influence EV registration trends.
+- Leverage Washington State's leadership in the EV market to inform strategies for other regions and industries.
+
+## About the App
+
+This **Washington EV Adoption Insights** app provides a detailed analysis of EV adoption in Washington State, exploring its relationship with economic indicators, infrastructure development, and political factors. Additionally, a prediction feature allows you to customize key variables, observe their interactions, and evaluate how changes impact the outcomes.
+
+This app is designed for:
 - **Policymakers** looking to make informed decisions about EV promotion.
 - **Industry stakeholders** seeking insights into market trends.
 - **Researchers and other states** aiming to understand the key factors driving EV adoption.
 
-## 1. Key Features
+## Key Features
 - **EV Adoption Overview**: Analyze the distribution of electric vehicles across Washington State. <!-- and compare it with other U.S. states -->
 - **Economic Insights**: Understand how median household income relates to EV adoption rates.
 - **Infrastructure Analysis**: Explore the relationship between EV adoption and the availability of charging infrastructure.
@@ -25,13 +41,13 @@ This tool is designed for:
 - **Chart Options**: Within some major topics, users can choose from various chart types to gain deeper insights.
 - **Prediction**: Adjust input variables to predict EV registrations and assess the influence of key factors.
 
-## 2. How to Access the App
+## How to Access the App
 
 This app has been deployed on **Streamlit** and is publicly accessible. You can view it by simply visiting the following link:
 
 [https://evwash.streamlit.app](https://evwash.streamlit.app/)
 
-## 3. How to Run the App Locally
+## How to Run the App Locally
 
 This app is built with **Streamlit**, a tool that allows you to easily create interactive dashboards and web apps in Python. Follow these steps to run the app locally on your machine.
 
@@ -112,20 +128,22 @@ Packages installed:
 ```
 Washington_State_Electric_Vehicle_Adoption_Analysis/
 │
-├── Main.py                   # Main Python file for Streamlit app
-├── pages/                    # 
-│   └── 
-├── data_processed/           # Folder containing the processed data files in pickle format
-│   └── ev.pickle             # 
-│   └── ev_state.pickle       # 
-│   └── ev_merged.pickle      # 
-├── .streamlit/               # 
+├── Main.py                   # Main entry point for launching the Streamlit app
+├── pages/                    # Contains individual pages for analysis and prediction functionalities
+│   └── 1_EV_Analysis.py      # Python file for the analysis dashboard
+│   └── 2_EV_Prediction.py    # Python file for the prediction service
+├── data_processed/           # Contains processed datasets in pickle format, ready for analysis and prediction
+│   └── ev.pickle             # Primary raw dataset on electric vehicle population in Washington state
+│   └── ev_state.pickle       # Dataset on electrical vehicle population by state
+│   └── ev_merged.pickle      # Preprocessed and merged dataset with features for analysis and prediction
+├── .streamlit/               # Folder containing a Streamlit configuration file
 │   └── config.toml           # Streamlit configuration
-├── requirements.txt          # Python packages
-└── README.md                 # Project overview and instructions (this file)
+├── requirements.txt          # List of Python packages required to run the app
+├── README.md                 # Project overview and instructions (this file)
+└── assets/                   # Folder for static files like images or additional resources
 ```
 
-## 4. Data Sources
+## Data Sources and Variables Used
 
 This dashboard leverages the following data:
 - **Electric Vehicle Registrations by State**
@@ -190,7 +208,7 @@ These datasets have been cleaned, merged, and processed into the following varia
   </details>
 </div>
 
-## 5. Acknowledgements
+## Acknowledgements
 
 Special thanks to the open data sources and tools that made this analysis possible. This project was built using:
 - **Streamlit** for the interactive web app.
