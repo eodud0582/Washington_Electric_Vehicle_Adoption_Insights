@@ -109,12 +109,12 @@ st.sidebar.markdown("""
 This application analyzes electric vehicle (EV) data and provides insights through predictive modeling.
 """)
 
-st.sidebar.info(
-"""
-Use the menu at the top left to navigate to the desired page.
+st.sidebar.info("""
+Use the menu at the top left to navigate between pages and explore the features of this app:
 
-1. **EV Analysis**: Analyze data and explore relevant insights.
-2. **EV Prediction**: Predict EV Count by adjusting input variables and observe the impact of variable changes.
+- **Dataset**: Learn about the data sources, cleaning process, and feature engineering steps used in the analysis.
+- **EV Analysis**: Analyze EV adoption trends and uncover key insights for Washington State.
+- **EV Prediction**: Predict future EV registrations by adjusting key input variables and observe their potential impact.
 """)
 
 # ================================== #
