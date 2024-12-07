@@ -9,7 +9,7 @@
   (Image created with the help of ChatGPT by OpenAI)
 </p>
 
-Welcome to the **Washington EV Adoption Insights**. This app provides a detailed analysis of EV adoption in Washington State, exploring its relationship with economic indicators, infrastructure development, and political factors. Additionally, a prediction feature allows you to customize key variables, observe their interactions, and evaluate how changes impact the outcomes.
+Welcome to the **Washington EV Adoption Insights**. This app provides a detailed analysis of EV adoption in Washington State, exploring its relationship with economic indicators, infrastructure development, and political factors. Additionally, a prediction feature allows you to customize key variables, observe their interactions, and evaluate how changes impact the outcomes.
 
 This tool is designed for:
 - **Policymakers** looking to make informed decisions about EV promotion.
@@ -44,8 +44,12 @@ Packages installed:
 - pandas 2.2.3
 - numpy 1.26.4
 - statsmodels 0.14.2
+- matplotlib 3.9.3
 - plotly 5.24.1
+- scikit-learn 1.5.2
+- shap 0.46.0
 - streamlit 1.38.0
+- streamlit-shap
 
 ### 2) Step-by-Step Instructions
 
@@ -108,9 +112,14 @@ Packages installed:
 ```
 Washington_State_Electric_Vehicle_Adoption_Analysis/
 │
-├── ev_analysis_streamlit.py  # Main Python file for Streamlit app
+├── Main.py                   # Main Python file for Streamlit app
+├── pages/                    # 
+│   └── 
 ├── data_processed/           # Folder containing the processed data files in pickle format
-├── .streamlit/
+│   └── ev.pickle             # 
+│   └── ev_state.pickle       # 
+│   └── ev_merged.pickle      # 
+├── .streamlit/               # 
 │   └── config.toml           # Streamlit configuration
 ├── requirements.txt          # Python packages
 └── README.md                 # Project overview and instructions (this file)
@@ -120,11 +129,12 @@ Washington_State_Electric_Vehicle_Adoption_Analysis/
 
 This dashboard leverages the following data:
 - **Electric Vehicle Registrations by State**
-- **Electric Vehicle Population Data (Washington)**
-- **2022 Washington State Legislative Election Results**
-- **Alternative Fuel Stations (Charging Stations)**
-- **Median Household Income in the Past 12 Months (ACS 2022 5-year)**
+- **Washington State Electric Vehicle Population Data**
+- **Washington State 2022 Legislative Election Results**
+- **Washington State Alternative Fuel Stations (Charging Stations)**
+- **Washington State Median Household Income (ACS 2022 5-year)**
 - **Washington State Legislative Districts 2022 (Geospatial)**
+- **Washington State Voter Demographics Tables (Age)**
 
 These datasets have been cleaned, merged, and processed into the following variables:
 
@@ -140,8 +150,8 @@ These datasets have been cleaned, merged, and processed into the following varia
   | `registered_voters`           | Total registered voters in the district               |
   | `ballots_cast`                | Number of ballots cast in the latest election         |
   | `%_turnout`                   | Voter turnout percentage                             |
-  | `patty_murray`                | Votes received by candidate Patty Murray             |
-  | `tiffany_smiley`              | Votes received by candidate Tiffany Smiley           |
+  | `dem_votes`                | Votes received by candidate Patty Murray (Democratic)            |
+  | `rep_votes`              | Votes received by candidate Tiffany Smiley (Republican)          |
   | `party_won`                   | Party that won in the district                       |
   | `charger_count`               | Total number of EV chargers                          |
   | `geoid`                       | Unique geographic identifier for the district        |
@@ -152,10 +162,26 @@ These datasets have been cleaned, merged, and processed into the following varia
   | `shape_area`                  | Total area of the district                           |
   | `shape__area`                 | Alternative measure for district area                |
   | `shape__length`               | Alternative measure for district boundary length     |
-  | `charger_density`             | Density of EV chargers in the district               |
-  | `charger_density_per_100`     | Charger density per 100 square miles                 |
+  | `voters_18_24`               | Number of registered voters aged 18–24               |
+  | `voters_25_34`               | Number of registered voters aged 25–34               |
+  | `voters_35_44`               | Number of registered voters aged 35–44               |
+  | `voters_45_54`               | Number of registered voters aged 45–54               |
+  | `voters_55_64`               | Number of registered voters aged 55–64               |
+  | `voters_over_65`             | Number of registered voters aged 65+                 |
+  | `total_active_voters`        | Total number of active voters in the district        |
+  | `charger_density`             | EV charger density per unit of area (shape_area-based) |
+  | `charger_density__area`      | Alternative measure of charger density per unit of area (shape__area-based) |
+  | `charger_density_leng`       | EV charger density relative to boundary length (shape_leng-based) |
+  | `charger_density_le_1`       | Alternative measure of charger density relative to boundary length (shape_le_1-based) |
+  | `charger_density__length`    | Additional measure of charger density relative to boundary length (shape__length-based) |
+  | `charger_per_voter_total`    | Chargers per total registered voters                 |
+  | `charger_per_voter_18_24`    | Chargers per voter aged 18–24                        |
+  | `charger_per_voter_25_34`    | Chargers per voter aged 25–34                        |
+  | `charger_per_voter_35_44`    | Chargers per voter aged 35–44                        |
+  | `charger_per_voter_45_54`    | Chargers per voter aged 45–54                        |
+  | `charger_per_voter_55_64`    | Chargers per voter aged 55–64                        |
+  | `charger_per_voter_over_65`  | Chargers per voter aged 65+                          |
   | `charger_ev_ratio`            | Ratio of EV chargers to EVs                          |
-  | `party_won_encoded`           | Encoded value of the winning party                   |
   | `transformed_ev_count`        | Transformed number of EVs for analysis               |
   | `transformed_charger_count`   | Transformed number of chargers for analysis          |
   | `transformed_charger_ev_ratio`| Transformed charger-to-EV ratio for analysis         |
