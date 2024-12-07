@@ -212,8 +212,10 @@ These datasets have been cleaned, merged, and processed into the following varia
 
 Special thanks to the open data sources and tools that made this analysis possible. This project was built using:
 - **Streamlit** for the interactive web app.
-- **Plotly** for visualizing data in dynamic, interactive plots.
+- **Plotly** and **Altair** for visualizing data in dynamic, interactive plots.
 - **Pandas** and **NumPy** for data manipulation and analysis.
+- **Scikit-Learn** for predictive modeling.
+- **SHAP** for model explanation.
 
 ## License
 
