@@ -130,6 +130,7 @@ Washington_State_Electric_Vehicle_Adoption_Analysis/
 │
 ├── Main.py                   # Main entry point for launching the Streamlit app
 ├── pages/                    # Contains individual pages for analysis and prediction functionalities
+│   └── 0_Dataset.py          # Python file for data sources, cleaning process, and feature engineering overview
 │   └── 1_EV_Analysis.py      # Python file for the analysis dashboard
 │   └── 2_EV_Prediction.py    # Python file for the prediction service
 ├── data_processed/           # Contains processed datasets in pickle format, ready for analysis and prediction
