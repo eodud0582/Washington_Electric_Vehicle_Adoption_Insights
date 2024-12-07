@@ -68,13 +68,13 @@ st.divider()
 st.header("1. Data Sources")
 st.markdown("""
 The dataset is compiled from various reputable sources to ensure accuracy and relevance for analysis:
-1. **Electric Vehicle Registrations by State**  
-2. **Washington State Electric Vehicle Population Data**  
-3. **Washington State 2022 Legislative Election Results**  
-4. **Washington State Alternative Fuel Stations (Charging Stations)**  
-5. **Washington State Median Household Income (ACS 2022 5-year)**  
-6. **Washington State Legislative Districts 2022 (Geospatial)**  
-7. **Washington State Voter Demographics (Age)**  
+1. [**Electric Vehicle Registrations by State**](https://afdc.energy.gov/data/10962)
+2. [**Washington State Electric Vehicle Population Data**](https://data.wa.gov/Transportation/Electric-Vehicle-Population-Data/f6w7-q2d2/about_data)
+3. [**Washington State 2022 Legislative Election Results**](https://www.kaggle.com/datasets/josephdemey/2022-washington-state-legislative-election-results)
+4. [**Washington State Alternative Fuel Stations (Charging Stations)**](https://afdc.energy.gov/data_download)
+5. [**Washington State Median Household Income (ACS 2022 5-year)**](https://censusreporter.org/data/table/?table=B19013&geo_ids=610|04000US53#)
+6. [**Washington State Legislative Districts 2022 (Geospatial)**](https://geo.wa.gov/datasets/c2b31e7e2b6f464a92d1bed7ab1d7539_0/explore?location=47.056733%2C-120.812244%2C7.15)
+7. [**Washington State Voter Demographics Tables (Age)**](https://www.sos.wa.gov/elections/data-research/election-data-and-maps/reports-data-and-statistics/voter-demographics)
 """)
 
 st.header("2. Data Cleaning Process")
