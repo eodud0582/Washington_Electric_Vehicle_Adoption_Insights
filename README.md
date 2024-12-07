@@ -9,9 +9,9 @@
   (Image created with the help of ChatGPT by OpenAI)
 </p>
 
-Welcome to the **Washington State Electric Vehicle (EV) Adoption Analysis** project! This dashboard provides a detailed analysis of EV adoption in Washington State, exploring its relationship with economic indicators, infrastructure development, and political factors.
+Welcome to the **Washington State Electric Vehicle (EV) Adoption Analysis** app! This app provides a detailed analysis of EV adoption in Washington State, exploring its relationship with economic indicators, infrastructure development, and political factors. Additionally, a prediction feature allows you to customize key variables, observe their interactions, and evaluate how changes impact the outcomes.
 
-This analysis is designed for:
+This app is designed for:
 - **Policymakers** looking to make informed decisions about EV promotion.
 - **Industry stakeholders** seeking insights into market trends.
 - **Researchers and other states** aiming to understand the key factors driving EV adoption.
@@ -23,16 +23,17 @@ This analysis is designed for:
 - **Political Landscape**: See how EV adoption correlates with political trends and legislative districts.
 - **Customizable Filters**: Users can select different legislative districts for a more tailored analysis.
 - **Chart Options**: Within some major topics, users can choose from various chart types to gain deeper insights.
+- **Prediction**: Adjust input variables to predict EV registrations and assess the influence of key factors.
 
-## 2. How to Access the Dashboard
+## 2. How to Access the App
 
-This dashboard has been deployed on **Streamlit** and is publicly accessible. You can view it by simply visiting the following link:
+This app has been deployed on **Streamlit** and is publicly accessible. You can view it by simply visiting the following link:
 
 [https://evwash.streamlit.app](https://evwash.streamlit.app/)
 
-## 3. How to Run the Dashboard Locally
+## 3. How to Run the App Locally
 
-This project is built with **Streamlit**, a tool that allows you to easily create interactive dashboards and web apps in Python. Follow these steps to run the dashboard locally on your machine.
+This app is built with **Streamlit**, a tool that allows you to easily create interactive dashboards and web apps in Python. Follow these steps to run the dashboard locally on your machine.
 
 ### 1) Prerequisites
 
