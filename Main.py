@@ -78,10 +78,8 @@ with col2:
 with col3: st.write("")
 
 st.markdown("")
+st.header("Problem Definition and App Purpose")
 st.markdown("""
-
-## Problem Definition and App Purpose
-
 **Washington State** is at the forefront of **electric vehicle (EV) adoption** in the United States. With an ambitious goal of achieving 100% EV sales by 2030, the state government has implemented various incentives and policies to promote EV adoption. This commitment has resulted in one of the fastest-growing EV registration rates nationwide.
 
 Despite this progress, understanding the driving factors behind EV adoption and forecasting future trends remains a complex challenge. Key questions arise, such as:
@@ -93,9 +91,10 @@ This app aims to provide actionable insights and predictive tools to address the
 - Understand the factors driving EV adoption in Washington State.
 - Evaluate how changes in key variables can influence EV registration trends.
 - Leverage Washington State's leadership in the EV market to inform strategies for other regions and industries.
+""")
 
-## About the App
-
+st.header("About the App")
+st.markdown("""
 This **Washington EV Adoption Insights** app provides a detailed analysis of EV adoption in Washington State, exploring its relationship with economic indicators, infrastructure development, and political factors. Additionally, a prediction feature allows you to customize key variables, observe their interactions, and evaluate how changes impact the outcomes.
 
 This app is designed for:
