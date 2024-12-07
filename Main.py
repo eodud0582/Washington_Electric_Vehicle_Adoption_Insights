@@ -77,7 +77,7 @@ with col2:
     # st.markdown("<p style='text-align: center;'>(Image created with the help of ChatGPT by OpenAI)</p>", unsafe_allow_html=True)
 with col3: st.write("")
 
-st.markdown("")
+# st.markdown("")
 st.header("Problem Definition and App Purpose")
 st.markdown("""
 **Washington State** is at the forefront of **electric vehicle (EV) adoption** in the United States. With an ambitious goal of achieving 100% EV sales by 2030, the state government has implemented various incentives and policies to promote EV adoption. This commitment has resulted in one of the fastest-growing EV registration rates nationwide.
