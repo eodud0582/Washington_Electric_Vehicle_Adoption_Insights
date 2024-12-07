@@ -130,6 +130,7 @@ For a complete list of features, refer to the README document on the [GitHub pag
 # Table of Contents
 st.sidebar.header("Table of Contents")
 st.sidebar.markdown("""
+- [Home](#electric-vehicle-adoption-in-washington-state)
 - [1. Data Sources](#1-data-sources)
 - [2. Data Cleaning Process](#2-data-cleaning-process)
 - [3. Feature Engineering](#3-feature-engineering)
