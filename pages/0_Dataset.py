@@ -124,19 +124,23 @@ st.markdown("""
 For a complete list of features, refer to the README document on the [GitHub page](https://github.com/eodud0582/Washington_State_Electric_Vehicle_Adoption_Analysis).
 """)
 
+# ================================== #
+# Add a sidebar for additional information or controls
+
+# Table of Contents
+st.sidebar.header("Table of Contents")
+st.sidebar.markdown("""
+- [1. Data Sources](#1-data-sources)
+- [2. Data Cleaning Process](#2-data-cleaning-process)
+- [3. Feature Engineering](#3-feature-engineering)
+""")
+
 # Sidebar for navigation guidance
 st.sidebar.header("Next Steps")
 st.sidebar.info("""
 After reviewing the dataset and cleaning process, explore the following pages for more insights:
 - **EV Analysis**: Visualize trends in EV adoption across Washington State.
 - **EV Prediction**: Use key variables to predict EV registration trends and analyze potential impacts.
-""")
-
-st.sidebar.header("Table of Contents")
-st.sidebar.markdown("""
-- [1. Data Sources](#1-data-sources)
-- [2. Data Cleaning Process](#2-data-cleaning-process)
-- [3. Feature Engineering](#3-feature-engineering)
 """)
 
 # ================================== #
