@@ -99,7 +99,7 @@ st.markdown("""
 After cleaning, datasets were merged and additional meaningful variables were created to enhance analysis and prediction. Below are key features and their descriptions:
 """)
 
-st.dataframe({
+st.table({
     "Variable": [
         "legislative_district", "ev_count", "dem_votes", "rep_votes", 
         "charger_count", "median_household_income", "charger_density", "charger_ev_ratio",
