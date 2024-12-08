@@ -122,9 +122,9 @@ This app is built with **Streamlit**, a tool that allows you to easily create in
    streamlit run ev_analysis_streamlit.py
    ```
 
-**f) Access the dashboard**
+**f) Access the app**
     
-   After running the command, the Streamlit dashboard will automatically open in your browser on `http://localhost:8501`. Otherwise, a local URL will be provided in the terminal. Open that link in your browser to view and interact with the dashboard.
+   After running the command, the Streamlit app will automatically open in your browser on `http://localhost:8501`. Otherwise, a local URL will be provided in the terminal. Open that link in your browser to view and interact with the app.
   
 </details>
 
@@ -151,7 +151,7 @@ Washington_State_Electric_Vehicle_Adoption_Analysis/
 
 ## Data Sources
 
-This dashboard leverages the following data:
+This app leverages the following data:
 1. [**Electric Vehicle Registrations by State**](https://afdc.energy.gov/data/10962)
 2. [**Washington State Electric Vehicle Population Data**](https://data.wa.gov/Transportation/Electric-Vehicle-Population-Data/f6w7-q2d2/about_data)
 3. [**Washington State 2022 Legislative Election Results**](https://www.kaggle.com/datasets/josephdemey/2022-washington-state-legislative-election-results)
