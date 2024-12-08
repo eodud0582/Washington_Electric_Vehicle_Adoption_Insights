@@ -30,7 +30,7 @@ import streamlit as st
 # Global setting
 
 # Set page config
-st.set_page_config(page_title="Washington State EV Adoption Analysis", page_icon=":battery:", layout="wide")
+st.set_page_config(page_title="Washington EV Adoption Insights", page_icon=":battery:", layout="wide")
 # emoji: https://streamlit-emoji-shortcodes-streamlit-app-gwckff.streamlit.app/
 
 # Adjust sizes
@@ -63,7 +63,7 @@ unhighlight_color = 'lightgray'
 
 # ================================== #
 # Main page intro
-st.title("Electric Vehicle Adoption in Washington State")
+st.title("Washington Electric Vehicle (EV) Adoption Insights")
 st.markdown("### Introduction")
 
 st.divider()
