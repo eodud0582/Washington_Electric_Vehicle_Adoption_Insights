@@ -35,7 +35,7 @@ import plotly.graph_objects as go
 # Global setting
 
 # Set page config
-st.set_page_config(page_title="Washington State EV Adoption Analysis", page_icon=":battery:", layout="wide")
+st.set_page_config(page_title="Washington EV Adoption Insights", page_icon=":battery:", layout="wide")
 # emoji: https://streamlit-emoji-shortcodes-streamlit-app-gwckff.streamlit.app/
 
 # Adjust sizes
@@ -129,7 +129,7 @@ except Exception as e:
 
 # ================================== #
 # Title and introduction
-st.title("Electric Vehicle Adoption in Washington State")
+st.title("Washington Electric Vehicle (EV) Adoption Insights")
 st.markdown("### Trends, Economy, Infrastructure, and Politics")
 
 # col1, col2, col3 = st.columns([1,2,1])
