@@ -37,7 +37,7 @@ import matplotlib.pyplot as plt
 # Global setting
 
 # Set page config
-st.set_page_config(page_title="Washington State EV Adoption Analysis", page_icon=":battery:", layout="wide")
+st.set_page_config(page_title="Washington EV Adoption Insights", page_icon=":battery:", layout="wide")
 # emoji: https://streamlit-emoji-shortcodes-streamlit-app-gwckff.streamlit.app/
 
 # Adjust sizes
@@ -90,12 +90,12 @@ red_color = '#D32F2F'
 
 # ================================== #
 # Intro
-st.title("Electric Vehicle Adoption in Washington State")
+st.title("Washington Electric Vehicle (EV) Adoption Insights")
 st.markdown("### Electric Vehicle Count Prediction")
 
 st.divider()
 
-st.write("This tool allows you to predict EV count and explore the effect of key variable on predictions.")
+st.write("This tool allows you to predict EV registrations and explore the effect of key variable on predictions.")
 
 # Load data
 if 'data_loaded' in st.session_state and st.session_state['data_loaded']:
