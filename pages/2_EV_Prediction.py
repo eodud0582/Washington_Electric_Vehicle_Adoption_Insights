@@ -353,9 +353,9 @@ st.sidebar.markdown("""
 
 st.sidebar.header("About This Tool")
 st.sidebar.info("This predictive tool enables you to explore electric vehicle (EV) adoption in Washington State by:"\
-                "\n- Predicting EV count based on key economic and infrastructure variables using Gradient Boosting Regressor."\
-                "\n- Allowing interactive adjustment of input parameters."\
-                "\n- Visualizing the impact of individual features on EV predictions using SHAP analysis.")
+                "- Predicting EV count based on key economic and infrastructure variables using a pre-trained Gradient Boosting Regressor model."\
+                "- Allowing interactive adjustment of input parameters."\
+                "- Visualizing the impact of individual features on EV predictions using SHAP analysis.")
 
 # ================================== #
 # Additional information about the project
