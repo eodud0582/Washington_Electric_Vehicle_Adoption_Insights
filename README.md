@@ -160,7 +160,7 @@ This app leverages the following data:
 6. [**Washington State Legislative Districts 2022 (Geospatial)**](https://geo.wa.gov/datasets/c2b31e7e2b6f464a92d1bed7ab1d7539_0/explore?location=47.056733%2C-120.812244%2C7.15)
 7. [**Washington State Voter Demographics Tables (Age)**](https://www.sos.wa.gov/elections/data-research/election-data-and-maps/reports-data-and-statistics/voter-demographics)
 
-## Data Cleaning and Processing
+## Data Preparation
 
 These datasets were cleaned and processed through the following steps:
 - **Filtering Washington-specific data**: Removed data unrelated to Washington State to maintain focus.
