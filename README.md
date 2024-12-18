@@ -39,7 +39,7 @@ This app is designed for:
 - **Political Landscape**: See how EV adoption correlates with political trends and legislative districts.
 - **Customizable Filters**: Users can select different legislative districts for a more tailored analysis.
 - **Chart Options**: Within some major topics, users can choose from various chart types to gain deeper insights.
-- **Prediction**: Adjust input variables to predict EV registrations and assess the influence of key factors.
+- **Prediction**: Adjust input variables to predict EV registrations (using Gradient Boosting Regressor) and assess the influence of key factors (using SHAP analysis).
 
 ## How to Access the App
 
